@@ -17,6 +17,139 @@
     return `<a class="social-link" href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label}</a>`;
   }
 
+  function renderTopNav(basePath, activeKey) {
+    return `
+      <header class="site-header">
+        <div class="container nav">
+          <a class="brand" href="${basePath}/index.html">Gad <span>Baruch Hinkis</span></a>
+          <nav class="nav-links" aria-label="Primary">
+            <a class="nav-link${activeKey === 'home' ? ' active' : ''}" href="${basePath}/index.html">Home</a>
+            <a class="nav-link${activeKey === 'about' ? ' active' : ''}" href="${basePath}/about.html">About</a>
+            <a class="nav-link${activeKey === 'music' ? ' active' : ''}" href="${basePath}/music.html">Music</a>
+            <a class="nav-link${activeKey === 'tools' ? ' active' : ''}" href="${basePath}/tools.html">Tools</a>
+            <a class="nav-link${activeKey === 'contact' ? ' active' : ''}" href="${basePath}/contact.html">Contact</a>
+          </nav>
+        </div>
+      </header>
+    `;
+  }
+
+  function buildCatalogue(project) {
+    const jumpItems = [];
+    let lastSection = '';
+    const productionsMarkup = (project.productions || [])
+      .map((production, index) => {
+        const visibleLinks = production.spotifyEmbedUrl
+          ? production.links.filter((link) => !/spotify/i.test(link.label))
+          : production.links;
+        const productionLinks = visibleLinks.map(linkMarkup).join('');
+        const spotifyUri = extractSpotifyUri(production.spotifyEmbedUrl);
+        const spotifyKey = `${project.key}-${index}`;
+        const productionEmbed = production.spotifyEmbedUrl
+          ? `
+            <div class="production-embed">
+              <div
+                class="spotify-embed-host"
+                data-spotify-key="${spotifyKey}"
+                data-spotify-uri="${spotifyUri}"
+                aria-label="${production.artist} - ${production.album} Spotify player"
+              ></div>
+            </div>
+          `
+          : '';
+
+        const sectionHeading = production.section && production.section !== lastSection
+          ? `<h3 class="production-section-heading">${production.section}</h3>`
+          : '';
+        lastSection = production.section || lastSection;
+        const productionId = `${project.key}-entry-${index + 1}`;
+        jumpItems.push({
+          id: productionId,
+          label: `${production.artist} / ${production.album}`,
+        });
+
+        return `
+          ${sectionHeading}
+          <article id="${productionId}" class="production-item${production.spotifyEmbedUrl ? ' production-item-with-embed' : ''}">
+            ${productionEmbed}
+            <div class="production-copy">
+              <h3>${production.artist} <span style="color: var(--muted);">/ ${production.album}</span></h3>
+              <div class="production-meta">
+                <span>${production.genre}</span>
+                <span>${production.year || 'Date pending'}</span>
+              </div>
+              <p>${production.summary}</p>
+              ${productionLinks ? `<div class="social-link-row" style="margin-top: 1rem;">${productionLinks}</div>` : ''}
+            </div>
+          </article>
+        `;
+      })
+      .join('');
+
+    const jumpNavMarkup = jumpItems.length
+      ? `
+        <aside class="catalog-jump-nav" aria-label="Jump to release">
+          <div class="catalog-jump-list">
+            ${jumpItems
+              .map(
+                (item) => `
+                  <a class="catalog-jump-link" href="#${item.id}" data-jump-target="${item.id}" aria-label="${item.label}">
+                    <span class="catalog-jump-dot" aria-hidden="true"></span>
+                    <span class="catalog-jump-label">${item.label}</span>
+                  </a>
+                `
+              )
+              .join('')}
+          </div>
+        </aside>
+      `
+      : '';
+
+    return { productionsMarkup, jumpItems, jumpNavMarkup };
+  }
+
+  function bindJumpNav(root, jumpItems) {
+    ensureSpotifyIframeApi(root);
+
+    if (!(jumpItems.length && 'IntersectionObserver' in window)) return;
+
+    const jumpLinks = Array.from(root.querySelectorAll('[data-jump-target]'));
+    const jumpLinkMap = new Map(jumpLinks.map((link) => [link.dataset.jumpTarget, link]));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let mostVisible = null;
+
+        entries.forEach((entry) => {
+          if (!mostVisible || entry.intersectionRatio > mostVisible.intersectionRatio) {
+            mostVisible = entry;
+          }
+        });
+
+        if (!mostVisible?.target?.id) return;
+
+        jumpLinks.forEach((link) => {
+          link.classList.toggle('active', link.dataset.jumpTarget === mostVisible.target.id);
+        });
+      },
+      {
+        rootMargin: '-18% 0px -55% 0px',
+        threshold: [0.15, 0.4, 0.7],
+      }
+    );
+
+    jumpItems.forEach((item, index) => {
+      const target = root.querySelector(`#${item.id}`);
+      const link = jumpLinkMap.get(item.id);
+      if (target) {
+        observer.observe(target);
+      }
+
+      if (index === 0 && link) {
+        link.classList.add('active');
+      }
+    });
+  }
+
   function extractSpotifyUri(spotifyEmbedUrl) {
     if (!spotifyEmbedUrl) return '';
 
@@ -165,84 +298,12 @@
 
     const displayTitle = project.displayTitle || project.title;
     const links = project.links.map(linkMarkup).join('');
-    let lastSection = '';
-    const productionsMarkup = (project.productions || [])
-      .map((production, index) => {
-        const visibleLinks = production.spotifyEmbedUrl
-          ? production.links.filter((link) => !/spotify/i.test(link.label))
-          : production.links;
-        const productionLinks = visibleLinks.map(linkMarkup).join('');
-        const spotifyUri = extractSpotifyUri(production.spotifyEmbedUrl);
-        const spotifyKey = `${project.key}-${index}`;
-        const productionEmbed = production.spotifyEmbedUrl
-          ? `
-            <div class="production-embed">
-              <div
-                class="spotify-embed-host"
-                data-spotify-key="${spotifyKey}"
-                data-spotify-uri="${spotifyUri}"
-                aria-label="${production.artist} - ${production.album} Spotify player"
-              ></div>
-            </div>
-          `
-          : '';
-
-        const sectionHeading = production.section && production.section !== lastSection
-          ? `<h3 class="production-section-heading">${production.section}</h3>`
-          : '';
-        lastSection = production.section || lastSection;
-
-        return `
-          ${sectionHeading}
-          <article class="production-item${production.spotifyEmbedUrl ? ' production-item-with-embed' : ''}">
-            ${productionEmbed}
-            <div class="production-copy">
-              <h3>${production.artist} <span style="color: var(--muted);">/ ${production.album}</span></h3>
-              <div class="production-meta">
-                <span>${production.genre}</span>
-                <span>${production.year || 'Date pending'}</span>
-              </div>
-              <p>${production.summary}</p>
-              ${productionLinks ? `<div class="social-link-row" style="margin-top: 1rem;">${productionLinks}</div>` : ''}
-            </div>
-          </article>
-        `;
-      })
-      .join('');
+    const { productionsMarkup, jumpItems, jumpNavMarkup } = buildCatalogue(project);
 
     document.title = `${displayTitle} | Gad Baruch Hinkis`;
 
     root.innerHTML = `
-      <header class="site-header">
-        <div class="container nav">
-          <a class="brand" href="../index.html">Gad <span>Baruch Hinkis</span></a>
-          <nav class="nav-links" aria-label="Primary">
-            <a class="nav-link" href="../index.html">Home</a>
-            <div class="dropdown" data-dropdown>
-              <button class="dropdown-toggle" data-dropdown-trigger>
-                Music
-                <span aria-hidden="true">▾</span>
-              </button>
-              <div class="dropdown-menu">
-                <a href="../music.html">Music Overview</a>
-                ${musicProjects
-                  .map((item) => `<a href="${item.pageUrl}">${item.title}</a>`)
-                  .join('')}
-              </div>
-            </div>
-            <div class="dropdown" data-dropdown>
-              <button class="dropdown-toggle" data-dropdown-trigger>
-                Tech
-                <span aria-hidden="true">▾</span>
-              </button>
-              <div class="dropdown-menu">
-                <a href="../music-tech.html">Tech Overview</a>
-                ${techProjects.map((item) => `<a href="${item.pageUrl}">${item.title}</a>`).join('')}
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
+      ${renderTopNav('..', 'music')}
 
       <main>
         <section class="product-hero fade-in">
@@ -257,24 +318,33 @@
           </div>
         </section>
 
-        <section class="section fade-in fade-delay-1">
-          <div class="container">
-            <div class="music-panel copy">
-              <h2>${project.productions ? 'Archive Focus' : 'Featured Media'}</h2>
-              <div class="embed-shell">${project.embedLabel}</div>
-            </div>
-          </div>
-        </section>
+        ${
+          project.productions
+            ? ''
+            : `
+              <section class="section fade-in fade-delay-1">
+                <div class="container">
+                  <div class="music-panel copy">
+                    <h2>Featured Media</h2>
+                    <div class="embed-shell">${project.embedLabel}</div>
+                  </div>
+                </div>
+              </section>
+            `
+        }
 
         ${
           project.productions
             ? `
               <section class="section fade-in fade-delay-2">
-                <div class="container">
-                  <h2>Discography And Production Credits</h2>
-                  <div class="production-list">
-                    ${productionsMarkup}
+                <div class="container catalog-layout">
+                  <div class="catalog-main">
+                    <h2>Discography And Production Credits</h2>
+                    <div class="production-list">
+                      ${productionsMarkup}
+                    </div>
                   </div>
+                  ${jumpNavMarkup}
                 </div>
               </section>
             `
@@ -304,8 +374,62 @@
       </footer>
     `;
 
-    ensureSpotifyIframeApi(root);
+    bindJumpNav(root, jumpItems);
+  }
+
+  function renderMusicHubPage() {
+    const root = document.getElementById('music-root');
+    const voiceProject = musicProjects.find((item) => item.key === 'voice-of-gad');
+    const catalogueProject = musicProjects.find((item) => item.key === 'music-productions');
+
+    if (!root || !voiceProject || !catalogueProject) return;
+
+    const voiceLinks = voiceProject.links.map(linkMarkup).join('');
+    const { productionsMarkup, jumpItems, jumpNavMarkup } = buildCatalogue(catalogueProject);
+
+    document.title = `Music | Gad Baruch Hinkis`;
+
+    root.innerHTML = `
+      ${renderTopNav('.', 'music')}
+
+      <main>
+        <section class="product-hero fade-in">
+          <div class="container music-layout">
+            <div class="music-panel copy">
+              <p class="kicker">Music</p>
+              <h1>Voice Of Gad</h1>
+              <p>${voiceProject.summary}</p>
+              <div class="social-link-row" style="margin-top: 1rem;">${voiceLinks}</div>
+            </div>
+            <div class="music-hero-art music-panel">${voiceProject.heroArtLabel}</div>
+          </div>
+        </section>
+
+        <section class="section fade-in fade-delay-1">
+          <div class="container catalog-layout">
+            <div class="catalog-main">
+              <div class="music-panel copy" style="margin-bottom: 2rem;">
+                <h2>My Music Production Catalogue</h2>
+                <p>${catalogueProject.summary}</p>
+                <div class="social-link-row" style="margin-top: 1rem;">${catalogueProject.links.map(linkMarkup).join('')}</div>
+              </div>
+              <div class="production-list">
+                ${productionsMarkup}
+              </div>
+            </div>
+            ${jumpNavMarkup}
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container">Music hub with featured artist work and full production catalogue.</div>
+      </footer>
+    `;
+
+    bindJumpNav(root, jumpItems);
   }
 
   window.renderMusicPage = renderMusicPage;
+  window.renderMusicHubPage = renderMusicHubPage;
 })();

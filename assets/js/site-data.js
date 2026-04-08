@@ -50,7 +50,11 @@ window.FUMU_DATA = {
       links: [
         { label: "Instagram", url: "https://www.instagram.com/patchworld_vr/" },
         { label: "YouTube", url: "https://www.youtube.com/@patchxr" },
-        { label: "Website", url: "https://patchworld.com/" },
+        { label: "Website", url: "https://patchxr.com/" },
+      ],
+      homeLinks: [
+        { label: "Quest Store", url: "https://www.meta.com/en-gb/experiences/patchworld-build-worlds-music-games/3715150718552632/" },
+        { label: "Website", url: "https://patchxr.com/" },
       ],
     },
     {
@@ -65,53 +69,62 @@ window.FUMU_DATA = {
         { label: "Instagram", url: "https://www.instagram.com/jambl_beats/" },
         { label: "Website", url: "https://jambel.app/" },
       ],
-    },
-    {
-      key: "waverider",
-      title: "WaveRider",
-      pageUrl: "/tech/waverider.html",
-      heroArtLabel: "WaveRider hero art",
-      summary:
-        "A product-facing page for the plugin, with room for a stronger value proposition, screenshots, and demo media.",
-      embedLabel: "Plugin demo video slot",
-      links: [
-        { label: "Product Page", url: "/products/wave-rider.html" },
+      homeLinks: [
+        { label: "iOS", url: "https://apps.apple.com/us/app/jambl-dj-band-beat-maker/id1125826534" },
+        { label: "Android", url: "https://play.google.com/store/apps/details?id=com.jambl.app&pli=1" },
       ],
     },
     {
-      key: "live-midi-tools",
-      title: "Live Midi Tools",
-      pageUrl: "/tech/live-midi-tools.html",
-      heroArtLabel: "Live Midi Tools hero art",
+      key: "plugins-tools",
+      title: "Plugins and Tools",
+      pageUrl: "/tech/plugins-tools.html",
+      heroArtLabel: "Plugins and Tools hero art",
       summary:
-        "A clean one-pager for utility tools and performance workflow helpers, ready for demos and feature breakdowns.",
-      embedLabel: "Demo media slot",
+        "A grouped page for plugins, live MIDI tools, utility experiments, and smaller software releases under one cleaner catalogue.",
+      embedLabel: "Plugin and tools feature slot",
       links: [
-        { label: "Links coming soon", url: "" },
+        { label: "WaveRider", url: "/tech/waverider.html" },
+        { label: "Live Midi Tools", url: "/tech/live-midi-tools.html" },
+        { label: "ChopTube", url: "/tech/choptube.html" },
+        { label: "NoBullshit Board", url: "/tech/nobullshit-board.html" },
       ],
-    },
-    {
-      key: "choptube",
-      title: "ChopTube",
-      pageUrl: "/tech/choptube.html",
-      heroArtLabel: "ChopTube hero art",
-      summary:
-        "A focused page for the product concept, with space for a sharp pitch, media preview, and official destinations.",
-      embedLabel: "Demo media slot",
-      links: [
-        { label: "Links coming soon", url: "" },
+      homeLinks: [
+        { label: "More info", url: "/tech/plugins-tools.html" },
       ],
-    },
-    {
-      key: "nobullshit-board",
-      title: "NoBullshit Board",
-      pageUrl: "/tech/nobullshit-board.html",
-      heroArtLabel: "NoBullshit Board hero art",
-      summary:
-        "A straightforward product page scaffold for an internal or public-facing tool, with the same visual system.",
-      embedLabel: "Demo media slot",
-      links: [
-        { label: "Links coming soon", url: "" },
+      products: [
+        {
+          title: "WaveRider",
+          summary:
+            "A plugin-focused page for the VST, built to grow into a stronger landing page around demos, features, and download or purchase paths.",
+          links: [
+            { label: "Open page", url: "/tech/waverider.html" },
+            { label: "Product page", url: "/products/wave-rider.html" },
+          ],
+        },
+        {
+          title: "Live Midi Tools",
+          summary:
+            "A home for performance-oriented MIDI utilities and workflow helpers, designed for live use and flexible musical control.",
+          links: [
+            { label: "Open page", url: "/tech/live-midi-tools.html" },
+          ],
+        },
+        {
+          title: "ChopTube",
+          summary:
+            "A tool concept page with room for a sharper pitch, demo flow, and the kind of quick utility framing that fits a focused software release.",
+          links: [
+            { label: "Open page", url: "/tech/choptube.html" },
+          ],
+        },
+        {
+          title: "NoBullshit Board",
+          summary:
+            "A straightforward utility project collected into the same tools catalogue so the smaller products feel part of one coherent system.",
+          links: [
+            { label: "Open page", url: "/tech/nobullshit-board.html" },
+          ],
+        },
       ],
     },
   ],
@@ -129,6 +142,10 @@ window.FUMU_DATA = {
         { label: "Instagram", url: "https://www.instagram.com/voice_of_gad/" },
         { label: "TikTok", url: "https://www.tiktok.com/@voiceofgad?lang=en" },
       ],
+      homeLinks: [
+        { label: "TikTok", url: "https://www.tiktok.com/@voiceofgad?lang=en" },
+        { label: "Instagram", url: "https://www.instagram.com/voice_of_gad/" },
+      ],
     },
     {
       key: "dirty-honkers",
@@ -141,19 +158,11 @@ window.FUMU_DATA = {
       embedLabel: "Instagram embed slot",
       links: [
         { label: "Instagram", url: "https://www.instagram.com/dirtyhonkers/" },
+        { label: "YouTube", url: "https://www.youtube.com/channel/UC6m-oIk-Wf67kQzAN5MTxdw" },
       ],
-    },
-    {
-      key: "abagada",
-      title: "Abagada",
-      pageUrl: "/music/abagada.html",
-      heroArtLabel: "Abagada hero art",
-      summary:
-        "A personal artist branch with its own page for visuals, bio, short media, and outbound links.",
-      embedType: "instagram",
-      embedLabel: "Instagram embed slot",
-      links: [
-        { label: "Instagram", url: "https://www.instagram.com/abagada_mcdaddy_g/" },
+      homeLinks: [
+        { label: "Instagram", url: "https://www.instagram.com/dirtyhonkers/" },
+        { label: "YouTube", url: "https://www.youtube.com/channel/UC6m-oIk-Wf67kQzAN5MTxdw" },
       ],
     },
     {
@@ -170,6 +179,7 @@ window.FUMU_DATA = {
       links: [
         { label: "Wikipedia discography", url: "https://he.wikipedia.org/wiki/%D7%92%D7%93_%D7%91%D7%A8%D7%95%D7%9A_%D7%97%D7%99%D7%A0%D7%A7%D7%99%D7%A1" },
       ],
+      homeLinks: [],
       productions: [
         {
           section: "Current Project Discography",
@@ -440,7 +450,6 @@ window.FUMU_DATA = {
   ],
   categoryLabels: {
     music: "Music",
-    tech: "Tech",
-    other: "Other",
+    tech: "Tools",
   },
 };
