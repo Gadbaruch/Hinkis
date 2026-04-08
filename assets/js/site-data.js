@@ -157,57 +157,91 @@ window.FUMU_DATA = {
       ],
     },
     {
-      key: "vndrshmukn",
-      title: "Vndrshmukn",
-      pageUrl: "/music/vndrshmukn.html",
-      heroArtLabel: "Vndrshmukn hero art",
-      summary:
-        "Reserved one-pager for this project with space for an aesthetic statement, featured media, and official links.",
-      embedType: "placeholder",
-      embedLabel: "Spotify / YouTube / Instagram embed slot",
-      links: [
-        { label: "Links coming soon", url: "" },
-      ],
-    },
-    {
-      key: "parvarim-refugees",
-      title: "Parvarim Refugees",
-      pageUrl: "/music/parvarim-refugees.html",
-      heroArtLabel: "Parvarim Refugees hero art",
-      summary:
-        "A dedicated project page for story, sonic identity, visual language, and whichever player fits best.",
-      embedType: "placeholder",
-      embedLabel: "Spotify / YouTube / Instagram embed slot",
-      links: [
-        { label: "Links coming soon", url: "" },
-      ],
-    },
-    {
       key: "music-productions",
       title: "Music Productions",
+      displayTitle: "My Music Production Catalogue",
+      hideKicker: true,
       pageUrl: "/music/music-productions.html",
       heroArtLabel: "Music Productions hero art",
       summary:
-        "A page for works produced for other artists, collaborations, and the different bands and projects you have been part of.",
+        "Two decades of production across experimental music, hip-hop, electronics, and swing — definitely music for the body. Preferring advanced rhythms and grimy textures, it comes from the angle of someone who prioritises making what hasn't been done yet.",
       embedType: "placeholder",
-      embedLabel: "Featured productions / playlist / video slot",
+      embedLabel: "Discography overview / featured playlist slot",
       links: [
-        { label: "Credits and links coming soon", url: "" },
+        { label: "Wikipedia discography", url: "https://he.wikipedia.org/wiki/%D7%92%D7%93_%D7%91%D7%A8%D7%95%D7%9A_%D7%97%D7%99%D7%A0%D7%A7%D7%99%D7%A1" },
       ],
       productions: [
         {
+          section: "Current Project Discography",
+          artist: "Abagada",
+          album: "Koko",
+          genre: "Solo hip-hop / experimental pop",
+          year: "2024",
+          spotifyEmbedUrl: "https://open.spotify.com/embed/album/1AYBQVfXtZrfzTy789Sqa2?utm_source=generator&theme=1",
+          links: [
+            { label: "More info", url: "/music/abagada.html" },
+            { label: "YouTube", url: "https://www.youtube.com/@abagada" },
+          ],
+          summary:
+            "Koko is the 2024 Abagada solo album, bringing the archive into the current era with a release that connects personal writing, contemporary production, and a distinct artist identity.",
+        },
+        {
+          section: "Current Project Discography",
+          artist: "Dirty Honkers",
+          album: "Self Portrait in 3 Colors",
+          genre: "Electro-swing",
+          year: "2016",
+          spotifyEmbedUrl: "https://open.spotify.com/embed/album/09g7W6QRRXWNGDvfDtBtJe?utm_source=generator&theme=1",
+          links: [
+            { label: "More info", url: "/music/dirty-honkers.html" },
+            { label: "Bandcamp", url: "https://dirty-honkers.bandcamp.com/album/self-portrait-in-3-colors-digital-album" },
+          ],
+          summary:
+            "Self Portrait in 3 Colors captures Dirty Honkers at full scale: cinematic, playful, and stylistically restless. The record pushes electro-swing beyond revivalism into a wider hybrid of swing, electronic production, rap, funk, and pop instincts.",
+        },
+        {
+          section: "Current Project Discography",
+          artist: "Dirty Honkers",
+          album: "Superskrunk",
+          genre: "Electro-swing",
+          year: "2013",
+          spotifyEmbedUrl: "https://open.spotify.com/embed/album/2b8a6zEcsoBeFN6OTOi8iO?utm_source=generator&theme=1",
+          links: [
+            { label: "More info", url: "/music/dirty-honkers.html" },
+            { label: "Bandcamp", url: "https://dirty-honkers.bandcamp.com/album/superstrunk-deluxe-edition-album" },
+          ],
+          summary:
+            "Superskrunk sits near the breakthrough point of Dirty Honkers, where club energy, swing phrasing, and live-show absurdity lock into a signature sound. It stands as one of the records that helped define the project’s place in electro-swing.",
+        },
+        {
+          section: "Current Project Discography",
+          artist: "Dirty Honkers",
+          album: "Death By Swing",
+          genre: "Electro-swing",
+          year: "2010",
+          spotifyEmbedUrl: "https://open.spotify.com/embed/album/19fiOjcO32dXRPYFCbWjOc?utm_source=generator&theme=1",
+          links: [
+            { label: "More info", url: "/music/dirty-honkers.html" },
+            { label: "Bandcamp", url: "https://dirty-honkers.bandcamp.com/album/death-by-swing-extended-album" },
+          ],
+          summary:
+            "Death by Swing is the first full Dirty Honkers album and an early statement of the band’s retro-futurist vision. It fuses swing references with heavy electronic production and helped establish the project within the international electro-swing conversation. The track Ginger Bread Man also picked up attention through the Listen to Berlin compilation.",
+        },
+        {
+          section: "Production Credits",
           artist: 'תכל"ס',
           album: "לא נורא",
           genre: "Hip-hop",
           year: "2009",
-          spotifyEmbedUrl: "https://open.spotify.com/embed/album/73kfzHTDPACjRAMCrT8Na1?utm_source=generator&theme=1",
+          spotifyEmbedUrl: "https://open.spotify.com/embed/album/7aqghWxuez4oX6FONnS3I1?utm_source=generator&theme=1",
           links: [
-            { label: "Spotify Album", url: "https://open.spotify.com/album/73kfzHTDPACjRAMCrT8Na1" },
+            { label: "Spotify Album", url: "https://open.spotify.com/album/7aqghWxuez4oX6FONnS3I1" },
           ],
           summary:
-            "A full-album production role where you produced, mixed, and co-wrote the entire record, shaping the sound from composition through final presentation.",
+            "A full-album production credit in which the record was produced, mixed, and co-written from end to end. The result is a cohesive hip-hop release shaped at every stage of the creative process.",
         },
         {
+          section: "Production Credits",
           artist: "Hoodska Explosive",
           album: "The Misleading",
           genre: "Rocksteady, roots ska",
@@ -217,9 +251,10 @@ window.FUMU_DATA = {
             { label: "Spotify Album", url: "https://open.spotify.com/album/27kkRb3aZGCC9U73WywP5r" },
           ],
           summary:
-            "For Hoodska Explosive, you recorded, produced, and mixed the first ten songs on the album. The band was led by the former bass player of Parvarim Refugees, which makes this project part of the wider scene that runs through several of your bands and collaborations.",
+            "For Hoodska Explosive, the first ten songs were recorded, produced, and mixed as part of a roots-oriented record that connects ska, rocksteady, and scene crossover. The band’s lineup also ties back into the wider network around Parvarim Refugeez.",
         },
         {
+          section: "Production Credits",
           artist: "Endof",
           album: "The Lowest Fi",
           genre: "Experimental country pop",
@@ -228,9 +263,10 @@ window.FUMU_DATA = {
             { label: "Amazon", url: "https://www.amazon.com/Lowest-Fi-End/dp/B001HF1RXQ" },
           ],
           summary:
-            "A collaboration between you as producer, sound designer, and mixer, and Gabriel S. Moses, former rapper of Parvarim Refugeez. The record leans into an unusual experimental country-pop direction while staying tied to the broader scene around your long-running collaborations.",
+            "A collaboration with Gabriel S. Moses, former rapper of Parvarim Refugeez, shaped through production, sound design, and mixing. The record bends country-pop into a stranger, more experimental form while staying rooted in the collaborative scene around these projects.",
         },
         {
+          section: "Production Credits",
           artist: "Peled & Ortega",
           album: "ממשיכים לבעוט",
           genre: "Hip-hop, underground, experimental",
@@ -244,21 +280,10 @@ window.FUMU_DATA = {
             { label: "Hadag Nahash", url: "https://en.wikipedia.org/wiki/Hadag_Nahash" },
           ],
           summary:
-            "After PR Troopers, you led Peled and Ortega into writing a full duo record together. The 2007 debut album was produced by you, and mixed by you together with Yossi Fine, the Israeli bassist-producer who has worked internationally with artists including David Bowie and also produced Hadag Nahash's landmark album Khomer Mekomi.",
+            "This duo record followed the momentum of PR Troopers and brought Peled and Ortega into a focused full-length collaboration. The album was produced here and mixed together with Yossi Fine, giving the project both underground edge and heavyweight sonic support.",
         },
         {
-          artist: "SFTC",
-          album: "Shmen for the Children",
-          genre: "Hardcore punk",
-          year: "2007",
-          links: [
-            { label: "Birdsong archive", url: "http://www.birdsong.co.il/pages/sftc.htm" },
-            { label: "Scene writeup", url: "https://www.qube.co.il/sxfxtxcx" },
-          ],
-          summary:
-            "A fast, satirical hardcore punk project formed with members connected to Parvarim Refugees. The band leaned into short, intense songs and a deliberately self-aware punk attitude, eventually releasing its recordings through the Birdsong / High Fiber orbit.",
-        },
-        {
+          section: "Production Credits",
           artist: "PR Troopers",
           album: "מתוך הזוהמה",
           genre: "Hip-hop",
@@ -269,9 +294,37 @@ window.FUMU_DATA = {
             { label: "Wikipedia", url: "https://he.wikipedia.org/wiki/%D7%A4%D7%99.%D7%90%D7%A8._%D7%98%D7%A8%D7%95%D7%A4%D7%A8%D7%96" },
           ],
           summary:
-            "PR Troopers was an Israeli hip-hop collective co-founded by Nimrod Dwick and Gad Baruch Hinkis. The project was built to discover rappers from across Israel and produce them as a wider crew, and the 2004 debut album became a widely praised release in Israeli hip-hop.",
+            "PR Troopers was a major early Israeli hip-hop collective built to discover and develop rappers from across the country. Its debut album became an influential underground release and helped open space for a new generation of artists.",
         },
         {
+          section: "Earlier Bands And Aliases",
+          artist: "SFTC",
+          album: "Shmen for the Children",
+          genre: "Hardcore punk",
+          year: "2007",
+          links: [
+            { label: "Birdsong archive", url: "http://www.birdsong.co.il/pages/sftc.htm" },
+            { label: "Scene writeup", url: "https://www.qube.co.il/sxfxtxcx" },
+          ],
+          summary:
+            "A fast, satirical hardcore punk project built around short songs, sharp humor, and raw energy. It shows an early willingness to move across scenes and styles rather than stay inside a single genre lane.",
+        },
+        {
+          section: "Earlier Bands And Aliases",
+          artist: "Parvarim Refugeez",
+          album: "Rapperarium",
+          genre: "Live hip-hop",
+          year: "2006",
+          spotifyEmbedUrl: "https://open.spotify.com/embed/album/5O2AkTnRo1v18kbRLInzEN?utm_source=generator&theme=1",
+          links: [
+            { label: "Spotify Album", url: "https://open.spotify.com/album/5O2AkTnRo1v18kbRLInzEN" },
+            { label: "Wikipedia", url: "https://he.wikipedia.org/wiki/%D7%A4%D7%A8%D7%91%D7%A8%D7%99%D7%9D_%D7%A8%D7%A4%D7%99%D7%95%D7%92%27%D7%99%D7%96" },
+          ],
+          summary:
+            "Parvarim Refugeez was an early live hip-hop band from Maccabim-Re'ut, active from 2000 to 2007 and widely regarded as one of the pioneering live hip-hop groups in Israel. Rapperarium captures that band energy and the beginning of a longer production path that kept crossing scenes and forms.",
+        },
+        {
+          section: "Earlier Bands And Aliases",
           artist: "Vndrshmukin",
           album: "Experience",
           genre: "Experimental pop, breakcore",
@@ -282,7 +335,7 @@ window.FUMU_DATA = {
             { label: "Udi Koomran interview", url: "https://www.mitkadem.co.il/Koomran_English.html" },
           ],
           summary:
-            "An experimental pop-breakcore record and the first full album you produced. Based on your Wikipedia discography, this release dates to 2004. It was mastered by Udi Koomran, an Israeli sound designer and mastering engineer known for long-running work in progressive and experimental music, who supported the record early on and backed you as a young producer.",
+            "An early experimental breakcore-pop release built around advanced rhythm, abrasive texture, and a clear instinct for sound that does not play it safe. The album was mastered by Udi Koomran, whose work in progressive and experimental music helped frame it with unusual care and support.",
         },
       ],
     },
