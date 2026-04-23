@@ -3,96 +3,306 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gad Baruch Hinkis | Music and Tech</title>
-    <link rel="stylesheet" href="./assets/css/styles.css?v=48" />
+    <title>Gad Baruch Hinkis — Music, Tech & Ideas</title>
+    <meta name="description" content="The full body of work: artist projects, music-tech products, software instruments, and ideas. One ecosystem." />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=52" />
   </head>
   <body>
+
+    <!-- Custom cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <!-- Grain texture -->
+    <div class="grain" aria-hidden="true"></div>
+
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="./index.html">Gad <span>Baruch Hinkis</span></a>
+        <a class="brand" href="./index.html"><span>GAD</span> BARUCH HINKIS</a>
         <nav class="nav-links" aria-label="Primary">
-          <a class="nav-link active" href="./index.html">Home</a>
-          <a class="nav-link" href="./about.html">About</a>
+          <a class="nav-link" href="./products.html">Products</a>
+          <a class="nav-link" href="./live.html">Live</a>
           <a class="nav-link" href="./music.html">Music</a>
-          <a class="nav-link" href="./tools.html">Tools</a>
-          <a class="nav-link" href="./contact.html">Contact</a>
+          <a class="nav-link" href="./about.html">About</a>
         </nav>
       </div>
     </header>
 
     <main>
+
+      <!-- ── Hero ─────────────────────────────────────────────────── -->
       <section class="hero">
-        <div class="container hero-stack fade-in">
-          <div class="hero-standin hero-audio-scene fade-in fade-delay-1">
-            <canvas class="hero-audio-canvas" id="hero-audio-canvas" aria-hidden="true"></canvas>
-            <div class="hero-audio-glow hero-audio-glow-left" aria-hidden="true"></div>
-            <div class="hero-audio-glow hero-audio-glow-right" aria-hidden="true"></div>
-            <div class="hero-audio-overlay">
-              <div class="hero-audio-badge">Interactive audio canvas</div>
-              <div class="hero-audio-headline">
-                <strong>Play the header.</strong>
-                <span>Move through the field to bend the waves. Turn sound on when you want the full thing.</span>
-              </div>
-              <div class="hero-audio-controls">
-                <button class="hero-audio-toggle" id="hero-audio-toggle" type="button" aria-pressed="false">
-                  Sound off
-                </button>
-                <p class="hero-audio-hint" id="hero-audio-hint">Pointer motion shapes the harmonics and motion field.</p>
-              </div>
+        <div class="container hero-inner">
+
+          <!-- Left: copy -->
+          <div class="hero-copy">
+            <div class="hero-eyebrow reveal">
+              <span class="hero-status-dot" aria-hidden="true"></span>
+              Music Maker · Tech Builder · 20 Years of Strange New Things
             </div>
-          </div>
-          <div class="hero-copy fade-in fade-delay-2">
-            <h1 class="shuffle-title" id="shuffle-title" aria-label="I Make New Music Things">
-              <span class="shuffle-word" data-word="I">I</span>
-              <span class="shuffle-word" data-word="Make">Make</span>
-              <span class="shuffle-word" data-word="New">New</span>
-              <span class="shuffle-word" data-word="Music">Music</span>
-              <span class="shuffle-word" data-word="Things">Things</span>
+
+            <h1 class="hero-name reveal reveal-delay-1" aria-label="Gad Baruch Hinkis">
+              <span class="hero-name-gad">GAD</span>
+              <span class="hero-name-baruch">Baruch</span>
+              <span class="hero-name-hinkis">Hinkis</span>
             </h1>
-            <p>
-              This is the main hub for the full body of work: artist projects, products, software instruments, and
-              experiments, all held inside one clean system.
+
+            <p class="hero-tagline reveal reveal-delay-2">
+              I build things that make music more expressive, more accessible, and stranger.
+              Artist, producer, and music-tech builder — one ecosystem.
             </p>
-            <div class="social-row" aria-label="Social links">
+
+            <div class="hero-actions reveal reveal-delay-3">
+              <a class="btn btn-primary" href="./music.html">Hear the music</a>
+              <a class="btn btn-secondary" href="./products.html">See the products</a>
+              <a class="btn btn-secondary" href="./live.html">Book for events</a>
+            </div>
+
+            <div class="social-row reveal reveal-delay-3" aria-label="Social links">
               <a class="home-social" href="https://www.linkedin.com/in/gadhinkis/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M6.94 8.5H3.56V20h3.38zm.22-4.24C7.16 3.14 6.3 2.3 5.26 2.3S3.38 3.14 3.38 4.26 4.22 6.2 5.24 6.2h.02c1.06 0 1.9-.84 1.9-1.94zM20.62 20h-3.38v-6.17c0-1.55-.55-2.61-1.94-2.61-1.05 0-1.68.71-1.96 1.39-.1.24-.13.58-.13.92V20H9.83s.04-10.52 0-11.5h3.38v1.63c.45-.7 1.24-1.7 3.03-1.7 2.21 0 3.88 1.44 3.88 4.54z"/>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38zm.22-4.24C7.16 3.14 6.3 2.3 5.26 2.3S3.38 3.14 3.38 4.26 4.22 6.2 5.24 6.2h.02c1.06 0 1.9-.84 1.9-1.94zM20.62 20h-3.38v-6.17c0-1.55-.55-2.61-1.94-2.61-1.05 0-1.68.71-1.96 1.39-.1.24-.13.58-.13.92V20H9.83s.04-10.52 0-11.5h3.38v1.63c.45-.7 1.24-1.7 3.03-1.7 2.21 0 3.88 1.44 3.88 4.54z"/></svg>
                 <span>LinkedIn</span>
               </a>
               <a class="home-social" href="https://www.facebook.com/gadbaruch" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.07c0-.87.24-1.47 1.49-1.47H16.7V3.92c-.31-.04-1.38-.12-2.61-.12-2.58 0-4.34 1.58-4.34 4.48V10H6.8v3h2.95v8z"/>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.07c0-.87.24-1.47 1.49-1.47H16.7V3.92c-.31-.04-1.38-.12-2.61-.12-2.58 0-4.34 1.58-4.34 4.48V10H6.8v3h2.95v8z"/></svg>
                 <span>Facebook</span>
               </a>
               <a class="home-social" href="https://he.wikipedia.org/wiki/%D7%92%D7%93_%D7%91%D7%A8%D7%95%D7%9A_%D7%97%D7%99%D7%A0%D7%A7%D7%99%D7%A1" target="_blank" rel="noopener noreferrer" aria-label="Wikipedia">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 5h16v2h-1.22c-.65 0-1.04.12-1.2.37-.16.24-.11.63.15 1.17l3.27 7.1L17.6 20l-3.03-6.52L10.75 20 7.3 12.9l-2.1 4.78L2 8.56l1.93-.92 1.73 4.08 1.9-4.32-.27-.62c-.23-.52-.5-.78-.8-.78H4zm5.72 2 .92 2.08L12.1 12.3 13.7 8.7 12.94 7zm4.78 0 .85 1.83-.9 2.04-1.65-3.87zm-7.25 4.5 1.77 3.83 1.08-2.47-1.78-4.02zm9.42.1-1.43 3.28 1.52 3.28 1.63-2.18z"/>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v2h-1.22c-.65 0-1.04.12-1.2.37-.16.24-.11.63.15 1.17l3.27 7.1L17.6 20l-3.03-6.52L10.75 20 7.3 12.9l-2.1 4.78L2 8.56l1.93-.92 1.73 4.08 1.9-4.32-.27-.62c-.23-.52-.5-.78-.8-.78H4zm5.72 2 .92 2.08L12.1 12.3 13.7 8.7 12.94 7zm4.78 0 .85 1.83-.9 2.04-1.65-3.87zm-7.25 4.5 1.77 3.83 1.08-2.47-1.78-4.02zm9.42.1-1.43 3.28 1.52 3.28 1.63-2.18z"/></svg>
                 <span>Wikipedia</span>
               </a>
             </div>
           </div>
+
+          <!-- Right: decorative year column -->
+          <div class="hero-year-col" aria-hidden="true">
+            <div class="hero-year-label">EST.</div>
+            <div>2000</div>
+          </div>
+
+        </div>
+
+        <div class="hero-scroll" id="hero-scroll" aria-hidden="true">
+          <span>Scroll</span>
+          <div class="hero-scroll-line"></div>
         </div>
       </section>
 
-      <section class="section" id="highlights">
-        <div class="container">
-          <div class="section-switch">
-            <div class="filter-toggle filter-toggle-large" id="ecosystem-filters" aria-label="Ecosystem filters"></div>
-            <p class="section-switch-copy" id="ecosystem-copy"></p>
+      <!-- ── Stats ─────────────────────────────────────────────────── -->
+      <section class="stats-strip" aria-label="At a glance">
+        <div class="container stats-grid">
+          <div class="stat reveal">
+            <span class="stat-number">25+</span>
+            <span class="stat-label">Years of music</span>
           </div>
-          <div class="ecosystem-grid" id="ecosystem-carousel" aria-live="polite"></div>
+          <div class="stat reveal reveal-delay-1">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Music projects</span>
+          </div>
+          <div class="stat reveal reveal-delay-2">
+            <span class="stat-number">7</span>
+            <span class="stat-label">Apps & tools built</span>
+          </div>
+          <div class="stat reveal reveal-delay-3">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Ideas in progress</span>
+          </div>
         </div>
       </section>
+
+      <!-- ── Domains ───────────────────────────────────────────────── -->
+      <section class="section" aria-labelledby="domains-heading">
+        <div class="container">
+          <p class="section-label reveal" id="domains-heading">What I Do</p>
+          <div class="domains-grid reveal reveal-delay-1">
+            <a class="domain-card domain-music" href="./music.html">
+              <div class="domain-number">01</div>
+              <div class="domain-content">
+                <h2>Music</h2>
+                <p>Two decades of production, artist projects, and live performance. From Israeli hip-hop to electro-swing to experimental pop.</p>
+                <div class="domain-projects">Voice of Gad · Dirty Honkers · Abagada · Full Catalogue</div>
+              </div>
+              <div class="domain-arrow" aria-hidden="true">→</div>
+            </a>
+            <a class="domain-card domain-tech" href="./products.html">
+              <div class="domain-number">02</div>
+              <div class="domain-content">
+                <h2>Products</h2>
+                <p>Music-creation platforms, apps, and instruments built for musicians. Things that didn't exist yet.</p>
+                <div class="domain-projects">PatchWorld · Jambl · WaveRider · SuperScaler</div>
+              </div>
+              <div class="domain-arrow" aria-hidden="true">→</div>
+            </a>
+            <a class="domain-card domain-studio" href="./live.html">
+              <div class="domain-number">03</div>
+              <div class="domain-content">
+                <h2>Live</h2>
+                <p>Shows, workshops, art installations and on-site events. Book Dirty Honkers, Voice of Gad, or a music tech workshop.</p>
+                <div class="domain-projects">Live Shows · Workshops · Installations</div>
+              </div>
+              <div class="domain-arrow" aria-hidden="true">→</div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════════
+           ACTIVE PROJECTS — full-flow scroll
+      ══════════════════════════════════════════════════════════════ -->
+
+      <!-- ── PatchWorld ────────────────────────────────────────────── -->
+      <section class="home-feature home-feature-tech" id="home-patchworld">
+        <div class="container home-feature-inner">
+          <div class="home-feature-copy">
+            <p class="home-feature-kicker">01 · Music Tech Startups</p>
+            <h2 class="home-feature-title">PatchWorld</h2>
+            <p class="home-feature-tagline">XR · Meta Quest</p>
+            <p class="home-feature-desc">An immersive music-making platform for Meta Quest. Build worlds, make music, perform live in virtual reality. One of the most advanced spatial audio instruments available on any platform.</p>
+            <div class="home-feature-actions">
+              <a class="btn btn-primary" href="https://www.meta.com/en-gb/experiences/patchworld-build-worlds-music-games/3715150718552632/" target="_blank" rel="noopener noreferrer">Try for free on Quest</a>
+              <a class="btn btn-secondary" href="./products.html#patchworld">Product page</a>
+            </div>
+          </div>
+          <a class="home-feature-media" href="./products.html#patchworld" aria-label="Open PatchWorld">
+            <img src="./assets/images/patchworld-hero.jpg" alt="PatchWorld — XR music platform">
+          </a>
+        </div>
+      </section>
+
+      <!-- ── Jambl ─────────────────────────────────────────────────── -->
+      <section class="home-feature home-feature-tech home-feature-flip" id="home-jambl">
+        <div class="container home-feature-inner">
+          <a class="home-feature-media" href="./products.html#jambl" aria-label="Open Jambl">
+            <img src="./assets/images/jambl-appstore-1.jpg" alt="Jambl — mobile beatmaking app">
+          </a>
+          <div class="home-feature-copy">
+            <p class="home-feature-kicker">02 · Music Tech Startups</p>
+            <h2 class="home-feature-title">Jambl</h2>
+            <p class="home-feature-tagline">iOS · Android · Freemium</p>
+            <p class="home-feature-desc">A playful mobile music-creation app. Make beats, jam with loops, share tracks — fun first, powerful second. Millions of people making music on their phones.</p>
+            <div class="home-feature-actions">
+              <a class="btn btn-primary" href="https://apps.apple.com/us/app/jambl-dj-band-beat-maker/id1125826534" target="_blank" rel="noopener noreferrer">Try for free</a>
+              <a class="btn btn-secondary" href="./products.html#jambl">Product page</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── FUMU Plugins ──────────────────────────────────────────── -->
+      <section class="home-feature home-feature-plugins" id="home-fumu">
+        <div class="container">
+          <p class="home-feature-kicker" style="color: var(--aqua);">03 · Plugins &amp; Tools</p>
+          <h2 class="home-feature-title" style="margin-bottom: .4rem;">FUMU</h2>
+          <p class="home-feature-tagline" style="margin-bottom: 1rem;">Plugins &amp; tools for Ableton Live, VST, AU, and the web</p>
+          <p class="home-feature-desc" style="max-width: 60ch; margin-bottom: 2rem;">Studio instruments and MIDI tools that work the way you actually compose. WaveRider, SuperScaler, ChordMaster, LiveQuantizer, ChopTube — each one solves something real.</p>
+
+          <div class="home-fumu-grid">
+            <a class="home-fumu-chip" href="./products.html#waverider">
+              <span class="home-fumu-name">WaveRider</span>
+              <span class="home-fumu-tag">Synth · €25</span>
+            </a>
+            <a class="home-fumu-chip" href="./products.html#superscaler">
+              <span class="home-fumu-name">SuperScaler</span>
+              <span class="home-fumu-tag">M4L · €14</span>
+            </a>
+            <a class="home-fumu-chip" href="./products.html#chordmaster">
+              <span class="home-fumu-name">ChordMaster</span>
+              <span class="home-fumu-tag">M4L · €17</span>
+            </a>
+            <a class="home-fumu-chip" href="./products.html#livequantizer">
+              <span class="home-fumu-name">LiveQuantizer</span>
+              <span class="home-fumu-tag">M4L · €5</span>
+            </a>
+            <a class="home-fumu-chip" href="https://gadbaruch.github.io/ChopTube/" target="_blank" rel="noopener noreferrer">
+              <span class="home-fumu-name">ChopTube</span>
+              <span class="home-fumu-tag">Web · Free</span>
+            </a>
+          </div>
+
+          <div class="home-feature-actions" style="margin-top: 2.2rem;">
+            <a class="btn btn-primary" href="./products.html">See all plugins</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Voice of Gad ─────────────────────────────────────────── -->
+      <section class="home-feature home-feature-music home-feature-flip" id="home-vog">
+        <div class="container home-feature-inner">
+          <a class="home-feature-media home-feature-media-tall" href="./live.html#vog" aria-label="Open Voice of Gad" style="background: linear-gradient(150deg, #1a0a14, #2a0a2a);">
+            <blockquote
+              class="tiktok-embed"
+              cite="https://www.tiktok.com/@voiceofgad/video/7620369624214867233"
+              data-video-id="7620369624214867233"
+              data-embed-from="oembed"
+              style="max-width: 380px; min-width: 280px; margin: 0;"
+            >
+              <section>
+                <a target="_blank" title="@voiceofgad" href="https://www.tiktok.com/@voiceofgad?refer=embed">@voiceofgad</a>
+              </section>
+            </blockquote>
+          </a>
+          <div class="home-feature-copy">
+            <p class="home-feature-kicker" style="color: var(--magenta);">04 · Live Music</p>
+            <h2 class="home-feature-title">Voice of Gad</h2>
+            <p class="home-feature-tagline">Live looping · Vocal · Experimental</p>
+            <p class="home-feature-desc">Voice-driven live performance built around character, rhythm, and real-time composition. Intimate, strange, and rhythmically dense. Growing on TikTok, moving into live venues.</p>
+            <div class="home-feature-actions">
+              <a class="btn btn-primary" href="mailto:gbhinkis@gmail.com">Book a show</a>
+              <a class="btn btn-secondary" href="./live.html">Live page</a>
+              <a class="btn btn-secondary" href="https://www.tiktok.com/@voiceofgad" target="_blank" rel="noopener noreferrer">TikTok</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── DJ Patchy ────────────────────────────────────────────── -->
+      <section class="home-feature home-feature-live" id="home-djpatchy">
+        <div class="container home-feature-inner">
+          <div class="home-feature-copy">
+            <p class="home-feature-kicker" style="color: var(--purple);">05 · Live Music</p>
+            <h2 class="home-feature-title">DJ Patchy</h2>
+            <p class="home-feature-tagline">DJ · Electronic · Club &amp; Festival</p>
+            <p class="home-feature-desc">High-energy DJ sets blending electronic, club, and eclectic sounds. From intimate club nights to festival stages — crowd-tailored journeys with a distinctive ear for musical narrative.</p>
+            <div class="home-feature-actions">
+              <a class="btn btn-primary" href="mailto:gbhinkis@gmail.com">Book a set</a>
+              <a class="btn btn-secondary" href="./live.html">Live page</a>
+            </div>
+          </div>
+          <a class="home-feature-media" href="./live.html" aria-label="Watch DJ Patchy">
+            <img src="./assets/images/djpatchy-hero.jpg" alt="DJ Patchy live">
+          </a>
+        </div>
+      </section>
+
+      <!-- ── CTA footer ───────────────────────────────────────────── -->
+      <section class="home-cta-band">
+        <div class="container home-cta-inner">
+          <h2>Got something in mind?</h2>
+          <p>Bookings, commissions, workshops, collaborations — all start with an email.</p>
+          <a class="btn btn-primary" href="mailto:gbhinkis@gmail.com">gbhinkis@gmail.com</a>
+        </div>
+      </section>
+
     </main>
 
     <footer class="site-footer">
-      <div class="container">© 2026 Gad Baruch Hinkis. Built for music technology and live creativity.</div>
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-name">Gad Baruch Hinkis</span>
+          <span class="footer-tagline">Music · Tech · Ideas</span>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="./products.html">Products</a>
+          <a href="./live.html">Live</a>
+          <a href="./music.html">Music</a>
+          <a href="./about.html">About</a>
+        </nav>
+        <div class="footer-copy">© 2026</div>
+      </div>
     </footer>
 
-    <script src="./assets/js/site-data.js?v=48"></script>
-    <script src="./assets/js/main.js?v=48"></script>
+    <script src="./assets/js/site-data.js?v=52"></script>
+    <script src="./assets/js/main.js?v=52"></script>
+    <script async src="https://www.tiktok.com/embed.js"></script>
   </body>
 </html>

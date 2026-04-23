@@ -1,3 +1,81 @@
+// ── Custom cursor ────────────────────────────────────────────────
+(function initCursor() {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+
+  const dot  = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+  if (!dot || !ring) return;
+
+  let mouseX = -100, mouseY = -100;
+  let ringX  = -100, ringY  = -100;
+  let rafId;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+  });
+
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.11;
+    ringY += (mouseY - ringY) * 0.11;
+    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+    rafId = requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  const hoverSelector = 'a, button, [role="button"], .home-overview-card, .domain-card, .ecosystem-card-static, .filter-chip';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(hoverSelector)) document.body.classList.add('cursor-hover');
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(hoverSelector)) document.body.classList.remove('cursor-hover');
+  });
+}());
+
+// ── Scroll reveal ────────────────────────────────────────────────
+(function initScrollReveal() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+
+  if (prefersReduced) {
+    els.forEach((el) => el.classList.add('visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+  );
+
+  els.forEach((el) => observer.observe(el));
+}());
+
+// ── Hero scroll indicator ────────────────────────────────────────
+(function initHeroScroll() {
+  const indicator = document.getElementById('hero-scroll');
+  if (!indicator) return;
+  let hidden = false;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80 && !hidden) {
+      indicator.classList.add('hidden');
+      hidden = true;
+    } else if (window.scrollY <= 80 && hidden) {
+      indicator.classList.remove('hidden');
+      hidden = false;
+    }
+  }, { passive: true });
+}());
+
+// ── Dropdowns ────────────────────────────────────────────────────
 const dropdowns = document.querySelectorAll('[data-dropdown]');
 
 dropdowns.forEach((dropdown) => {

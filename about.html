@@ -4,65 +4,291 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About | Gad Baruch Hinkis</title>
-    <link rel="stylesheet" href="./assets/css/styles.css?v=48" />
+    <meta name="description" content="Music producer, tech builder, live performer. 25+ years across music, products, and experiential art." />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=52" />
   </head>
   <body>
+
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="./index.html">Gad <span>Baruch Hinkis</span></a>
+        <a class="brand" href="./index.html"><span>GAD</span> BARUCH HINKIS</a>
         <nav class="nav-links" aria-label="Primary">
-          <a class="nav-link" href="./index.html">Home</a>
-          <a class="nav-link active" href="./about.html">About</a>
+          <a class="nav-link" href="./products.html">Products</a>
+          <a class="nav-link" href="./live.html">Live</a>
           <a class="nav-link" href="./music.html">Music</a>
-          <a class="nav-link" href="./tools.html">Tools</a>
-          <a class="nav-link" href="./contact.html">Contact</a>
+          <a class="nav-link active" href="./about.html">About</a>
         </nav>
       </div>
     </header>
 
     <main>
-      <section class="product-hero">
-        <div class="container music-layout">
-          <div class="music-panel copy">
-            <p class="kicker">About</p>
-            <h1>Music, tools, stories, and systems.</h1>
-            <p>
-              Gad Baruch Hinkis works across music production, performance identities, software tools, and experimental
-              creative systems. The thread through all of it is building original worlds that feel alive, rhythmic,
-              direct, and usable.
-            </p>
-            <div class="social-link-row" style="margin-top: 1rem;">
-              <a class="social-link" href="https://www.linkedin.com/in/gadhinkis/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a class="social-link" href="https://www.facebook.com/gadbaruch" target="_blank" rel="noopener noreferrer">Facebook</a>
-              <a class="social-link" href="https://he.wikipedia.org/wiki/%D7%92%D7%93_%D7%91%D7%A8%D7%95%D7%9A_%D7%97%D7%99%D7%A0%D7%A7%D7%99%D7%A1" target="_blank" rel="noopener noreferrer">Wikipedia</a>
-            </div>
+
+      <!-- ── Page Hero ─────────────────────────────────────────────── -->
+      <section class="page-hero">
+        <div class="container">
+          <div class="page-eyebrow">
+            <span class="page-eyebrow-dot" aria-hidden="true"></span>
+            About
           </div>
-          <div class="music-hero-art music-panel">About portrait / studio image</div>
+          <h1 class="page-hero-title">Music maker, tech builder, live performer.</h1>
+          <p class="page-hero-sub">
+            Gad Baruch Hinkis has spent 25 years building original worlds through music, software, and live experience.
+            Producer, multi-instrumentalist, XR platform builder — the thread through all of it is making things that feel alive, rhythmic, and new.
+            Based between Tel Aviv and Lausanne. Works globally.
+          </p>
+          <div class="social-link-row" style="margin-top: 1.6rem;">
+            <a class="social-link" href="https://www.linkedin.com/in/gadhinkis/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" style="width:1rem;height:1rem;fill:currentColor;" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38zm.22-4.24C7.16 3.14 6.3 2.3 5.26 2.3S3.38 3.14 3.38 4.26 4.22 6.2 5.24 6.2h.02c1.06 0 1.9-.84 1.9-1.94zM20.62 20h-3.38v-6.17c0-1.55-.55-2.61-1.94-2.61-1.05 0-1.68.71-1.96 1.39-.1.24-.13.58-.13.92V20H9.83s.04-10.52 0-11.5h3.38v1.63c.45-.7 1.24-1.7 3.03-1.7 2.21 0 3.88 1.44 3.88 4.54z"/></svg>
+            </a>
+            <a class="social-link" href="https://www.facebook.com/gadbaruch" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" style="width:1rem;height:1rem;fill:currentColor;" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.07c0-.87.24-1.47 1.49-1.47H16.7V3.92c-.31-.04-1.38-.12-2.61-.12-2.58 0-4.34 1.58-4.34 4.48V10H6.8v3h2.95v8z"/></svg>
+            </a>
+            <a class="social-link" href="https://he.wikipedia.org/wiki/%D7%92%D7%93_%D7%91%D7%A8%D7%95%D7%9A_%D7%97%D7%99%D7%A0%D7%A7%D7%99%D7%A1" target="_blank" rel="noopener noreferrer" aria-label="Wikipedia">
+              <svg viewBox="0 0 24 24" style="width:1rem;height:1rem;fill:currentColor;" aria-hidden="true"><path d="M4 5h16v2h-1.22c-.65 0-1.04.12-1.2.37-.16.24-.11.63.15 1.17l3.27 7.1L17.6 20l-3.03-6.52L10.75 20 7.3 12.9l-2.1 4.78L2 8.56l1.93-.92 1.73 4.08 1.9-4.32-.27-.62c-.23-.52-.5-.78-.8-.78H4zm5.72 2 .92 2.08L12.1 12.3 13.7 8.7 12.94 7zm4.78 0 .85 1.83-.9 2.04-1.65-3.87zm-7.25 4.5 1.77 3.83 1.08-2.47-1.78-4.02zm9.42.1-1.43 3.28 1.52 3.28 1.63-2.18z"/></svg>
+            </a>
+          </div>
         </div>
       </section>
 
-      <section class="section">
-        <div class="container card-grid">
-          <article class="card">
-            <h3>Music</h3>
-            <p>Artist work, bands, production credits, and a longer catalogue of releases.</p>
-          </article>
-          <article class="card">
-            <h3>Tools</h3>
-            <p>Software instruments, music products, utilities, and experiments that support creative work.</p>
-          </article>
-          <article class="card">
-            <h3>Projects</h3>
-            <p>Story concepts, side systems, and ideas that sit between media and disciplines.</p>
-          </article>
+      <!-- ── Timeline ───────────────────────────────────────────────── -->
+      <section class="section" style="border-top: 1px solid var(--line);">
+        <div class="container">
+          <p class="section-label">Timeline</p>
+
+          <!-- Filter -->
+          <div class="timeline-filters" role="group" aria-label="Filter by project type">
+            <button class="timeline-filter-btn active" data-filter="all">All</button>
+            <button class="timeline-filter-btn" data-filter="music">Music Group</button>
+            <button class="timeline-filter-btn" data-filter="startup">Startup</button>
+            <button class="timeline-filter-btn" data-filter="art">Art Project</button>
+            <button class="timeline-filter-btn" data-filter="commission">Commission</button>
+          </div>
+
+          <div class="timeline" id="timeline">
+
+            <div class="timeline-item" data-type="music">
+              <span class="timeline-year">2000–2007</span>
+              <div class="timeline-body">
+                <span class="timeline-title">Parvarim Refugeez</span>
+                <p class="timeline-desc">One of the first live hip-hop bands in Israel. Originating from Maccabim-Re'ut, the group helped open up space for a new generation of Israeli hip-hop artists.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-music">Music Group</span>
+                  <span class="tag tag-role">Lead Artist · Producer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-type="music">
+              <span class="timeline-year">2004–2010</span>
+              <div class="timeline-body">
+                <span class="timeline-title">Vndrshmukin</span>
+                <p class="timeline-desc">Experimental breakcore-pop project — early statement of advanced rhythm, abrasive texture, and uncompromising sound design.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-music">Music Group</span>
+                  <span class="tag tag-role">Lead Artist · Producer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-type="music">
+              <span class="timeline-year">2007–2012</span>
+              <div class="timeline-body">
+                <span class="timeline-title">SFTC — Shmen for the Children</span>
+                <p class="timeline-desc">Fast, satirical hardcore punk. Short songs, sharp humour, raw energy — an early willingness to move across scenes and resist categorisation.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-music">Music Group</span>
+                  <span class="tag tag-role">Lead Artist · Live Performer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-type="commission">
+              <span class="timeline-year">2004–2007</span>
+              <div class="timeline-body">
+                <span class="timeline-title">Production Credits — Hip-Hop Collective Work</span>
+                <p class="timeline-desc">Production and mixing work for leading Israeli underground hip-hop collectives, including PR Troopers and Peled &amp; Ortega (with Yossi Fine). Influential records that helped shape the scene.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-commission">Commission</span>
+                  <span class="tag tag-role">Producer · Mixer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-type="music">
+              <span class="timeline-year">2010–present</span>
+              <div class="timeline-body">
+                <span class="timeline-title">Dirty Honkers</span>
+                <p class="timeline-desc">Retro-futurist electro-swing band — heavy electronic production meets swing references, live energy, and physical groove. Three albums. International touring act.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-music">Music Group</span>
+                  <span class="tag tag-role">Lead Artist · Producer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-type="art">
+              <span class="timeline-year">2010s</span>
+              <div class="timeline-body">
+                <span class="timeline-title">YSL Sound Installation</span>
+                <p class="timeline-desc">Bespoke sound installation commissioned for a Yves Saint Laurent event. Spatial audio composition and interactive sound design for a high-end experiential context.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-art">Art Project</span>
+                  <span class="tag tag-role">Lead Artist · Composer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-type="art">
+              <span class="timeline-year">2010s–present</span>
+              <div class="timeline-body">
+                <span class="timeline-title">Polyjam</span>
+                <p class="timeline-desc">Immersive and interactive art installation crew. Site-specific performances where audience participation, live sound, and spatial design intersect. Events that blur the line between stage and crowd.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-art">Art Project</span>
+                  <span class="tag tag-role">Co-Founder · Lead Artist</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-type="startup">
+              <span class="timeline-year">2016–present</span>
+              <div class="timeline-body">
+                <span class="timeline-title">Jambl</span>
+                <p class="timeline-desc">Mobile music-creation app for iOS and Android. Designed to make beatmaking playful and accessible to everyone, regardless of music background.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-startup">Startup</span>
+                  <span class="tag tag-role">CEO · Product Head</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-type="music">
+              <span class="timeline-year">2018–present</span>
+              <div class="timeline-body">
+                <span class="timeline-title">Voice of Gad</span>
+                <p class="timeline-desc">Solo voice-driven live performance project built around character, real-time composition, and rhythmic density. A focused, strange, and intimate live format.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-music">Music Group</span>
+                  <span class="tag tag-role">Lead Artist · Live Performer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-type="startup">
+              <span class="timeline-year">2020–present</span>
+              <div class="timeline-body">
+                <span class="timeline-title">PatchWorld / PatchXR</span>
+                <p class="timeline-desc">XR-native music-making platform for Meta Quest. Build worlds, make music, perform in virtual reality. One of the most advanced spatial audio instruments available.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-startup">Startup</span>
+                  <span class="tag tag-role">Product Head · Co-Founder</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-type="music">
+              <span class="timeline-year">2020–present</span>
+              <div class="timeline-body">
+                <span class="timeline-title">Abagada</span>
+                <p class="timeline-desc">Solo music project — personal writing, contemporary production, a distinct artist identity. Koko (2024) brings the archive into the current era.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-music">Music Group</span>
+                  <span class="tag tag-role">Lead Artist · Producer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-type="startup">
+              <span class="timeline-year">2022–present</span>
+              <div class="timeline-body">
+                <span class="timeline-title">FUMU — Plugins &amp; Tools</span>
+                <p class="timeline-desc">Label for studio instruments and MIDI tools under the FUMU name. Products include WaveRider (VST/AU), ChordMaster, SuperScaler, LiveQuantizer, and ChopTube.</p>
+                <div class="timeline-tags">
+                  <span class="tag tag-startup">Startup</span>
+                  <span class="tag tag-role">Lead Developer · Producer</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /timeline -->
         </div>
       </section>
+
+      <!-- ── Contact ────────────────────────────────────────────────── -->
+      <section class="section" style="border-top: 1px solid var(--line);">
+        <div class="container">
+          <p class="section-label">Contact</p>
+          <div class="pillar-grid">
+            <article class="pillar">
+              <h3>Bookings</h3>
+              <p>Live shows, DJ sets, and festival appearances for Dirty Honkers, DJ Patchy, and Voice of Gad.</p>
+              <a class="btn btn-secondary" href="mailto:gbhinkis@gmail.com">gbhinkis@gmail.com</a>
+            </article>
+            <article class="pillar">
+              <h3>Workshops &amp; Education</h3>
+              <p>Music tech workshops, production masterclasses, and educational sessions.</p>
+              <a class="btn btn-secondary" href="mailto:gbhinkis@gmail.com">gbhinkis@gmail.com</a>
+            </article>
+            <article class="pillar">
+              <h3>Collaborations</h3>
+              <p>Production credits, art installations, and creative collaborations.</p>
+              <a class="btn btn-secondary" href="mailto:gbhinkis@gmail.com">gbhinkis@gmail.com</a>
+            </article>
+            <article class="pillar">
+              <h3>Press &amp; Media</h3>
+              <p>Interview requests, EPK, and press materials.</p>
+              <a class="btn btn-secondary" href="https://www.linkedin.com/in/gadhinkis/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="site-footer">
-      <div class="container">About page for the broader creative practice.</div>
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-name">Gad Baruch Hinkis</span>
+          <span class="footer-tagline">Music · Products · Live</span>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="./products.html">Products</a>
+          <a href="./live.html">Live</a>
+          <a href="./music.html">Music</a>
+          <a href="./about.html">About</a>
+        </nav>
+        <div class="footer-copy">© 2026</div>
+      </div>
     </footer>
 
-    <script src="./assets/js/main.js?v=48"></script>
+    <script src="./assets/js/site-data.js?v=52"></script>
+    <script src="./assets/js/main.js?v=52"></script>
+    <script>
+    // Timeline filter
+    (function() {
+      const btns = document.querySelectorAll('.timeline-filter-btn');
+      const items = document.querySelectorAll('.timeline-item');
+
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.dataset.filter;
+          items.forEach(item => {
+            const match = filter === 'all' || item.dataset.type === filter;
+            if (match) {
+              delete item.dataset.hidden;
+            } else {
+              item.dataset.hidden = '';
+            }
+          });
+        });
+      });
+    })();
+    </script>
   </body>
 </html>

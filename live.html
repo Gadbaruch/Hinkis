@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live | Gad Baruch Hinkis</title>
+    <meta name="description" content="Live shows, workshops, and art installations. Book Voice of Gad, DJ Patchy, or a music tech workshop." />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=52" />
+    <style>
+      /* ── Live-page-specific styles ────────────────────────────── */
+
+      /* Big performer sections */
+      .perf-section {
+        border-bottom: var(--border);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .perf-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 600px;
+      }
+
+      /* Video / image panel */
+      .perf-video-panel {
+        position: relative;
+        background: #111;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .perf-video-thumb {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: opacity .3s;
+      }
+
+      .perf-video-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0,0,0,0.25);
+        transition: background .3s;
+      }
+      .perf-video-panel:hover .perf-video-overlay { background: rgba(0,0,0,0.1); }
+
+      .perf-play-btn {
+        width: 72px; height: 72px;
+        background: var(--yellow);
+        border: 3px solid var(--ink);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 4px 4px 0 var(--ink);
+        transition: transform .2s, box-shadow .2s;
+        flex-shrink: 0;
+      }
+      .perf-video-panel:hover .perf-play-btn {
+        transform: scale(1.08);
+      }
+      .perf-play-btn svg {
+        width: 28px; height: 28px;
+        fill: var(--ink);
+        margin-left: 4px;
+      }
+
+      /* Iframe that replaces thumbnail on click */
+      .perf-video-iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: none;
+      }
+      .perf-video-panel.playing .perf-video-iframe  { display: block; }
+      .perf-video-panel.playing .perf-video-thumb   { display: none; }
+      .perf-video-panel.playing .perf-video-overlay { display: none; }
+
+      /* TikTok embed panel */
+      .perf-tiktok-panel {
+        background: #f8f5f0;
+        border-bottom: 1px solid rgba(0,0,0,.08);
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        padding: 0;
+        overflow: hidden;
+        min-height: 680px;
+      }
+
+      .tiktok-embed-wrap {
+        width: 100%;
+        max-width: 380px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      /* Copy panel */
+      .perf-copy-panel {
+        padding: 3.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.2rem;
+        border-left: var(--border);
+      }
+
+      .perf-copy-panel.left-copy {
+        border-left: none;
+        border-right: var(--border);
+      }
+
+      .perf-genre-label {
+        font-family: var(--font-mono);
+        font-size: .65rem;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .perf-copy-panel h2 {
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 5vw, 5.5rem);
+        letter-spacing: 0.02em;
+        line-height: 0.92;
+        text-transform: uppercase;
+        color: var(--ink);
+        margin: 0;
+      }
+
+      .perf-copy-panel p {
+        color: var(--muted);
+        line-height: 1.65;
+        max-width: 44ch;
+        margin: 0;
+        font-size: .97rem;
+      }
+
+      .perf-copy-panel .perf-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .55rem;
+        margin-top: .5rem;
+      }
+
+      /* Highlights sub-section within VOG */
+      .vog-highlights-label {
+        padding: 1.8rem 3.5rem 0.6rem;
+        font-family: var(--font-mono);
+        font-size: .65rem;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        margin-top: 1rem;
+      }
+
+      .vog-highlights-sub {
+        padding: 0 3.5rem 1.4rem;
+        font-size: .87rem;
+        color: var(--ink-2);
+        max-width: 52ch;
+      }
+
+      @media (max-width: 900px) {
+        .perf-split { grid-template-columns: 1fr; }
+        .perf-video-panel { min-height: 320px; }
+        .perf-copy-panel { padding: 2rem; border-left: none; border-top: var(--border); }
+        .perf-copy-panel.left-copy { border-right: none; border-bottom: var(--border); order: 1; }
+        .perf-video-panel-right { order: 2; }
+        .tiktok-embed-wrap { padding: 1.5rem; }
+        .vog-highlights-label, .vog-highlights-sub { padding-left: 2rem; padding-right: 2rem; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="./index.html"><span>GAD</span> BARUCH HINKIS</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a class="nav-link" href="./products.html">Products</a>
+          <a class="nav-link active" href="./live.html">Live</a>
+          <a class="nav-link" href="./music.html">Music</a>
+          <a class="nav-link" href="./about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ── Page Hero ────────────────────────────────────────────── -->
+      <section class="page-hero">
+        <div class="container">
+          <div class="page-eyebrow">
+            <span class="page-eyebrow-dot" aria-hidden="true"></span>
+            Live
+          </div>
+          <h1 class="page-hero-title">Shows, workshops &amp; on-site work.</h1>
+          <p class="page-hero-sub">Live performance, music tech education, and experiential art. Three formats — one artist. Available for bookings worldwide.</p>
+        </div>
+      </section>
+
+      <!-- ═══ VOICE OF GAD ══════════════════════════════════════════ -->
+      <section class="perf-section">
+
+        <!-- Top split: TikTok embed left + copy right -->
+        <div class="perf-split">
+
+          <!-- TikTok featured video -->
+          <div class="perf-tiktok-panel">
+            <div class="tiktok-embed-wrap">
+              <blockquote
+                class="tiktok-embed"
+                cite="https://www.tiktok.com/@voiceofgad/video/7620369624214867233"
+                data-video-id="7620369624214867233"
+                data-embed-from="oembed"
+                style="max-width:605px;min-width:320px;margin:0;"
+              >
+                <section>
+                  <a target="_blank" title="@voiceofgad" href="https://www.tiktok.com/@voiceofgad?refer=embed">@voiceofgad</a>
+                </section>
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Copy -->
+          <div class="perf-copy-panel">
+            <div class="perf-genre-label">Live looping · Vocal · Experimental</div>
+            <h2>Voice<br>of Gad</h2>
+            <p>Voice-driven live performance built around character, rhythm, and real-time composition. Intimate, strange, and rhythmically dense. A live music project with its own universe — growing on TikTok and moving into live venues.</p>
+            <p>Available for events, festivals, and unusual venues. DJ sets and full live sets.</p>
+            <div class="perf-actions">
+              <a class="btn btn-primary" href="mailto:gbhinkis@gmail.com">Book a show</a>
+              <a class="btn btn-secondary" href="https://www.tiktok.com/@voiceofgad" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" style="width:1rem;height:1rem;fill:currentColor;" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.15 8.15 0 0 0 4.77 1.52V6.77a4.85 4.85 0 0 1-1-.08z"/></svg>
+              </a>
+              <a class="btn btn-secondary" href="https://www.instagram.com/voice_of_gad/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" style="width:1rem;height:1rem;fill:currentColor;" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+            </div>
+
+            <div style="margin-top:1rem; padding-top:1.2rem; border-top: 1px solid var(--line);">
+              <p class="perf-genre-label" style="margin-bottom:.6rem;">TikTok live music project</p>
+              <p style="font-size:.85rem; color:var(--muted); margin:0;">Voice of Gad is building a live music project that lives on TikTok and in real venues. Beatboxing, vocal loops, character, and rhythm in real-time. Follow the channel for highlights and upcoming shows.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ═══ DJ PATCHY ══════════════════════════════════════════════ -->
+      <section class="perf-section">
+        <div class="perf-split">
+
+          <!-- Copy — left side -->
+          <div class="perf-copy-panel left-copy">
+            <div class="perf-genre-label">DJ · Electronic · Club</div>
+            <h2>DJ<br>Patchy</h2>
+            <p>High-energy DJ sets blending electronic, club, and eclectic sounds. Versatile across venues and formats — from intimate club nights to festival stages. Builds crowd-tailored journeys with a distinctive ear for musical narrative.</p>
+            <div class="perf-actions">
+              <a class="btn btn-primary" href="mailto:gbhinkis@gmail.com">Book a set</a>
+              <a class="btn btn-secondary" href="https://www.facebook.com/gadbaruch" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" style="width:1rem;height:1rem;fill:currentColor;" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.07c0-.87.24-1.47 1.49-1.47H16.7V3.92c-.31-.04-1.38-.12-2.61-.12-2.58 0-4.34 1.58-4.34 4.48V10H6.8v3h2.95v8z"/></svg>
+              </a>
+              <a class="btn btn-secondary" href="https://www.youtube.com/watch?v=8Qjd0Ogv3xQ" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube">
+                <svg viewBox="0 0 24 24" style="width:1rem;height:1rem;fill:currentColor;" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Video panel — right side (click to play) -->
+          <div class="perf-video-panel perf-video-panel-right" id="djpatchy-panel">
+            <img
+              class="perf-video-thumb"
+              src="./assets/images/djpatchy-hero.jpg"
+              alt="DJ Patchy live set"
+              onerror="this.src='https://img.youtube.com/vi/8Qjd0Ogv3xQ/maxresdefault.jpg'"
+            >
+            <div class="perf-video-overlay">
+              <div class="perf-play-btn" aria-label="Play DJ Patchy video">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <iframe
+              class="perf-video-iframe"
+              id="djpatchy-iframe"
+              title="DJ Patchy live set"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Workshops ──────────────────────────────────────────────── -->
+      <section class="section" style="border-bottom: 1px solid var(--line);">
+        <div class="container">
+          <p class="section-label">Workshops</p>
+          <div class="section-card-hero">
+            <div class="section-card-copy">
+              <h2>Music Tech &amp; Production</h2>
+              <p>Hands-on workshops for musicians, producers, and educators. Topics range from beatmaking fundamentals to advanced live performance setups, XR music tools, and music technology in education.</p>
+              <p style="margin-top: 0.8rem;">Available for schools, festivals, studios, and corporate events. Custom formats on request.</p>
+              <div class="cta-row" style="margin-top: 1.4rem;">
+                <a class="btn btn-primary" href="mailto:gbhinkis@gmail.com">Enquire</a>
+              </div>
+              <div class="tag-row" style="margin-top: 1.2rem;">
+                <span class="tag">Beatmaking</span>
+                <span class="tag">Live production</span>
+                <span class="tag">XR music</span>
+                <span class="tag">Music technology</span>
+                <span class="tag">Education</span>
+              </div>
+            </div>
+            <div class="section-card-media">Workshop &amp; education sessions</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Art & Installations ────────────────────────────────────── -->
+      <section class="section">
+        <div class="container">
+          <p class="section-label">Art &amp; Installations</p>
+          <p class="section-lead" style="margin-bottom: 2.5rem;">On-site work that lives between music, technology, and space. Interactive events, sound installations, and experiential commissions.</p>
+
+          <div class="pillar-grid">
+
+            <article class="pillar">
+              <div class="product-tag" style="margin-bottom: 0.8rem;">Art crew · Interactive events</div>
+              <h3>Polyjam</h3>
+              <p>Immersive and interactive event crew — where audience participation, live sound, and spatial design intersect. Site-specific performances and installations blurring the line between stage and crowd.</p>
+              <a class="btn btn-secondary" style="margin-top:.8rem;" href="./polyjam.html">View Polyjam</a>
+            </article>
+
+            <article class="pillar">
+              <div class="product-tag" style="margin-bottom: 0.8rem;">Sound installation · 2010s</div>
+              <h3>Yves Saint Laurent</h3>
+              <p>A bespoke sound installation commissioned for a YSL event. Spatial audio composition and interactive sound design for a high-end experiential context.</p>
+            </article>
+
+          </div>
+
+          <div style="margin-top: 2rem; padding: 1.8rem; border: 1px solid var(--line); background: var(--bg-raised);">
+            <p style="margin: 0; color: var(--muted); font-size: 0.92rem;">More installations and on-site work being documented. Commissions and collaborations welcome — <a href="mailto:gbhinkis@gmail.com" style="color: var(--aqua); font-weight: 600;">get in touch</a>.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-name">Gad Baruch Hinkis</span>
+          <span class="footer-tagline">Music · Products · Live</span>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="./products.html">Products</a>
+          <a href="./live.html">Live</a>
+          <a href="./music.html">Music</a>
+          <a href="./about.html">About</a>
+        </nav>
+        <div class="footer-copy">© 2026</div>
+      </div>
+    </footer>
+
+    <script src="./assets/js/site-data.js?v=52"></script>
+    <script src="./assets/js/main.js?v=52"></script>
+
+    <!-- TikTok embed script -->
+    <script async src="https://www.tiktok.com/embed.js"></script>
+
+    <!-- DJ Patchy video — click to play -->
+    <script>
+    (function() {
+      const panel = document.getElementById('djpatchy-panel');
+      if (!panel) return;
+
+      panel.addEventListener('click', function() {
+        if (panel.classList.contains('playing')) return;
+        const iframe = document.getElementById('djpatchy-iframe');
+        iframe.src = 'https://www.youtube.com/embed/8Qjd0Ogv3xQ?autoplay=1&rel=0';
+        panel.classList.add('playing');
+      });
+    })();
+    </script>
+
+  </body>
+</html>

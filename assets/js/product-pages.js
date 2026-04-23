@@ -75,7 +75,7 @@
     root.innerHTML = `
       <header class="site-header">
         <div class="container nav">
-          <a class="brand" href="../index.html">Gad <span>Baruch Hinkis</span></a>
+          <a class="brand" href="../index.html"><span>GAD</span> BARUCH HINKIS</a>
           <nav class="nav-links" aria-label="Primary">
             <a class="nav-link" href="../index.html">Home</a>
             <div class="dropdown" data-dropdown>

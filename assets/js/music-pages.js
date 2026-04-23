@@ -21,13 +21,12 @@
     return `
       <header class="site-header">
         <div class="container nav">
-          <a class="brand" href="${basePath}/index.html">Gad <span>Baruch Hinkis</span></a>
+          <a class="brand" href="${basePath}/index.html"><span>GAD</span> BARUCH HINKIS</a>
           <nav class="nav-links" aria-label="Primary">
-            <a class="nav-link${activeKey === 'home' ? ' active' : ''}" href="${basePath}/index.html">Home</a>
-            <a class="nav-link${activeKey === 'about' ? ' active' : ''}" href="${basePath}/about.html">About</a>
+            <a class="nav-link${activeKey === 'products' ? ' active' : ''}" href="${basePath}/products.html">Products</a>
+            <a class="nav-link${activeKey === 'live' ? ' active' : ''}" href="${basePath}/live.html">Live</a>
             <a class="nav-link${activeKey === 'music' ? ' active' : ''}" href="${basePath}/music.html">Music</a>
-            <a class="nav-link${activeKey === 'tools' ? ' active' : ''}" href="${basePath}/tools.html">Tools</a>
-            <a class="nav-link${activeKey === 'contact' ? ' active' : ''}" href="${basePath}/contact.html">Contact</a>
+            <a class="nav-link${activeKey === 'about' ? ' active' : ''}" href="${basePath}/about.html">About</a>
           </nav>
         </div>
       </header>
@@ -379,12 +378,10 @@
 
   function renderMusicHubPage() {
     const root = document.getElementById('music-root');
-    const voiceProject = musicProjects.find((item) => item.key === 'voice-of-gad');
     const catalogueProject = musicProjects.find((item) => item.key === 'music-productions');
 
-    if (!root || !voiceProject || !catalogueProject) return;
+    if (!root || !catalogueProject) return;
 
-    const voiceLinks = voiceProject.links.map(linkMarkup).join('');
     const { productionsMarkup, jumpItems, jumpNavMarkup } = buildCatalogue(catalogueProject);
 
     document.title = `Music | Gad Baruch Hinkis`;
@@ -393,26 +390,21 @@
       ${renderTopNav('.', 'music')}
 
       <main>
-        <section class="product-hero fade-in">
-          <div class="container music-layout">
-            <div class="music-panel copy">
-              <p class="kicker">Music</p>
-              <h1>Voice Of Gad</h1>
-              <p>${voiceProject.summary}</p>
-              <div class="social-link-row" style="margin-top: 1rem;">${voiceLinks}</div>
+        <section class="page-hero fade-in">
+          <div class="container">
+            <div class="page-eyebrow">
+              <span class="page-eyebrow-dot" aria-hidden="true"></span>
+              Music
             </div>
-            <div class="music-hero-art music-panel">${voiceProject.heroArtLabel}</div>
+            <h1 class="page-hero-title">25 Years Ripping In Studio &amp; On Stage.</h1>
+            <p class="page-hero-sub">${catalogueProject.summary}</p>
+            <div class="social-link-row" style="margin-top:1.4rem;">${catalogueProject.links.map(linkMarkup).join('')}</div>
           </div>
         </section>
 
         <section class="section fade-in fade-delay-1">
           <div class="container catalog-layout">
             <div class="catalog-main">
-              <div class="music-panel copy" style="margin-bottom: 2rem;">
-                <h2>My Music Production Catalogue</h2>
-                <p>${catalogueProject.summary}</p>
-                <div class="social-link-row" style="margin-top: 1rem;">${catalogueProject.links.map(linkMarkup).join('')}</div>
-              </div>
               <div class="production-list">
                 ${productionsMarkup}
               </div>
@@ -423,7 +415,12 @@
       </main>
 
       <footer class="site-footer">
-        <div class="container">Music hub with featured artist work and full production catalogue.</div>
+        <div class="container footer-inner">
+          <div class="footer-brand">
+            <span class="brand-name">Gad Baruch Hinkis</span>
+            <span class="footer-tagline">Music · Products · Live</span>
+          </div>
+        </div>
       </footer>
     `;
 

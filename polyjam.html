@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polyjam | Gad Baruch Hinkis</title>
+    <meta name="description" content="Polyjam — immersive interactive art installations where the audience plays the instrument. Featured at Jerusalem Film Festival, Lollapalooza Berlin, Musrara Transmedia School." />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=52" />
+    <style>
+      /* ── Polyjam-specific ────────────────────────────────── */
+      .polyjam-hero-banner {
+        position: relative;
+        width: 100%;
+        min-height: 520px;
+        max-height: 70vh;
+        overflow: hidden;
+        border-bottom: var(--border);
+        background: #111;
+      }
+      .polyjam-hero-banner img {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        opacity: .85;
+      }
+      .polyjam-hero-banner::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+      }
+      .polyjam-hero-overlay {
+        position: relative; z-index: 2;
+        padding: 4rem 0;
+        min-height: 520px;
+        display: flex; align-items: flex-end;
+      }
+      .polyjam-hero-overlay .page-eyebrow { background: var(--yellow); }
+      .polyjam-hero-overlay h1 {
+        font-family: var(--font-display);
+        font-size: clamp(4rem, 11vw, 9rem);
+        color: var(--bg);
+        text-transform: uppercase;
+        line-height: 0.92;
+        letter-spacing: 0.02em;
+        margin: 0 0 1rem;
+        text-shadow: 4px 4px 0 var(--ink);
+      }
+      .polyjam-hero-overlay p {
+        color: #eee;
+        font-size: clamp(1rem, 1.4vw, 1.2rem);
+        max-width: 60ch;
+        line-height: 1.55;
+        margin: 0;
+      }
+
+      /* Big feature video */
+      .polyjam-feature {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        border-bottom: var(--border);
+      }
+      .polyjam-feature-video {
+        background: #000;
+        aspect-ratio: 16/9;
+        position: relative;
+        min-height: 420px;
+      }
+      .polyjam-feature-video iframe {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        border: 0;
+      }
+      .polyjam-feature-copy {
+        padding: 3rem;
+        border-left: var(--border);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .polyjam-feature-copy h2 {
+        font-family: var(--font-display);
+        font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        line-height: 1;
+        margin: 0;
+      }
+
+      /* Events grid */
+      .events-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        border: var(--border);
+      }
+      .event-card {
+        background: var(--bg);
+        padding: 1.5rem;
+        border-right: var(--border);
+        border-bottom: var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: .7rem;
+        transition: background .2s;
+      }
+      .event-card:hover { background: var(--bg-raised); }
+      .event-card:nth-child(3n) { border-right: none; }
+      .event-card:nth-last-child(-n+3) { border-bottom: none; }
+      .event-card .event-year {
+        font-family: var(--font-mono);
+        font-size: .68rem;
+        letter-spacing: .12em;
+        color: var(--aqua);
+        text-transform: uppercase;
+      }
+      .event-card h3 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        letter-spacing: .02em;
+        text-transform: uppercase;
+      }
+      .event-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: .88rem;
+        line-height: 1.55;
+      }
+      .event-card a {
+        margin-top: auto;
+        font-family: var(--font-mono);
+        font-size: .7rem;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--magenta);
+        padding-top: .8rem;
+      }
+      .event-card a:hover { text-decoration: underline; }
+
+      /* Photo gallery grid */
+      .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        border: var(--border);
+      }
+      .photo-gallery a {
+        position: relative;
+        aspect-ratio: 1/1;
+        overflow: hidden;
+        border-right: 1px solid rgba(0,0,0,0.2);
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+        background: #222;
+      }
+      .photo-gallery a:nth-child(4n) { border-right: none; }
+      .photo-gallery img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        transition: transform .4s, opacity .3s;
+      }
+      .photo-gallery a:hover img { transform: scale(1.08); }
+      .photo-gallery-placeholder {
+        padding: 3rem 2rem;
+        text-align: center;
+        border: 1px dashed var(--line-strong);
+        background: var(--bg-raised);
+        color: var(--muted);
+        font-size: .9rem;
+      }
+
+      @media (max-width: 900px) {
+        .polyjam-feature { grid-template-columns: 1fr; }
+        .polyjam-feature-copy { border-left: none; border-top: var(--border); padding: 2rem; }
+        .events-grid { grid-template-columns: 1fr; }
+        .event-card { border-right: none; border-bottom: var(--border); }
+        .event-card:last-child { border-bottom: none; }
+        .photo-gallery { grid-template-columns: repeat(2, 1fr); }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="./index.html"><span>GAD</span> BARUCH HINKIS</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a class="nav-link" href="./products.html">Products</a>
+          <a class="nav-link active" href="./live.html">Live</a>
+          <a class="nav-link" href="./music.html">Music</a>
+          <a class="nav-link" href="./about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ── Hero Banner ───────────────────────────────────────────── -->
+      <section class="polyjam-hero-banner">
+        <img src="./assets/images/polyjam-hero.jpg" alt="Polyjam interactive installation">
+        <div class="polyjam-hero-overlay">
+          <div class="container">
+            <div class="page-eyebrow">
+              <span class="page-eyebrow-dot" aria-hidden="true"></span>
+              Interactive Art Crew
+            </div>
+            <h1>Polyjam</h1>
+            <p>Plug the audience into the instrument. Large-scale interactive installations where strangers become an orchestra — built for festivals, galleries, and public space.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Intro ─────────────────────────────────────────────────── -->
+      <section class="section" style="padding-bottom: 3rem;">
+        <div class="container">
+          <p class="section-label">The Project</p>
+          <div class="music-layout">
+            <div class="music-panel copy">
+              <h2>Music made by the crowd</h2>
+              <p>Polyjam builds interactive music installations that let anyone — musicians, kids, passers-by — play together without needing to know how. Each setup is a spatial instrument: people trigger, shape, and layer sound just by being in the space. No performer on stage. The crowd is the band.</p>
+              <p style="margin-top: 1rem;">The work sits between installation art, live music, and social experiment. Every event is site-specific, and every audience writes a different piece. Polyjam has been featured at Lollapalooza Berlin, the Jerusalem Film Festival, and the Musrara Transmedia School in Jerusalem, alongside collaborator Keez Duifes.</p>
+              <div class="tag-row" style="margin-top: 1.4rem;">
+                <span class="tag">Interactive installation</span>
+                <span class="tag">Audience as instrument</span>
+                <span class="tag">Site-specific</span>
+                <span class="tag">Public space</span>
+                <span class="tag">Spatial audio</span>
+                <span class="tag">Collaborative</span>
+              </div>
+            </div>
+            <div class="music-panel" style="padding: 0; background: transparent; border: none; box-shadow: none;">
+              <div style="border: var(--border); background: var(--yellow); padding: 2rem;">
+                <p class="section-label" style="margin-bottom: 1rem;">Booking</p>
+                <h3 style="font-family: var(--font-display); font-size: 1.8rem; letter-spacing: .02em; text-transform: uppercase; margin: 0 0 .8rem;">Commission an installation</h3>
+                <p style="color: var(--ink-2); margin: 0 0 1.2rem; font-size: .9rem; line-height: 1.55;">Festivals, galleries, cultural institutions, corporate events, biennales. Polyjam builds each installation around the space — no two are identical.</p>
+                <a class="btn btn-primary" href="mailto:gbhinkis@gmail.com" style="background: var(--ink); color: var(--yellow); border-color: var(--ink);">Start a project</a>
+                <a class="btn btn-secondary" href="https://www.facebook.com/polyjammer/" target="_blank" rel="noopener noreferrer" style="margin-top: .6rem;">Follow on Facebook</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Featured Video ───────────────────────────────────────── -->
+      <section>
+        <div class="polyjam-feature">
+          <div class="polyjam-feature-video">
+            <iframe
+              src="https://www.facebook.com/plugins/video.php?height=560&href=https%3A%2F%2Fwww.facebook.com%2Fpolyjammer%2Fvideos%2F1802636079974345%2F&show_text=false&t=0"
+              scrolling="no"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              allowfullscreen="true"
+              title="Polyjam — featured installation"
+            ></iframe>
+          </div>
+          <div class="polyjam-feature-copy">
+            <p class="section-label" style="margin: 0;">Featured</p>
+            <h2>See it in motion</h2>
+            <p style="color: var(--muted); line-height: 1.65;">Documentation of a Polyjam installation — the audience working the space together. Each participant is a musician, and nobody knows what the next piece will sound like until it happens.</p>
+            <a class="btn btn-secondary" href="https://www.facebook.com/polyjammer/videos/1802636079974345/" target="_blank" rel="noopener noreferrer" style="margin-top: .8rem;">Open on Facebook</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Past Events ──────────────────────────────────────────── -->
+      <section class="section">
+        <div class="container">
+          <p class="section-label">Past Events &amp; Installations</p>
+
+          <div class="events-grid">
+
+            <article class="event-card">
+              <span class="event-year">Berlin</span>
+              <h3>Lollapalooza Berlin</h3>
+              <p>Large-scale interactive installation at one of Europe's biggest festivals. Audience members became the ensemble — crowds of thousands stepping in and out of a living instrument.</p>
+              <a href="https://fb.watch/GFYN_RlUsy/" target="_blank" rel="noopener noreferrer">Watch video →</a>
+            </article>
+
+            <article class="event-card">
+              <span class="event-year">Jerusalem</span>
+              <h3>Jerusalem Film Festival</h3>
+              <p>Immersive installation with collaborator Keez Duifes. Built specifically for the festival's experimental programme — a cinematic interactive piece where the audience shaped the soundtrack.</p>
+              <a href="https://fb.watch/GFYk2jH2ZE/" target="_blank" rel="noopener noreferrer">Watch video →</a>
+            </article>
+
+            <article class="event-card">
+              <span class="event-year">Jerusalem</span>
+              <h3>Musrara Transmedia School</h3>
+              <p>Installation inside the Musrara School of Art &amp; Society. A research-context piece engaging students and visitors in collective sound-making — part workshop, part show.</p>
+              <a href="https://fb.watch/GFYEOEcVue/" target="_blank" rel="noopener noreferrer">Watch video →</a>
+            </article>
+
+            <article class="event-card">
+              <span class="event-year">Jerusalem</span>
+              <h3>Musrara School — Part II</h3>
+              <p>Second documentation from the Musrara residency — different angle, different moment. The installation evolved over the run as participants returned and built on each other's gestures.</p>
+              <a href="https://fb.watch/GFYHn61GXb/" target="_blank" rel="noopener noreferrer">Watch video →</a>
+            </article>
+
+            <article class="event-card">
+              <span class="event-year">Ongoing</span>
+              <h3>Festivals &amp; Galleries</h3>
+              <p>Polyjam tours to cultural festivals, public squares, galleries, and biennales. Each installation is commissioned and built specifically for the venue's space, audience, and context.</p>
+              <a href="https://www.facebook.com/polyjammer/events" target="_blank" rel="noopener noreferrer">All events →</a>
+            </article>
+
+            <article class="event-card">
+              <span class="event-year">Commissions</span>
+              <h3>Custom builds</h3>
+              <p>Polyjam takes on bespoke commissions — private events, corporate experiences, cultural programmes. If you have a space and want something unique in it, get in touch.</p>
+              <a href="mailto:gbhinkis@gmail.com">Get in touch →</a>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Photo Gallery ────────────────────────────────────────── -->
+      <section class="section" style="border-top: 1px solid var(--line);">
+        <div class="container">
+          <p class="section-label">Gallery</p>
+          <p class="section-lead" style="margin-bottom: 2rem;">Photo documentation from installations, festivals, and residencies. Full archive on Facebook.</p>
+
+          <div class="photo-gallery-placeholder">
+            <p style="margin: 0 0 1rem;">Full photo gallery on <a href="https://www.facebook.com/polyjammer/photos" target="_blank" rel="noopener noreferrer" style="color: var(--magenta); font-weight: 600;">Polyjam's Facebook page</a>. Selected images will be imported here — in the meantime, the archive is actively maintained on Facebook.</p>
+            <a class="btn btn-secondary" href="https://www.facebook.com/polyjammer/photos" target="_blank" rel="noopener noreferrer">Open photo archive</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-name">Gad Baruch Hinkis</span>
+          <span class="footer-tagline">Music · Products · Live</span>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="./products.html">Products</a>
+          <a href="./live.html">Live</a>
+          <a href="./music.html">Music</a>
+          <a href="./about.html">About</a>
+        </nav>
+        <div class="footer-copy">© 2026</div>
+      </div>
+    </footer>
+
+    <script src="./assets/js/site-data.js?v=52"></script>
+    <script src="./assets/js/main.js?v=52"></script>
+  </body>
+</html>

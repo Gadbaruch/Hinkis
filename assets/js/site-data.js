@@ -173,7 +173,7 @@ window.FUMU_DATA = {
       pageUrl: "/music/music-productions.html",
       heroArtLabel: "Music Productions hero art",
       summary:
-        "Two decades of production across experimental music, hip-hop, electronics, and swing — definitely music for the body. Preferring advanced rhythms and grimy textures, it comes from the angle of someone who prioritises making what hasn't been done yet.",
+        "Music for the body. Grimy textures, advanced rhythms, and a habit of making what hasn't been done yet — across hip-hop, experimental, electronics, and swing.",
       embedType: "placeholder",
       embedLabel: "Discography overview / featured playlist slot",
       links: [

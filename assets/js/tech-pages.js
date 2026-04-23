@@ -14,13 +14,12 @@
     return `
       <header class="site-header">
         <div class="container nav">
-          <a class="brand" href="${basePath}/index.html">Gad <span>Baruch Hinkis</span></a>
+          <a class="brand" href="${basePath}/index.html"><span>GAD</span> BARUCH HINKIS</a>
           <nav class="nav-links" aria-label="Primary">
-            <a class="nav-link${activeKey === 'home' ? ' active' : ''}" href="${basePath}/index.html">Home</a>
-            <a class="nav-link${activeKey === 'about' ? ' active' : ''}" href="${basePath}/about.html">About</a>
+            <a class="nav-link${activeKey === 'products' ? ' active' : ''}" href="${basePath}/products.html">Products</a>
+            <a class="nav-link${activeKey === 'live' ? ' active' : ''}" href="${basePath}/live.html">Live</a>
             <a class="nav-link${activeKey === 'music' ? ' active' : ''}" href="${basePath}/music.html">Music</a>
-            <a class="nav-link${activeKey === 'tools' ? ' active' : ''}" href="${basePath}/tools.html">Tools</a>
-            <a class="nav-link${activeKey === 'contact' ? ' active' : ''}" href="${basePath}/contact.html">Contact</a>
+            <a class="nav-link${activeKey === 'about' ? ' active' : ''}" href="${basePath}/about.html">About</a>
           </nav>
         </div>
       </header>
