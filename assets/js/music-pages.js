@@ -415,8 +415,8 @@
                 <iframe id="yt-abagada" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" title="Abagada"></iframe>
               </div>
 
-              <div class="music-video-card" data-yt="xgID7t7B78Q" data-yt-list="PLA7500F2D6042D6BC">
-                <div class="mv-poster" style="background-image:url('https://i.ytimg.com/vi/xgID7t7B78Q/maxresdefault.jpg');"></div>
+              <div class="music-video-card" data-yt="D-hYYPGeuu8" data-yt-list="PLA7500F2D6042D6BC">
+                <div class="mv-poster" style="background-image:url('https://i.ytimg.com/vi/D-hYYPGeuu8/maxresdefault.jpg');"></div>
                 <button class="mv-play" aria-label="Play Dirty Honkers playlist" type="button"></button>
                 <div class="mv-label">Dirty Honkers<span class="mv-sub">Official videos · Playlist</span></div>
                 <iframe id="yt-dirtyhonkers" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" title="Dirty Honkers — Official Videos"></iframe>
