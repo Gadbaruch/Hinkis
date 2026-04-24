@@ -894,6 +894,9 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-body);
   font-weight: 700;
   font-size: .88rem;
+  line-height: 1.2;
+  min-height: 2.35rem;
+  box-sizing: border-box;
 }
 .btn {
   border: var(--border-med);
