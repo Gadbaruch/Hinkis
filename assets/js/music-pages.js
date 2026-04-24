@@ -402,6 +402,30 @@
           </div>
         </section>
 
+        <section class="section fade-in fade-delay-1" style="border-top: 1px solid var(--line);">
+          <div class="container">
+            <p class="section-label">Music Videos</p>
+            <p class="section-lead" style="max-width: 58ch; margin-bottom: 2rem;">Selected videos across the projects. Click to play.</p>
+            <div class="music-videos-grid">
+
+              <div class="music-video-card" data-yt="IdJ2VoW8vao">
+                <div class="mv-poster" style="background-image:url('https://i.ytimg.com/vi/IdJ2VoW8vao/maxresdefault.jpg');"></div>
+                <button class="mv-play" aria-label="Play Abagada video" type="button"></button>
+                <div class="mv-label">Abagada<span class="mv-sub">Official video</span></div>
+                <iframe id="yt-abagada" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" title="Abagada"></iframe>
+              </div>
+
+              <div class="music-video-card" data-yt="xgID7t7B78Q" data-yt-list="PLA7500F2D6042D6BC">
+                <div class="mv-poster" style="background-image:url('https://i.ytimg.com/vi/xgID7t7B78Q/maxresdefault.jpg');"></div>
+                <button class="mv-play" aria-label="Play Dirty Honkers playlist" type="button"></button>
+                <div class="mv-label">Dirty Honkers<span class="mv-sub">Official videos · Playlist</span></div>
+                <iframe id="yt-dirtyhonkers" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" title="Dirty Honkers — Official Videos"></iframe>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         <section class="section fade-in fade-delay-1">
           <div class="container catalog-layout">
             <div class="catalog-main">
@@ -414,17 +438,29 @@
         </section>
       </main>
 
-      <footer class="site-footer">
+      <footer class="site-footer site-footer-min">
         <div class="container footer-inner">
-          <div class="footer-brand">
-            <span class="brand-name">Gad Baruch Hinkis</span>
-            <span class="footer-tagline">Music · Products · Live</span>
-          </div>
+          <span class="brand-name">Gad Baruch Hinkis</span>
+          <div class="footer-copy">© 2026</div>
         </div>
       </footer>
     `;
 
     bindJumpNav(root, jumpItems);
+
+    // Click-to-play YouTube
+    root.querySelectorAll('.music-video-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        if (card.classList.contains('playing')) return;
+        const id = card.dataset.yt;
+        const list = card.dataset.ytList;
+        const iframe = card.querySelector('iframe');
+        const params = new URLSearchParams({ autoplay: '1', rel: '0' });
+        if (list) params.set('list', list);
+        iframe.src = `https://www.youtube.com/embed/${id}?${params.toString()}`;
+        card.classList.add('playing');
+      });
+    });
   }
 
   window.renderMusicPage = renderMusicPage;

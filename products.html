@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Products | Gad Baruch Hinkis</title>
     <meta name="description" content="Music-creation platforms, apps, and instruments. PatchWorld, Jambl, WaveRider, SuperScaler, ChordMaster, LiveQuantizer, ChopTube." />
-    <link rel="stylesheet" href="./assets/css/styles.css?v=52" />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=57" />
     <!-- Gumroad overlay checkout -->
     <script src="https://gumroad.com/js/gumroad.js"></script>
   </head>
@@ -49,8 +49,7 @@
 
             <div class="big-app-card" data-open-modal="patchworld">
               <div class="big-app-art">
-                <img src="./assets/images/patchworld-hero.jpg" alt="PatchWorld" onerror="this.style.display='none'">
-                PatchWorld
+                <img src="./assets/images/patchworld-hero.png" alt="PatchWorld" onerror="this.style.display='none'">
               </div>
               <div class="big-app-copy">
                 <div class="big-app-platform">XR · Meta Quest</div>
@@ -72,8 +71,7 @@
 
             <div class="big-app-card" data-open-modal="jambl">
               <div class="big-app-art">
-                <img src="./assets/images/jambl-appstore-1.jpg" alt="Jambl — Create Beats In Seconds" onerror="this.style.display='none'">
-                Jambl
+                <img src="./assets/images/jambl-hero.png" alt="Jambl — Create Beats In Seconds" onerror="this.style.display='none'">
               </div>
               <div class="big-app-copy">
                 <div class="big-app-platform">iOS · Android · Freemium</div>
@@ -244,24 +242,15 @@
       </div>
     </div>
 
-    <footer class="site-footer">
+    <footer class="site-footer site-footer-min">
       <div class="container footer-inner">
-        <div class="footer-brand">
-          <span class="brand-name">Gad Baruch Hinkis</span>
-          <span class="footer-tagline">Music · Products · Live</span>
-        </div>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="./products.html">Products</a>
-          <a href="./live.html">Live</a>
-          <a href="./music.html">Music</a>
-          <a href="./about.html">About</a>
-        </nav>
+        <span class="brand-name">Gad Baruch Hinkis</span>
         <div class="footer-copy">© 2026</div>
       </div>
     </footer>
 
-    <script src="./assets/js/site-data.js?v=52"></script>
-    <script src="./assets/js/main.js?v=52"></script>
+    <script src="./assets/js/site-data.js?v=57"></script>
+    <script src="./assets/js/main.js?v=57"></script>
     <script>
     (function() {
       const PRODUCTS = {
@@ -345,7 +334,8 @@
             'Session creation, sharing, and community discovery',
             'Space (play/stop), Arrow keys (nudge cue timing), Q–I (tiles 1–8)',
           ],
-          cta: '<a class="btn btn-primary" href="https://gadbaruch.github.io/ChopTube/" target="_blank" rel="noopener noreferrer">Open ChopTube</a>',
+          video: 'dvXRfej62pc',
+          cta: '<a class="btn btn-primary" href="https://gadbaruch.github.io/ChopTube/" target="_blank" rel="noopener noreferrer">Open ChopTube</a> <a class="btn btn-secondary" href="https://www.youtube.com/watch?v=dvXRfej62pc" target="_blank" rel="noopener noreferrer">Watch demo</a>',
         },
       };
 
@@ -354,7 +344,7 @@
         title: 'PatchWorld',
         tag: 'XR · Meta Quest · VR Music',
         price: 'Free trial + paid tiers',
-        image: './assets/images/patchworld-hero.jpg',
+        image: './assets/images/patchworld-hero.png',
         video: null,
         desc: 'PatchWorld is an immersive music-making platform for Meta Quest. Build sonic worlds, make music, and perform live in XR. Patch together synthesizers, effects, sequencers, and samples in 3D space. One of the most advanced spatial audio instruments available on any platform. Free trial available on Quest — dive in and see what XR music creation feels like.',
         features: [
@@ -370,7 +360,7 @@
         title: 'Jambl',
         tag: 'iOS · Android · Freemium',
         price: 'Free + premium',
-        image: './assets/images/jambl-appstore-1.jpg',
+        image: './assets/images/jambl-hero.png',
         video: null,
         desc: 'Jambl is a playful mobile music-creation app designed to make beatmaking accessible and fun for everyone. Build beats, jam with loops, record and share your music — all from your phone. Freemium model: free to download and use core features, with premium unlocks available.',
         features: [
