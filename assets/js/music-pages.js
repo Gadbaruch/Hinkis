@@ -21,7 +21,7 @@
     return `
       <header class="site-header">
         <div class="container nav">
-          <a class="brand brand-gbh" href="${basePath}/index.html" aria-label="Gad Baruch Hinkis — Home"><span class="brand-g">G</span><span class="brand-b">B</span><span class="brand-h">H</span></a>
+          <a class="brand" href="${basePath}/index.html"><span>GAD</span> BARUCH HINKIS</a>
           <nav class="nav-links" aria-label="Primary">
             <a class="nav-link${activeKey === 'products' ? ' active' : ''}" href="${basePath}/products.html">Products</a>
             <a class="nav-link${activeKey === 'live' ? ' active' : ''}" href="${basePath}/live.html">Live</a>
