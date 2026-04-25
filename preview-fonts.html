@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fonts & Light Themes — GBH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Bebas+Neue&family=Archivo+Black&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&family=Anton&family=DM+Serif+Display:ital@0;1&family=Cabinet+Grotesk:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Page Shell ── */
+    body {
+      background: #0a0a0a;
+      color: #e8e4dc;
+      font-family: 'Space Grotesk', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 0 8rem;
+    }
+
+    /* ── Section scaffolding ── */
+    .page-section {
+      padding: 5rem 2rem;
+      border-bottom: 1px solid #1a1a1a;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: #444;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: #fff;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+    .section-sub {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 3.5rem;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+    .section-sub strong { color: #888; font-weight: 600; }
+
+    /* ── Top nav label bar ── */
+    .top-bar {
+      background: #050505;
+      border-bottom: 1px solid #1a1a1a;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .top-bar-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: #FFE500;
+      letter-spacing: 0.1em;
+    }
+    .top-bar-links { display: flex; gap: 1.8rem; }
+    .top-bar-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: #444;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .top-bar-link:hover { color: #FFE500; }
+
+    /* ════════════════════════════════════════
+       PART 1 — FONT EXPERIMENTS
+    ════════════════════════════════════════ */
+
+    /* Font experiment grid */
+    .font-experiments {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .font-exp {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      border-bottom: 1px solid #151515;
+      padding: 3.5rem 0;
+      align-items: start;
+    }
+    .font-exp:last-child { border-bottom: none; }
+
+    .font-exp-meta {
+      padding-right: 2rem;
+      padding-top: 0.4rem;
+    }
+    .exp-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: #333;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+    }
+    .exp-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ccc;
+      margin-bottom: 0.3rem;
+    }
+    .exp-note {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    .exp-note em { color: #666; font-style: normal; }
+    .exp-verdict {
+      display: inline-block;
+      margin-top: 0.7rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      padding: 0.2em 0.6em;
+      border-radius: 3px;
+      letter-spacing: 0.06em;
+    }
+    .verdict-strong { background: #FFE500; color: #000; }
+    .verdict-good { background: rgba(255,229,0,0.12); color: #FFE500; border: 1px solid rgba(255,229,0,0.2); }
+    .verdict-meh { background: #1a1a1a; color: #555; border: 1px solid #222; }
+    .verdict-interesting { background: rgba(168,85,247,0.12); color: #c084fc; border: 1px solid rgba(168,85,247,0.25); }
+
+    .font-exp-demo {
+      padding-left: 2rem;
+      border-left: 1px solid #1a1a1a;
+    }
+
+    /* — Experiment 1: Syne (current) — */
+    .demo-1-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.92;
+      letter-spacing: -0.035em;
+      color: #F5F0E8;
+    }
+    .demo-1-name em { color: #FFE500; font-style: normal; }
+    .demo-1-body {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.92rem;
+      color: #555;
+      margin-top: 1.2rem;
+      max-width: 460px;
+      line-height: 1.6;
+    }
+    .demo-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: #444;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .demo-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #FFE500;
+      box-shadow: 0 0 6px #FFE500;
+    }
+
+    /* — Experiment 2: Bebas Neue — */
+    .demo-2-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 0.88;
+      letter-spacing: 0.02em;
+      color: #F5F0E8;
+    }
+    .demo-2-name em { color: #FFE500; font-style: normal; }
+
+    /* — Experiment 3: Archivo Black — */
+    .demo-3-name {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      color: #F5F0E8;
+    }
+    .demo-3-name em { color: #FFE500; font-style: normal; }
+
+    /* — Experiment 4: Playfair Serif — */
+    .demo-4-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 6.5vw, 5.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: #F5F0E8;
+      font-style: italic;
+    }
+    .demo-4-name em { color: #FFE500; font-style: normal; }
+
+    /* — Experiment 5: MULTI-FONT — Bebas + Space Grotesk — */
+    .demo-5-first {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 12vw, 10rem);
+      line-height: 0.85;
+      letter-spacing: 0.01em;
+      color: #FFE500;
+      display: block;
+    }
+    .demo-5-last {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: #666;
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    /* — Experiment 6: MULTI-FONT — Playfair italic + Syne bold — */
+    .demo-6-first {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      line-height: 1;
+      color: #FFE500;
+      display: block;
+      letter-spacing: -0.01em;
+    }
+    .demo-6-last {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 7vw, 6.5rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: #F5F0E8;
+      display: block;
+    }
+
+    /* — Experiment 7: MULTI-FONT — Bebas stacked with serif sub — */
+    .demo-7-wrap {
+      display: flex;
+      align-items: flex-end;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .demo-7-first {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 13vw, 11rem);
+      line-height: 0.85;
+      color: #F5F0E8;
+      letter-spacing: 0.02em;
+    }
+    .demo-7-rest {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding-bottom: 0.6rem;
+    }
+    .demo-7-baruch {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+      color: #FFE500;
+      line-height: 1;
+      letter-spacing: 0.01em;
+    }
+    .demo-7-hinkis {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: clamp(1rem, 2.5vw, 1.9rem);
+      color: #444;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* — Experiment 8: MULTI-FONT — Cabinet Grotesk — */
+    .demo-8-name {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 7.5vw, 6.5rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: #F5F0E8;
+    }
+    .demo-8-name em { color: #FFE500; font-style: normal; }
+
+    /* ════════════════════════════════════════
+       PART 2 — LIGHT THEMES
+    ════════════════════════════════════════ */
+
+    .light-themes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .theme-wrap { display: flex; flex-direction: column; gap: 1rem; }
+    .theme-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: #444;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+    .theme-label strong {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #eee;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      padding: 0.18em 0.55em;
+      border-radius: 3px;
+      letter-spacing: 0.06em;
+    }
+    .badge-yellow { background: #FFE500; color: #000; }
+    .badge-purple { background: rgba(168,85,247,0.2); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+
+    .preview { border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); }
+
+    /* ── Theme D: Warm Editorial ── */
+    .theme-d { background: #F5EFE3; }
+
+    .theme-d .p-nav {
+      background: #F5EFE3;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 0.9rem 1.4rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .theme-d .p-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 0.92rem;
+      color: #1a1410;
+      letter-spacing: -0.01em;
+    }
+    .theme-d .p-navlinks { display: flex; gap: 1.2rem; }
+    .theme-d .p-navlink {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.76rem; font-weight: 500;
+      color: #9a8f82;
+    }
+    .theme-d .p-navlink.active { color: #1a1410; }
+
+    .theme-d .p-hero {
+      padding: 3rem 1.4rem 2rem;
+      background: #F5EFE3;
+    }
+    .theme-d .p-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem; color: #b0a295;
+      letter-spacing: 0.1em; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .theme-d .p-eyebrow::before {
+      content: '';
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #FF4020;
+    }
+    .theme-d .p-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 0.88; letter-spacing: 0.02em;
+      color: #1a1410; margin-bottom: 0.9rem;
+    }
+    .theme-d .p-name em { color: #FF4020; font-style: normal; }
+    .theme-d .p-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem; color: #9a8f82;
+      max-width: 280px; line-height: 1.6;
+      margin-bottom: 1.4rem;
+    }
+    .theme-d .p-btn {
+      display: inline-block;
+      background: #1a1410; color: #F5EFE3;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.74rem; font-weight: 700;
+      padding: 0.55em 1.3em; border-radius: 6px;
+      margin-right: 0.6rem;
+    }
+    .theme-d .p-btn-outline {
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,0.15); color: #5a5048;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.74rem; font-weight: 600;
+      padding: 0.55em 1.3em; border-radius: 6px;
+    }
+    .theme-d .p-stats {
+      background: #EDE6D8;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      padding: 1.2rem 1.4rem; gap: 1rem;
+    }
+    .theme-d .p-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem; font-weight: 800;
+      color: #FF4020; line-height: 1;
+    }
+    .theme-d .p-stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: #b0a295;
+      letter-spacing: 0.06em; margin-top: 0.3rem;
+    }
+    .theme-d .p-cards {
+      padding: 1.4rem; background: #F5EFE3;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem;
+    }
+    .theme-d .p-card {
+      background: #EDE6D8;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 10px; padding: 1rem;
+      position: relative; overflow: hidden;
+    }
+    .theme-d .p-card-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem; font-weight: 800;
+      color: rgba(0,0,0,0.04);
+      position: absolute; right: 0.5rem; top: 0.2rem; line-height: 1;
+    }
+    .theme-d .p-card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: #FF4020;
+      letter-spacing: 0.08em; margin-bottom: 0.4rem;
+    }
+    .theme-d .p-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.88rem; font-weight: 700;
+      color: #1a1410; margin-bottom: 0.3rem;
+    }
+    .theme-d .p-card-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.67rem; color: #9a8f82; line-height: 1.5;
+    }
+    .theme-d .p-swatches {
+      display: flex; gap: 0.5rem;
+      padding: 0.9rem 1.4rem;
+      background: #EDE6D8;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      align-items: center;
+    }
+    .swatch { width: 26px; height: 26px; border-radius: 5px; }
+    .swatch-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem; color: #b0a295;
+      margin-left: 0.4rem;
+    }
+
+    /* ── Theme E: Stark White Punk ── */
+    .theme-e { background: #FFFFFF; }
+
+    .theme-e .p-nav {
+      background: #fff;
+      border-bottom: 2px solid #111;
+      padding: 0.9rem 1.4rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .theme-e .p-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem; color: #111;
+      letter-spacing: 0.05em;
+    }
+    .theme-e .p-navlinks { display: flex; gap: 1.2rem; }
+    .theme-e .p-navlink {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.76rem; font-weight: 500;
+      color: #aaa; text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .theme-e .p-navlink.active { color: #111; }
+
+    .theme-e .p-hero {
+      padding: 3rem 1.4rem 2rem; background: #fff;
+    }
+    .theme-e .p-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.64rem; color: #bbb;
+      letter-spacing: 0.1em; margin-bottom: 1rem;
+    }
+    .theme-e .p-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      line-height: 0.85; letter-spacing: 0.02em;
+      color: #111; margin-bottom: 0.9rem;
+    }
+    .theme-e .p-name em { color: #FF4020; font-style: normal; }
+    .theme-e .p-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem; color: #999;
+      max-width: 280px; line-height: 1.6;
+      margin-bottom: 1.4rem;
+    }
+    .theme-e .p-btn {
+      display: inline-block;
+      background: #111; color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.74rem; font-weight: 700;
+      padding: 0.55em 1.3em; border-radius: 6px;
+      margin-right: 0.6rem;
+    }
+    .theme-e .p-btn-outline {
+      display: inline-block;
+      border: 1.5px solid #ddd; color: #888;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.74rem; font-weight: 600;
+      padding: 0.55em 1.3em; border-radius: 6px;
+    }
+    .theme-e .p-stats {
+      background: #F5F5F5;
+      border-top: 1px solid #eee;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      padding: 1.2rem 1.4rem; gap: 1rem;
+    }
+    .theme-e .p-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem; line-height: 1;
+      color: #FF4020;
+    }
+    .theme-e .p-stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: #bbb;
+      letter-spacing: 0.06em; margin-top: 0.3rem;
+    }
+    .theme-e .p-cards {
+      padding: 1.4rem; background: #fff;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem;
+    }
+    .theme-e .p-card {
+      background: #F8F8F8;
+      border: 1px solid #eee;
+      border-radius: 10px; padding: 1rem;
+      position: relative; overflow: hidden;
+    }
+    .theme-e .p-card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: rgba(0,0,0,0.04);
+      position: absolute; right: 0.5rem; top: 0rem; line-height: 1;
+    }
+    .theme-e .p-card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: #FF4020;
+      letter-spacing: 0.08em; margin-bottom: 0.4rem;
+    }
+    .theme-e .p-card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem; color: #111;
+      letter-spacing: 0.02em; margin-bottom: 0.3rem;
+    }
+    .theme-e .p-card-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.67rem; color: #999; line-height: 1.5;
+    }
+    .theme-e .p-swatches {
+      display: flex; gap: 0.5rem;
+      padding: 0.9rem 1.4rem;
+      background: #F5F5F5;
+      border-top: 1px solid #eee;
+      align-items: center;
+    }
+
+    /* ── Theme F: Black + White Hybrid (Half/Half) ── */
+    .theme-f { background: #fff; }
+
+    .theme-f .p-nav {
+      background: #111;
+      border-bottom: none;
+      padding: 0.9rem 1.4rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .theme-f .p-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 0.92rem;
+      color: #FFE500;
+    }
+    .theme-f .p-navlinks { display: flex; gap: 1.2rem; }
+    .theme-f .p-navlink {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.76rem; font-weight: 500;
+      color: #555;
+    }
+    .theme-f .p-navlink.active { color: #fff; }
+
+    .theme-f .p-hero {
+      padding: 3rem 1.4rem 2rem;
+      background: #111;
+    }
+    .theme-f .p-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.64rem; color: #444;
+      letter-spacing: 0.1em; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .theme-f .p-eyebrow::before {
+      content: '';
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #FFE500;
+    }
+    .theme-f .p-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 0.9; letter-spacing: -0.03em;
+      color: #F5EFE3; margin-bottom: 0.9rem;
+    }
+    .theme-f .p-name em { color: #FFE500; font-style: normal; }
+    .theme-f .p-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem; color: #555;
+      max-width: 280px; line-height: 1.6; margin-bottom: 1.4rem;
+    }
+    .theme-f .p-btn {
+      display: inline-block;
+      background: #FFE500; color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.74rem; font-weight: 700;
+      padding: 0.55em 1.3em; border-radius: 6px;
+      margin-right: 0.6rem;
+    }
+    .theme-f .p-btn-outline {
+      display: inline-block;
+      border: 1px solid #333; color: #888;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.74rem; font-weight: 600;
+      padding: 0.55em 1.3em; border-radius: 6px;
+    }
+    .theme-f .p-stats {
+      background: #fff;
+      border-top: none;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      padding: 1.4rem 1.4rem; gap: 1rem;
+    }
+    .theme-f .p-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem; font-weight: 800; line-height: 1;
+      color: #111;
+    }
+    .theme-f .p-stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: #bbb;
+      letter-spacing: 0.06em; margin-top: 0.3rem;
+    }
+    .theme-f .p-cards {
+      padding: 1.4rem; background: #fff;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem;
+    }
+    .theme-f .p-card {
+      background: #F5F5F5;
+      border: 1px solid #eee;
+      border-radius: 10px; padding: 1rem;
+      position: relative; overflow: hidden;
+    }
+    .theme-f .p-card-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem; font-weight: 800;
+      color: rgba(0,0,0,0.04);
+      position: absolute; right: 0.5rem; top: 0.2rem; line-height: 1;
+    }
+    .theme-f .p-card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; color: #111;
+      letter-spacing: 0.08em; margin-bottom: 0.4rem;
+    }
+    .theme-f .p-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.88rem; font-weight: 700;
+      color: #111; margin-bottom: 0.3rem;
+    }
+    .theme-f .p-card-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.67rem; color: #999; line-height: 1.5;
+    }
+    .theme-f .p-swatches {
+      display: flex; gap: 0.5rem;
+      padding: 0.9rem 1.4rem;
+      background: #F0F0F0;
+      border-top: 1px solid #e5e5e5;
+      align-items: center;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .font-exp { grid-template-columns: 1fr; }
+      .font-exp-demo { border-left: none; padding-left: 0; border-top: 1px solid #1a1a1a; padding-top: 1.5rem; margin-top: 1rem; }
+      .light-themes { grid-template-columns: 1fr; }
+      .theme-d .p-stats, .theme-e .p-stats, .theme-f .p-stats { grid-template-columns: repeat(2, 1fr); }
+      .theme-d .p-cards, .theme-e .p-cards, .theme-f .p-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <span class="top-bar-title">// GBH PREVIEW — Fonts & Light Themes</span>
+    <div class="top-bar-links">
+      <a class="top-bar-link" href="#fonts">Fonts</a>
+      <a class="top-bar-link" href="#light">Light themes</a>
+      <a class="top-bar-link" href="./preview-themes.html">← Dark themes</a>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       PART 1: FONT EXPERIMENTS
+  ════════════════════════════════════════ -->
+  <div class="page-section" id="fonts">
+    <div class="section-eyebrow">// 01 — Typography</div>
+    <div class="section-title">Title Font Experiments</div>
+    <p class="section-sub">
+      Eight options including single-font, multi-font mixing, and serif/sans contrasts.
+      <strong>My honest take is below each one.</strong>
+    </p>
+
+    <div class="font-experiments">
+
+      <!-- 1. Syne — current -->
+      <div class="font-exp">
+        <div class="font-exp-meta">
+          <div class="exp-num">// 01</div>
+          <div class="exp-name">Syne 800 (current)</div>
+          <div class="exp-note">
+            Wide, geometric, clean.<br>
+            <em>Problem: too common right now. Every portfolio uses it. No character of its own.</em>
+          </div>
+          <span class="exp-verdict verdict-meh">BASELINE / TOO SAFE</span>
+        </div>
+        <div class="font-exp-demo">
+          <div class="demo-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+          <div class="demo-1-name"><em>Gad</em><br>Baruch Hinkis</div>
+          <div class="demo-1-body">Building things that make music more expressive, accessible, and stranger.</div>
+        </div>
+      </div>
+
+      <!-- 2. Bebas Neue -->
+      <div class="font-exp">
+        <div class="font-exp-meta">
+          <div class="exp-num">// 02</div>
+          <div class="exp-name">Bebas Neue</div>
+          <div class="exp-note">
+            Condensed, all-caps, maximum impact.<br>
+            <em>Classic street/music industry font. Poster energy, zero compromise. Very direct.</em>
+          </div>
+          <span class="exp-verdict verdict-good">STRONG CANDIDATE</span>
+        </div>
+        <div class="font-exp-demo">
+          <div class="demo-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+          <div class="demo-2-name"><em>GAD</em><br>BARUCH HINKIS</div>
+          <div class="demo-1-body">Building things that make music more expressive, accessible, and stranger.</div>
+        </div>
+      </div>
+
+      <!-- 3. Archivo Black -->
+      <div class="font-exp">
+        <div class="font-exp-meta">
+          <div class="exp-num">// 03</div>
+          <div class="exp-name">Archivo Black</div>
+          <div class="exp-note">
+            Heavy grotesque, wide, grounded.<br>
+            <em>More approachable than Bebas, more personality than Syne. Sits between poster and editorial.</em>
+          </div>
+          <span class="exp-verdict verdict-good">SOLID CHOICE</span>
+        </div>
+        <div class="font-exp-demo">
+          <div class="demo-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+          <div class="demo-3-name"><em>Gad</em><br>Baruch Hinkis</div>
+          <div class="demo-1-body">Building things that make music more expressive, accessible, and stranger.</div>
+        </div>
+      </div>
+
+      <!-- 4. Playfair — unexpected serif -->
+      <div class="font-exp">
+        <div class="font-exp-meta">
+          <div class="exp-num">// 04</div>
+          <div class="exp-name">Playfair Display Italic</div>
+          <div class="exp-note">
+            Classic editorial serif, slanted, dramatic.<br>
+            <em>Completely unexpected for a tech/music person — that tension is interesting. Makes the name feel like a magazine cover.</em>
+          </div>
+          <span class="exp-verdict verdict-interesting">UNEXPECTED / INTERESTING</span>
+        </div>
+        <div class="font-exp-demo">
+          <div class="demo-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+          <div class="demo-4-name"><em>Gad</em><br>Baruch Hinkis</div>
+          <div class="demo-1-body">Building things that make music more expressive, accessible, and stranger.</div>
+        </div>
+      </div>
+
+      <!-- 5. MULTI: Bebas first name + Space Grotesk surname -->
+      <div class="font-exp">
+        <div class="font-exp-meta">
+          <div class="exp-num">// 05 ★</div>
+          <div class="exp-name">Multi: Bebas + Space Grotesk</div>
+          <div class="exp-note">
+            "GAD" screams. Surname whispers back.<br>
+            <em>Two fonts, two registers, one name. The scale contrast does the heavy lifting — no colour needed. This is very "punk editorial."</em>
+          </div>
+          <span class="exp-verdict verdict-strong">MY TOP PICK</span>
+        </div>
+        <div class="font-exp-demo">
+          <div class="demo-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+          <span class="demo-5-first">GAD</span>
+          <span class="demo-5-last">Baruch Hinkis</span>
+          <div class="demo-1-body" style="margin-top:1.4rem;">Building things that make music more expressive, accessible, and stranger.</div>
+        </div>
+      </div>
+
+      <!-- 6. MULTI: Playfair italic first + Syne bold surname -->
+      <div class="font-exp">
+        <div class="font-exp-meta">
+          <div class="exp-num">// 06</div>
+          <div class="exp-name">Multi: Playfair italic + Syne</div>
+          <div class="exp-note">
+            Serif italic "Gad" — refined, personal.<br>
+            Syne "BARUCH HINKIS" — wide, strong.<br>
+            <em>The serif/sans contrast signals: this person has classical depth AND modern edge.</em>
+          </div>
+          <span class="exp-verdict verdict-interesting">HIGH CONCEPT</span>
+        </div>
+        <div class="font-exp-demo">
+          <div class="demo-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+          <span class="demo-6-first">Gad</span>
+          <span class="demo-6-last">Baruch Hinkis</span>
+          <div class="demo-1-body" style="margin-top:1.4rem;">Building things that make music more expressive, accessible, and stranger.</div>
+        </div>
+      </div>
+
+      <!-- 7. MULTI: Bebas "GAD" giant + DM Serif italic + Space Grotesk thin -->
+      <div class="font-exp">
+        <div class="font-exp-meta">
+          <div class="exp-num">// 07 ★</div>
+          <div class="exp-name">Multi: Bebas + DM Serif + Space Grotesk (3 fonts!)</div>
+          <div class="exp-note">
+            Three fonts in one name — each part a different character.<br>
+            <em>"GAD" is the wall. "Baruch" is the signature. "Hinkis" is the fine print. Wildly editorial, nothing else looks like it.</em>
+          </div>
+          <span class="exp-verdict verdict-strong">MOST ORIGINAL</span>
+        </div>
+        <div class="font-exp-demo">
+          <div class="demo-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+          <div class="demo-7-wrap">
+            <span class="demo-7-first">GAD</span>
+            <div class="demo-7-rest">
+              <span class="demo-7-baruch">Baruch</span>
+              <span class="demo-7-hinkis">Hinkis</span>
+            </div>
+          </div>
+          <div class="demo-1-body" style="margin-top:1.4rem;">Building things that make music more expressive, accessible, and stranger.</div>
+        </div>
+      </div>
+
+      <!-- 8. Cabinet Grotesk -->
+      <div class="font-exp">
+        <div class="font-exp-meta">
+          <div class="exp-num">// 08</div>
+          <div class="exp-name">Cabinet Grotesk 900</div>
+          <div class="exp-note">
+            Variable grotesque, extreme weight range.<br>
+            <em>Like Syne but with actual character — wider stroke contrast, slightly quirky letterforms. More unique than Syne.</em>
+          </div>
+          <span class="exp-verdict verdict-good">SYNE UPGRADE</span>
+        </div>
+        <div class="font-exp-demo">
+          <div class="demo-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+          <div class="demo-8-name"><em>Gad</em><br>Baruch Hinkis</div>
+          <div class="demo-1-body">Building things that make music more expressive, accessible, and stranger.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       PART 2: LIGHT THEMES
+  ════════════════════════════════════════ -->
+  <div class="page-section" id="light">
+    <div class="section-eyebrow">// 02 — Light Palettes</div>
+    <div class="section-title">Three Bright Options</div>
+    <p class="section-sub">
+      D = warm cream editorial · E = stark white punk · F = split dark-hero / white-body.<br>
+      <strong>All using Bebas Neue or Syne for titles in these previews.</strong>
+    </p>
+
+    <div class="light-themes">
+
+      <!-- D: Warm Editorial -->
+      <div class="theme-wrap">
+        <div class="theme-label">
+          <strong>D — Warm Cream Editorial</strong>
+          <span>/ #F5EFE3 · organic · magazine</span>
+        </div>
+        <div class="preview theme-d">
+          <div class="p-nav">
+            <span class="p-brand">GBH</span>
+            <div class="p-navlinks">
+              <span class="p-navlink active">Products</span>
+              <span class="p-navlink">Live</span>
+              <span class="p-navlink">Music</span>
+              <span class="p-navlink">About</span>
+            </div>
+          </div>
+          <div class="p-hero">
+            <div class="p-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+            <div class="p-name"><em>GAD</em><br>BARUCH HINKIS</div>
+            <div class="p-tagline">Building things that make music more expressive, accessible, and stranger.</div>
+            <div>
+              <span class="p-btn">Explore</span>
+              <span class="p-btn-outline">Listen</span>
+            </div>
+          </div>
+          <div class="p-stats">
+            <div><div class="p-stat-num">20+</div><div class="p-stat-label">years music</div></div>
+            <div><div class="p-stat-num">12+</div><div class="p-stat-label">releases</div></div>
+            <div><div class="p-stat-num">2</div><div class="p-stat-label">live apps</div></div>
+            <div><div class="p-stat-num">∞</div><div class="p-stat-label">in progress</div></div>
+          </div>
+          <div class="p-cards">
+            <div class="p-card">
+              <div class="p-card-num">01</div>
+              <div class="p-card-tag">MUSIC</div>
+              <div class="p-card-title">Music</div>
+              <div class="p-card-desc">20+ years, hip-hop to electro-swing.</div>
+            </div>
+            <div class="p-card">
+              <div class="p-card-num">02</div>
+              <div class="p-card-tag">TECH</div>
+              <div class="p-card-title">Products</div>
+              <div class="p-card-desc">PatchWorld, Jambl, WaveRider.</div>
+            </div>
+            <div class="p-card">
+              <div class="p-card-num">03</div>
+              <div class="p-card-tag">LIVE</div>
+              <div class="p-card-title">Live</div>
+              <div class="p-card-desc">Shows, workshops, installations.</div>
+            </div>
+          </div>
+          <div class="p-swatches">
+            <div class="swatch" style="background:#F5EFE3;border:1px solid #ddd;"></div>
+            <div class="swatch" style="background:#EDE6D8;border:1px solid #d5cdc0;"></div>
+            <div class="swatch" style="background:#FF4020;"></div>
+            <div class="swatch" style="background:#1a1410;"></div>
+            <span class="swatch-note">Warm Cream · #FF4020 accent · Bebas Neue</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- E: Stark White Punk -->
+      <div class="theme-wrap">
+        <div class="theme-label">
+          <strong>E — Stark White Punk</strong>
+          <span>/ #FFFFFF · high contrast · Bauhaus</span>
+        </div>
+        <div class="preview theme-e">
+          <div class="p-nav">
+            <span class="p-brand">GAD BARUCH HINKIS</span>
+            <div class="p-navlinks">
+              <span class="p-navlink active">Products</span>
+              <span class="p-navlink">Live</span>
+              <span class="p-navlink">Music</span>
+              <span class="p-navlink">About</span>
+            </div>
+          </div>
+          <div class="p-hero">
+            <div class="p-eyebrow">MUSIC MAKER · TECH BUILDER · 20 YEARS</div>
+            <div class="p-name"><em>GAD</em><br>BARUCH HINKIS</div>
+            <div class="p-tagline">Building things that make music more expressive, accessible, and stranger.</div>
+            <div>
+              <span class="p-btn">Explore</span>
+              <span class="p-btn-outline">Listen</span>
+            </div>
+          </div>
+          <div class="p-stats">
+            <div><div class="p-stat-num">20+</div><div class="p-stat-label">years music</div></div>
+            <div><div class="p-stat-num">12+</div><div class="p-stat-label">releases</div></div>
+            <div><div class="p-stat-num">2</div><div class="p-stat-label">live apps</div></div>
+            <div><div class="p-stat-num">∞</div><div class="p-stat-label">in progress</div></div>
+          </div>
+          <div class="p-cards">
+            <div class="p-card">
+              <div class="p-card-num">01</div>
+              <div class="p-card-tag">MUSIC</div>
+              <div class="p-card-title">MUSIC</div>
+              <div class="p-card-desc">20+ years, hip-hop to electro-swing.</div>
+            </div>
+            <div class="p-card">
+              <div class="p-card-num">02</div>
+              <div class="p-card-tag">TECH</div>
+              <div class="p-card-title">PRODUCTS</div>
+              <div class="p-card-desc">PatchWorld, Jambl, WaveRider.</div>
+            </div>
+            <div class="p-card">
+              <div class="p-card-num">03</div>
+              <div class="p-card-tag">LIVE</div>
+              <div class="p-card-title">LIVE</div>
+              <div class="p-card-desc">Shows, workshops, installations.</div>
+            </div>
+          </div>
+          <div class="p-swatches">
+            <div class="swatch" style="background:#fff;border:1px solid #ddd;"></div>
+            <div class="swatch" style="background:#F5F5F5;border:1px solid #eee;"></div>
+            <div class="swatch" style="background:#FF4020;"></div>
+            <div class="swatch" style="background:#111;"></div>
+            <span class="swatch-note">Pure White · #FF4020 accent · Bebas Neue</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- F: Split / Hybrid -->
+      <div class="theme-wrap">
+        <div class="theme-label">
+          <strong>F — Dark Hero / Light Body</strong>
+          <span>/ split layout · best of both</span>
+          <span class="badge badge-purple">HYBRID</span>
+        </div>
+        <div class="preview theme-f">
+          <div class="p-nav">
+            <span class="p-brand">GBH</span>
+            <div class="p-navlinks">
+              <span class="p-navlink active">Products</span>
+              <span class="p-navlink">Live</span>
+              <span class="p-navlink">Music</span>
+              <span class="p-navlink">About</span>
+            </div>
+          </div>
+          <div class="p-hero">
+            <div class="p-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+            <div class="p-name"><em>Gad</em><br>Baruch Hinkis</div>
+            <div class="p-tagline">Building things that make music more expressive, accessible, and stranger.</div>
+            <div>
+              <span class="p-btn">Explore</span>
+              <span class="p-btn-outline">Listen</span>
+            </div>
+          </div>
+          <div class="p-stats">
+            <div><div class="p-stat-num">20+</div><div class="p-stat-label">years music</div></div>
+            <div><div class="p-stat-num">12+</div><div class="p-stat-label">releases</div></div>
+            <div><div class="p-stat-num">2</div><div class="p-stat-label">live apps</div></div>
+            <div><div class="p-stat-num">∞</div><div class="p-stat-label">in progress</div></div>
+          </div>
+          <div class="p-cards">
+            <div class="p-card">
+              <div class="p-card-num">01</div>
+              <div class="p-card-tag">MUSIC</div>
+              <div class="p-card-title">Music</div>
+              <div class="p-card-desc">20+ years, hip-hop to electro-swing.</div>
+            </div>
+            <div class="p-card">
+              <div class="p-card-num">02</div>
+              <div class="p-card-tag">TECH</div>
+              <div class="p-card-title">Products</div>
+              <div class="p-card-desc">PatchWorld, Jambl, WaveRider.</div>
+            </div>
+            <div class="p-card">
+              <div class="p-card-num">03</div>
+              <div class="p-card-tag">LIVE</div>
+              <div class="p-card-title">Live</div>
+              <div class="p-card-desc">Shows, workshops, installations.</div>
+            </div>
+          </div>
+          <div class="p-swatches">
+            <div class="swatch" style="background:#111;"></div>
+            <div class="swatch" style="background:#fff;border:1px solid #eee;"></div>
+            <div class="swatch" style="background:#FFE500;"></div>
+            <div class="swatch" style="background:#F5F5F5;border:1px solid #eee;"></div>
+            <span class="swatch-note">Dark nav+hero · Light content below</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="page-section" style="border-bottom:none; text-align:center;">
+    <div class="section-eyebrow" style="text-align:center; margin-bottom:1rem;">// What to tell me</div>
+    <p style="font-family:'Space Grotesk',sans-serif; color:#555; font-size:0.92rem; max-width:560px; margin:0 auto; line-height:1.7;">
+      Pick a <strong style="color:#eee;">color scheme</strong> (A–F from both pages) and a <strong style="color:#eee;">font option</strong> (01–08 above) — or mix them freely.<br>
+      e.g. <span style="font-family:'DM Mono',monospace; color:#FFE500; font-size:0.8rem;">"F + 07"</span> = hybrid dark/light with the 3-font name treatment.
+    </p>
+    <p style="margin-top:1.2rem;"><a href="./preview-themes.html" style="font-family:'DM Mono',monospace; font-size:0.78rem; color:#444; text-decoration:underline;">← Back to dark themes (A, B, C)</a></p>
+  </div>
+
+</body>
+</html>

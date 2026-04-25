@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Name Lab + FUMU Colors — GBH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@1,400;1,600;1,700&family=Cinzel:wght@700;900&family=IM+Fell+English:ital@1&family=Fraunces:ital,opsz,wght@1,9..144,700;1,9..144,900&family=Bangers&family=Alfa+Slab+One&family=Righteous&family=Boogaloo&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── FUMU palette ── */
+    :root {
+      --bg: #08060A;
+      --bg-2: #0F0C14;
+      --ink: #F2EDE8;
+      --muted: #5a5260;
+      --line: rgba(255,255,255,0.07);
+
+      --yellow: #FFE500;
+      --cyan:   #00DDFF;
+      --purple: #B026FF;
+      --magenta:#FF2090;
+
+      --f-body: 'Space Grotesk', sans-serif;
+      --f-mono: 'DM Mono', monospace;
+      --f-bebas: 'Bebas Neue', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--f-body);
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 8rem;
+    }
+
+    /* ── Top nav ── */
+    .top-bar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(8,6,10,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-bar-id {
+      font-family: var(--f-mono);
+      font-size: 0.72rem; color: var(--yellow);
+      letter-spacing: 0.1em;
+    }
+    .top-bar-links { display: flex; gap: 1.8rem; }
+    .top-bar-links a {
+      font-family: var(--f-mono); font-size: 0.68rem;
+      color: var(--muted); letter-spacing: 0.06em;
+      text-decoration: none;
+    }
+    .top-bar-links a:hover { color: var(--ink); }
+
+    /* ── Shared layout ── */
+    .wrap { max-width: 1300px; margin: 0 auto; padding: 5rem 2rem; }
+    .section-hed {
+      display: flex; align-items: baseline; gap: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .eyebrow {
+      font-family: var(--f-mono); font-size: 0.68rem;
+      color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .title {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      letter-spacing: -0.025em; color: var(--ink); line-height: 1;
+    }
+    .sub {
+      font-family: var(--f-body); font-size: 0.9rem;
+      color: var(--muted); max-width: 580px; line-height: 1.65;
+      margin-bottom: 3.5rem; margin-top: 0.5rem;
+    }
+    .sub strong { color: #888; font-weight: 600; }
+
+    /* ════════════════════════════════
+       SECTION 1 — NAME LAB
+    ════════════════════════════════ */
+
+    /* Grid of name experiments */
+    .name-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5px; /* tight gap = newspaper grid feel */
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .name-cell {
+      background: var(--bg-2);
+      padding: 2.5rem 2rem 2rem;
+      display: flex; flex-direction: column; gap: 0;
+      position: relative;
+    }
+    .name-cell:hover { background: #12101a; }
+
+    .cell-label {
+      font-family: var(--f-mono); font-size: 0.6rem;
+      color: var(--muted); letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 1.8rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .cell-badge {
+      font-family: var(--f-mono); font-size: 0.58rem;
+      padding: 0.15em 0.5em; border-radius: 3px;
+      letter-spacing: 0.06em;
+    }
+    .badge-pick { background: var(--yellow); color: #000; }
+    .badge-try  { background: rgba(0,221,255,0.12); color: var(--cyan); border: 1px solid rgba(0,221,255,0.2); }
+    .badge-wild { background: rgba(176,38,255,0.12); color: var(--purple); border: 1px solid rgba(176,38,255,0.25); }
+
+    /* The name compositions */
+    .n-gad-bebas {
+      font-family: var(--f-bebas);
+      font-size: clamp(5rem, 13vw, 9rem);
+      line-height: 0.85; letter-spacing: 0.02em;
+      color: var(--yellow); display: block;
+    }
+
+    /* Baruch variants */
+    .n-baruch-dmserif {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic; display: block;
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      color: var(--ink); line-height: 1.05; letter-spacing: 0.01em;
+      margin-top: 0.1rem;
+    }
+    .n-baruch-cormorant {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 700; display: block;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      color: var(--ink); line-height: 1; letter-spacing: -0.01em;
+      margin-top: 0.05rem;
+    }
+    .n-baruch-cinzel {
+      font-family: 'Cinzel', serif;
+      font-weight: 900; display: block;
+      font-size: clamp(1.1rem, 2.8vw, 2.1rem);
+      color: var(--ink); line-height: 1.1; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+    .n-baruch-fell {
+      font-family: 'IM Fell English', serif;
+      font-style: italic; display: block;
+      font-size: clamp(1.8rem, 4.5vw, 3.4rem);
+      color: var(--ink); line-height: 1; letter-spacing: 0.02em;
+      margin-top: 0.1rem;
+    }
+    .n-baruch-fraunces {
+      font-family: 'Fraunces', serif;
+      font-style: italic; font-weight: 900; display: block;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      color: var(--ink); line-height: 0.95; letter-spacing: -0.02em;
+      margin-top: 0.05rem;
+    }
+
+    /* Hinkis variants */
+    .n-hinkis-spacelight {
+      font-family: var(--f-body); font-weight: 300; display: block;
+      font-size: clamp(0.9rem, 2.2vw, 1.7rem);
+      color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+    .n-hinkis-bangers {
+      font-family: 'Bangers', cursive; display: block;
+      font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+      color: var(--cyan); line-height: 1; letter-spacing: 0.06em;
+      margin-top: 0.1rem;
+    }
+    .n-hinkis-alfaslab {
+      font-family: 'Alfa Slab One', serif; display: block;
+      font-size: clamp(1.4rem, 3.5vw, 2.7rem);
+      color: var(--magenta); line-height: 1; letter-spacing: 0.02em;
+      margin-top: 0.2rem;
+    }
+    .n-hinkis-righteous {
+      font-family: 'Righteous', sans-serif; display: block;
+      font-size: clamp(1.5rem, 3.8vw, 2.9rem);
+      color: var(--purple); line-height: 1; letter-spacing: 0.04em;
+      margin-top: 0.1rem;
+    }
+    .n-hinkis-boogaloo {
+      font-family: 'Boogaloo', sans-serif; display: block;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      color: var(--yellow); line-height: 0.95; letter-spacing: 0.02em;
+      margin-top: 0.05rem;
+    }
+
+    .cell-tagline {
+      font-family: var(--f-body); font-size: 0.78rem;
+      color: #3d3848; line-height: 1.5;
+      margin-top: 1.4rem; max-width: 240px;
+    }
+
+    /* font labels under each element */
+    .font-notes {
+      display: flex; flex-direction: column; gap: 0.25rem;
+      margin-top: 1.2rem;
+    }
+    .font-note {
+      font-family: var(--f-mono); font-size: 0.6rem;
+      color: #2e2840; letter-spacing: 0.06em;
+      display: flex; gap: 0.5rem; align-items: center;
+    }
+    .font-note em { color: #4a4260; font-style: normal; }
+
+    /* ════════════════════════════════
+       SECTION 2 — FUMU COLOR SYSTEM
+    ════════════════════════════════ */
+
+    .color-system {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .color-cell {
+      background: var(--bg-2);
+      padding: 2rem 1.8rem;
+    }
+    .color-swatch-big {
+      width: 48px; height: 48px; border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .color-name {
+      font-family: var(--f-mono); font-size: 0.72rem;
+      color: #888; letter-spacing: 0.08em; margin-bottom: 0.2rem;
+    }
+    .color-hex {
+      font-family: var(--f-mono); font-size: 1.1rem;
+      font-weight: 500; color: var(--ink); margin-bottom: 0.5rem;
+    }
+    .color-use {
+      font-family: var(--f-body); font-size: 0.78rem;
+      color: var(--muted); line-height: 1.55;
+    }
+    .color-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+    .color-tag {
+      font-family: var(--f-mono); font-size: 0.6rem;
+      padding: 0.2em 0.55em; border-radius: 4px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ════════════════════════════════
+       SECTION 3 — FULL HERO MOCKUP
+    ════════════════════════════════ */
+
+    .mockup {
+      border: 1px solid var(--line);
+      border-radius: 18px; overflow: hidden;
+    }
+
+    /* Nav — dark, stays dark */
+    .mk-nav {
+      background: #050406;
+      border-bottom: 1px solid rgba(255,229,0,0.08);
+      padding: 1.1rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .mk-brand {
+      font-family: var(--f-bebas);
+      font-size: 1.4rem; letter-spacing: 0.06em;
+      color: var(--ink);
+    }
+    .mk-brand em { color: var(--yellow); font-style: normal; }
+    .mk-navlinks { display: flex; gap: 2rem; }
+    .mk-navlink {
+      font-family: var(--f-body); font-size: 0.82rem; font-weight: 500;
+      color: #444; letter-spacing: 0.02em;
+    }
+    .mk-navlink.active { color: var(--ink); }
+
+    /* Hero — dark with color glows */
+    .mk-hero {
+      background: #08060A;
+      padding: 5rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .mk-glow-y {
+      position: absolute; top: -40%; left: -10%;
+      width: 55%; height: 80%;
+      background: radial-gradient(ellipse, rgba(255,229,0,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .mk-glow-c {
+      position: absolute; top: 20%; right: -5%;
+      width: 45%; height: 70%;
+      background: radial-gradient(ellipse, rgba(0,221,255,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .mk-glow-p {
+      position: absolute; bottom: -20%; left: 30%;
+      width: 40%; height: 60%;
+      background: radial-gradient(ellipse, rgba(176,38,255,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .mk-eyebrow {
+      font-family: var(--f-mono); font-size: 0.72rem;
+      color: var(--yellow); letter-spacing: 0.12em;
+      display: flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 2rem; position: relative;
+    }
+    .mk-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 10px var(--yellow), 0 0 24px rgba(255,229,0,0.4);
+    }
+
+    /* The name — 3 fonts in mockup */
+    .mk-name { position: relative; margin-bottom: 2rem; }
+    .mk-gad {
+      font-family: var(--f-bebas);
+      font-size: clamp(5rem, 14vw, 10rem);
+      line-height: 0.82; letter-spacing: 0.02em;
+      color: var(--yellow); display: block;
+    }
+    .mk-baruch {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 700; display: block;
+      font-size: clamp(2.2rem, 6vw, 4.8rem);
+      color: var(--ink); line-height: 0.95; letter-spacing: -0.01em;
+      margin-top: 0.05em;
+    }
+    .mk-hinkis {
+      font-family: 'Alfa Slab One', serif; display: block;
+      font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+      color: var(--magenta); line-height: 1;
+      letter-spacing: 0.04em; margin-top: 0.15em;
+    }
+
+    .mk-tagline {
+      font-family: var(--f-body); font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+      color: #5a5260; max-width: 520px; line-height: 1.65;
+      margin-bottom: 2.2rem; position: relative;
+    }
+    .mk-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; position: relative; }
+    .mk-btn-y {
+      background: var(--yellow); color: #000;
+      font-family: var(--f-body); font-size: 0.88rem; font-weight: 700;
+      padding: 0.7em 1.8em; border-radius: 8px;
+    }
+    .mk-btn-c {
+      border: 1px solid rgba(0,221,255,0.25); color: var(--cyan);
+      font-family: var(--f-body); font-size: 0.88rem; font-weight: 500;
+      padding: 0.7em 1.8em; border-radius: 8px;
+    }
+    .mk-btn-ghost {
+      border: 1px solid rgba(255,255,255,0.1); color: #555;
+      font-family: var(--f-body); font-size: 0.88rem; font-weight: 500;
+      padding: 0.7em 1.8em; border-radius: 8px;
+    }
+
+    /* Stats — still dark */
+    .mk-stats {
+      background: #0c0a10;
+      border-top: 1px solid var(--line);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      padding: 2rem 2.5rem; gap: 1rem;
+    }
+    .mk-stat-num {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 2.2rem; line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .mk-stat-label {
+      font-family: var(--f-mono); font-size: 0.65rem;
+      color: #383048; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    /* Domain cards — where FUMU colors live */
+    .mk-domains {
+      background: #F5F0E8; /* light body starts here */
+      padding: 3rem 2.5rem;
+      border-top: 3px solid var(--yellow); /* the break-line between dark+light */
+    }
+    .mk-domains-label {
+      font-family: var(--f-mono); font-size: 0.68rem;
+      color: #999; letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+    .mk-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: #e5dfd0;
+      border: 1px solid #e5dfd0; border-radius: 12px; overflow: hidden;
+    }
+    .mk-card {
+      background: #F5F0E8;
+      padding: 1.8rem; position: relative; overflow: hidden;
+    }
+    .mk-card-accent {
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%;
+    }
+    .mk-card-num {
+      font-family: var(--f-bebas);
+      font-size: 4rem; line-height: 1;
+      position: absolute; right: 0.8rem; top: 0.2rem;
+      opacity: 0.05; color: #000;
+    }
+    .mk-card-tag {
+      font-family: var(--f-mono); font-size: 0.62rem;
+      letter-spacing: 0.1em; margin-bottom: 0.5rem;
+    }
+    .mk-card-title {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 1.25rem; color: #0d0b12;
+      letter-spacing: -0.02em; margin-bottom: 0.5rem;
+    }
+    .mk-card-desc {
+      font-family: var(--f-body); font-size: 0.8rem;
+      color: #8a8278; line-height: 1.55;
+    }
+    .mk-card-arrow {
+      font-size: 1.1rem; margin-top: 1rem;
+      display: block;
+    }
+
+    /* Footer */
+    .mk-footer {
+      background: #0d0b10;
+      border-top: 1px solid var(--line);
+      padding: 1.3rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .mk-footer-brand {
+      font-family: var(--f-body); font-size: 0.8rem; color: #333;
+    }
+    .mk-footer-copy {
+      font-family: var(--f-mono); font-size: 0.65rem; color: #252030;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none; border-top: 1px solid #111;
+      margin: 0;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .name-grid { grid-template-columns: 1fr; }
+      .color-system { grid-template-columns: 1fr 1fr; }
+      .mk-stats { grid-template-columns: repeat(2, 1fr); }
+      .mk-cards { grid-template-columns: 1fr; }
+      .mk-navlinks { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <span class="top-bar-id">// GBH — Name Lab + FUMU Colors</span>
+    <div class="top-bar-links">
+      <a href="#namelab">Name Lab</a>
+      <a href="#colors">Colors</a>
+      <a href="#mockup">Full Mockup</a>
+      <a href="./preview-fonts.html">← Fonts</a>
+      <a href="./preview-themes.html">← Dark Themes</a>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       SECTION 1 — NAME LAB
+  ═══════════════════════════════════ -->
+  <div class="wrap" id="namelab">
+    <div class="section-hed">
+      <span class="eyebrow">// 01</span>
+      <h2 class="title">Name Lab</h2>
+    </div>
+    <p class="sub">
+      <strong>"GAD"</strong> stays Bebas Neue — that's locked. Experimenting with
+      <strong>Baruch</strong> (spiritual · artistic) and <strong>Hinkis</strong> (street · funky)
+      across 5 combos. Font labels shown below each.
+    </p>
+
+    <div class="name-grid">
+
+      <!-- 1 — DM Serif + Space light (previous baseline) -->
+      <div class="name-cell">
+        <div class="cell-label">01 &nbsp;·&nbsp; Baseline</div>
+        <span class="n-gad-bebas">GAD</span>
+        <span class="n-baruch-dmserif">Baruch</span>
+        <span class="n-hinkis-spacelight">Hinkis</span>
+        <div class="font-notes">
+          <div class="font-note">Bebas Neue · <em>GAD</em></div>
+          <div class="font-note">DM Serif Display italic · <em>Baruch</em></div>
+          <div class="font-note">Space Grotesk 300 · <em>Hinkis</em></div>
+        </div>
+      </div>
+
+      <!-- 2 — Cormorant Garamond + Bangers -->
+      <div class="name-cell">
+        <div class="cell-label">02 &nbsp;·&nbsp; <span class="cell-badge badge-try">TRY THIS</span></div>
+        <span class="n-gad-bebas">GAD</span>
+        <span class="n-baruch-cormorant">Baruch</span>
+        <span class="n-hinkis-bangers">Hinkis</span>
+        <div class="font-notes">
+          <div class="font-note">Bebas Neue · <em>GAD</em></div>
+          <div class="font-note">Cormorant Garamond 700 italic · <em>Baruch</em> — calligraphic, refined, medieval manuscript energy</div>
+          <div class="font-note">Bangers · <em>Hinkis</em> — pure street comic book, American graffiti</div>
+        </div>
+      </div>
+
+      <!-- 3 — Cinzel + Alfa Slab One -->
+      <div class="name-cell">
+        <div class="cell-label">03 &nbsp;·&nbsp; <span class="cell-badge badge-pick">★ MY PICK</span></div>
+        <span class="n-gad-bebas">GAD</span>
+        <span class="n-baruch-cinzel">Baruch</span>
+        <span class="n-hinkis-alfaslab">Hinkis</span>
+        <div class="font-notes">
+          <div class="font-note">Bebas Neue · <em>GAD</em></div>
+          <div class="font-note">Cinzel 900 · <em>Baruch</em> — Roman inscription, ancient/sacred, like it was carved in stone. Deeply spiritual.</div>
+          <div class="font-note">Alfa Slab One · <em>Hinkis</em> — fat slab serif, old-school hip-hop poster, 100% street</div>
+        </div>
+      </div>
+
+      <!-- 4 — IM Fell English + Righteous -->
+      <div class="name-cell">
+        <div class="cell-label">04 &nbsp;·&nbsp; <span class="cell-badge badge-wild">OLD SOUL</span></div>
+        <span class="n-gad-bebas">GAD</span>
+        <span class="n-baruch-fell">Baruch</span>
+        <span class="n-hinkis-righteous">Hinkis</span>
+        <div class="font-notes">
+          <div class="font-note">Bebas Neue · <em>GAD</em></div>
+          <div class="font-note">IM Fell English italic · <em>Baruch</em> — actual 17th-century type design, genuinely old and mystical</div>
+          <div class="font-note">Righteous · <em>Hinkis</em> — retro 70s funk, almost disco, warm street energy</div>
+        </div>
+      </div>
+
+      <!-- 5 — Fraunces + Boogaloo -->
+      <div class="name-cell">
+        <div class="cell-label">05 &nbsp;·&nbsp; <span class="cell-badge badge-try">EXPRESSIVE</span></div>
+        <span class="n-gad-bebas">GAD</span>
+        <span class="n-baruch-fraunces">Baruch</span>
+        <span class="n-hinkis-boogaloo">Hinkis</span>
+        <div class="font-notes">
+          <div class="font-note">Bebas Neue · <em>GAD</em></div>
+          <div class="font-note">Fraunces 900 italic · <em>Baruch</em> — optical-size variable serif, designed with mood and soul. Vintage poetic.</div>
+          <div class="font-note">Boogaloo · <em>Hinkis</em> — loose, warm, slightly wobbly. Funky without being too comic.</div>
+        </div>
+      </div>
+
+      <!-- 6 — Cormorant + Alfa Slab (mixed best) -->
+      <div class="name-cell">
+        <div class="cell-label">06 &nbsp;·&nbsp; <span class="cell-badge badge-pick">★ STRONG</span></div>
+        <span class="n-gad-bebas">GAD</span>
+        <span class="n-baruch-cormorant">Baruch</span>
+        <span class="n-hinkis-alfaslab">Hinkis</span>
+        <div class="font-notes">
+          <div class="font-note">Bebas Neue · <em>GAD</em></div>
+          <div class="font-note">Cormorant Garamond · <em>Baruch</em> — calligraphic refinement, handmade spirituality</div>
+          <div class="font-note">Alfa Slab One · <em>Hinkis</em> — street weight that anchors the whole thing</div>
+        </div>
+      </div>
+
+    </div><!-- /name-grid -->
+  </div>
+
+
+  <hr class="divider">
+
+
+  <!-- ═══════════════════════════════════
+       SECTION 2 — COLOR SYSTEM
+  ═══════════════════════════════════ -->
+  <div class="wrap" id="colors">
+    <div class="section-hed">
+      <span class="eyebrow">// 02</span>
+      <h2 class="title">FUMU Color Universe</h2>
+    </div>
+    <p class="sub">
+      Pulled from the FUMU logo, PatchWorld, and Jambl. Each color has a <strong>semantic role</strong> —
+      not random decoration, but a system where colors carry meaning across the whole site.
+    </p>
+
+    <div class="color-system">
+
+      <div class="color-cell">
+        <div class="color-swatch-big" style="background:#FFE500; box-shadow: 0 0 20px rgba(255,229,0,0.25);"></div>
+        <div class="color-name">PRIMARY / YELLOW</div>
+        <div class="color-hex">#FFE500</div>
+        <div class="color-use">The loudest voice. Your name, primary CTAs, status dots, the accent that says "this matters most."</div>
+        <div class="color-tags">
+          <span class="color-tag" style="background:rgba(255,229,0,0.1); color:#FFE500; border:1px solid rgba(255,229,0,0.2);">Your name</span>
+          <span class="color-tag" style="background:rgba(255,229,0,0.1); color:#FFE500; border:1px solid rgba(255,229,0,0.2);">CTAs</span>
+          <span class="color-tag" style="background:rgba(255,229,0,0.1); color:#FFE500; border:1px solid rgba(255,229,0,0.2);">Stats</span>
+          <span class="color-tag" style="background:rgba(255,229,0,0.1); color:#FFE500; border:1px solid rgba(255,229,0,0.2);">FUMU brand</span>
+        </div>
+      </div>
+
+      <div class="color-cell">
+        <div class="color-swatch-big" style="background:#00DDFF; box-shadow: 0 0 20px rgba(0,221,255,0.2);"></div>
+        <div class="color-name">TECH / CYAN</div>
+        <div class="color-hex">#00DDFF</div>
+        <div class="color-use">Products, apps, XR, technical tags. PatchWorld's color. Reads as "future technology."</div>
+        <div class="color-tags">
+          <span class="color-tag" style="background:rgba(0,221,255,0.1); color:#00DDFF; border:1px solid rgba(0,221,255,0.2);">Products</span>
+          <span class="color-tag" style="background:rgba(0,221,255,0.1); color:#00DDFF; border:1px solid rgba(0,221,255,0.2);">XR</span>
+          <span class="color-tag" style="background:rgba(0,221,255,0.1); color:#00DDFF; border:1px solid rgba(0,221,255,0.2);">Tech tags</span>
+          <span class="color-tag" style="background:rgba(0,221,255,0.1); color:#00DDFF; border:1px solid rgba(0,221,255,0.2);">PatchWorld</span>
+        </div>
+      </div>
+
+      <div class="color-cell">
+        <div class="color-swatch-big" style="background:#B026FF; box-shadow: 0 0 20px rgba(176,38,255,0.2);"></div>
+        <div class="color-name">LIVE / PURPLE</div>
+        <div class="color-hex">#B026FF</div>
+        <div class="color-use">Live performance, installations, workshops. Electric and theatrical. Stage energy.</div>
+        <div class="color-tags">
+          <span class="color-tag" style="background:rgba(176,38,255,0.1); color:#B026FF; border:1px solid rgba(176,38,255,0.2);">Live</span>
+          <span class="color-tag" style="background:rgba(176,38,255,0.1); color:#B026FF; border:1px solid rgba(176,38,255,0.2);">Performance</span>
+          <span class="color-tag" style="background:rgba(176,38,255,0.1); color:#B026FF; border:1px solid rgba(176,38,255,0.2);">Installations</span>
+          <span class="color-tag" style="background:rgba(176,38,255,0.1); color:#B026FF; border:1px solid rgba(176,38,255,0.2);">FUMU brand</span>
+        </div>
+      </div>
+
+      <div class="color-cell">
+        <div class="color-swatch-big" style="background:#FF2090; box-shadow: 0 0 20px rgba(255,32,144,0.2);"></div>
+        <div class="color-name">MUSIC / MAGENTA</div>
+        <div class="color-hex">#FF2090</div>
+        <div class="color-use">Music, artist projects, releases. Jambl's color. Hot, expressive, emotional. The art voice.</div>
+        <div class="color-tags">
+          <span class="color-tag" style="background:rgba(255,32,144,0.1); color:#FF2090; border:1px solid rgba(255,32,144,0.2);">Music</span>
+          <span class="color-tag" style="background:rgba(255,32,144,0.1); color:#FF2090; border:1px solid rgba(255,32,144,0.2);">Artist projects</span>
+          <span class="color-tag" style="background:rgba(255,32,144,0.1); color:#FF2090; border:1px solid rgba(255,32,144,0.2);">Jambl</span>
+          <span class="color-tag" style="background:rgba(255,32,144,0.1); color:#FF2090; border:1px solid rgba(255,32,144,0.2);">Hinkis name</span>
+        </div>
+      </div>
+
+    </div><!-- /color-system -->
+
+    <!-- Palette strip showing it all together -->
+    <div style="background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 1.8rem 2rem;">
+      <div style="font-family: var(--f-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 1rem;">// ALL FOUR IN CONTEXT</div>
+      <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size: 2rem; color: #FFE500; letter-spacing: 0.04em;">GAD</span>
+        <span style="font-family:'Cormorant Garamond',serif; font-style: italic; font-weight: 700; font-size: 1.6rem; color: var(--ink);">Baruch</span>
+        <span style="font-family:'Alfa Slab One',serif; font-size: 1.2rem; color: #FF2090;">Hinkis</span>
+        <span style="flex: 1; min-width: 80px;"></span>
+        <span style="font-family: var(--f-mono); font-size: 0.65rem; color: #2e2840; letter-spacing: 0.08em;">Music</span>
+        <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#FF2090;"></span>
+        <span style="font-family: var(--f-mono); font-size: 0.65rem; color: #2e2840; letter-spacing: 0.08em;">Products</span>
+        <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#00DDFF;"></span>
+        <span style="font-family: var(--f-mono); font-size: 0.65rem; color: #2e2840; letter-spacing: 0.08em;">Live</span>
+        <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#B026FF;"></span>
+        <span style="font-family: var(--f-mono); font-size: 0.65rem; color: #2e2840; letter-spacing: 0.08em;">FUMU</span>
+        <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#FFE500;"></span>
+      </div>
+    </div>
+  </div>
+
+
+  <hr class="divider">
+
+
+  <!-- ═══════════════════════════════════
+       SECTION 3 — FULL HERO MOCKUP
+  ═══════════════════════════════════ -->
+  <div class="wrap" id="mockup">
+    <div class="section-hed">
+      <span class="eyebrow">// 03</span>
+      <h2 class="title">Full Mockup — Theme F + FUMU Colors + Name 06</h2>
+    </div>
+    <p class="sub">
+      Dark hero / nav + light body content. <strong>Cormorant Garamond "Baruch" + Alfa Slab "Hinkis".</strong>
+      Domain cards in cream/light with FUMU color accents per section.
+    </p>
+
+    <div class="mockup">
+
+      <!-- Nav -->
+      <div class="mk-nav">
+        <span class="mk-brand"><em>G</em>AD BARUCH HINKIS</span>
+        <div class="mk-navlinks">
+          <span class="mk-navlink">Products</span>
+          <span class="mk-navlink">Live</span>
+          <span class="mk-navlink">Music</span>
+          <span class="mk-navlink active">About</span>
+        </div>
+      </div>
+
+      <!-- Hero (dark) -->
+      <div class="mk-hero">
+        <div class="mk-glow-y"></div>
+        <div class="mk-glow-c"></div>
+        <div class="mk-glow-p"></div>
+
+        <div class="mk-eyebrow">Music Maker · Tech Builder · 20 Years of Strange New Things</div>
+
+        <div class="mk-name">
+          <span class="mk-gad">GAD</span>
+          <span class="mk-baruch">Baruch</span>
+          <span class="mk-hinkis">Hinkis</span>
+        </div>
+
+        <p class="mk-tagline">
+          I build things that make music more expressive, more accessible, and stranger.
+          Artist, producer, and music-tech builder — one ecosystem.
+        </p>
+
+        <div class="mk-btns">
+          <span class="mk-btn-y">Explore the work</span>
+          <span class="mk-btn-c">Listen</span>
+          <span class="mk-btn-ghost">Book a show</span>
+        </div>
+      </div>
+
+      <!-- Stats (dark) -->
+      <div class="mk-stats">
+        <div>
+          <div class="mk-stat-num" style="color: var(--yellow);">20+</div>
+          <div class="mk-stat-label">Years of music</div>
+        </div>
+        <div>
+          <div class="mk-stat-num" style="color: var(--cyan);">12+</div>
+          <div class="mk-stat-label">Productions released</div>
+        </div>
+        <div>
+          <div class="mk-stat-num" style="color: var(--purple);">2</div>
+          <div class="mk-stat-label">Live music apps</div>
+        </div>
+        <div>
+          <div class="mk-stat-num" style="color: var(--magenta);">∞</div>
+          <div class="mk-stat-label">Ideas in progress</div>
+        </div>
+      </div>
+
+      <!-- Domain cards (light body) -->
+      <div class="mk-domains">
+        <div class="mk-domains-label">// What I Do</div>
+        <div class="mk-cards">
+
+          <div class="mk-card">
+            <div class="mk-card-accent" style="background: var(--magenta);"></div>
+            <div class="mk-card-num">01</div>
+            <div class="mk-card-tag" style="color: var(--magenta);">MUSIC</div>
+            <div class="mk-card-title">Music</div>
+            <div class="mk-card-desc">Two decades of production, artist projects, and live performance. Israeli hip-hop to electro-swing.</div>
+            <span class="mk-card-arrow" style="color: var(--magenta);">→</span>
+          </div>
+
+          <div class="mk-card">
+            <div class="mk-card-accent" style="background: var(--cyan);"></div>
+            <div class="mk-card-num">02</div>
+            <div class="mk-card-tag" style="color: var(--cyan);">TECH</div>
+            <div class="mk-card-title">Products</div>
+            <div class="mk-card-desc">Music-creation platforms, apps, and instruments built for musicians. PatchWorld, Jambl, WaveRider.</div>
+            <span class="mk-card-arrow" style="color: var(--cyan);">→</span>
+          </div>
+
+          <div class="mk-card">
+            <div class="mk-card-accent" style="background: var(--purple);"></div>
+            <div class="mk-card-num">03</div>
+            <div class="mk-card-tag" style="color: var(--purple);">LIVE</div>
+            <div class="mk-card-title">Live</div>
+            <div class="mk-card-desc">Shows, workshops, art installations and on-site events worldwide. Book Dirty Honkers or Voice of Gad.</div>
+            <span class="mk-card-arrow" style="color: var(--purple);">→</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Footer (dark again) -->
+      <div class="mk-footer">
+        <span class="mk-footer-brand">Gad Baruch Hinkis — Music · Products · Live</span>
+        <span class="mk-footer-copy">© 2026</span>
+      </div>
+
+    </div><!-- /mockup -->
+
+    <div style="margin-top: 3rem; text-align: center; font-family: var(--f-mono); font-size: 0.78rem; color: #333; line-height: 2;">
+      Ready to build it? Tell me which <span style="color: var(--yellow);">name combo (01–06)</span> you prefer<br>
+      and any tweaks to the colors — then I'll implement the full site.
+    </div>
+  </div>
+
+</body>
+</html>

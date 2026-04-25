@@ -218,9 +218,11 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink);
-  padding: 0.3em 0.85em;
+  padding: 0.4em 0.85em;
   margin-bottom: 2rem;
   width: fit-content;
+  max-width: 100%;
+  line-height: 1.4;
 }
 
 .hero-status-dot {
@@ -237,32 +239,35 @@ a { color: inherit; text-decoration: none; }
 
 /* 3-font name */
 .hero-name { margin: 0 0 0.5rem; }
+.hero-name-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35em;
+  line-height: 1;
+}
 .hero-name-gad {
-  display: block;
   font-family: var(--font-display);
-  font-size: clamp(6rem, 16vw, 11rem);
+  font-size: clamp(4rem, 12vw, 9rem);
   line-height: 0.82;
   letter-spacing: 0.01em;
   color: var(--ink);
 }
 .hero-name-baruch {
-  display: block;
   font-family: var(--font-spiritual);
   font-style: italic;
   font-weight: 700;
-  font-size: clamp(2.5rem, 7vw, 5.2rem);
+  font-size: clamp(2rem, 5.5vw, 4rem);
   color: var(--ink-2);
   line-height: 0.95;
   margin-top: 0.02em;
 }
 .hero-name-hinkis {
-  display: block;
   font-family: var(--font-street);
-  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-size: clamp(1.4rem, 3.2vw, 2.4rem);
   color: var(--magenta);
   line-height: 1;
   letter-spacing: 0.03em;
-  margin-top: 0.15em;
 }
 
 /* Legacy compat — old hero-name-first/last still used by JS pages */

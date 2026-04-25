@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refined Theme — GBH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Alfa+Slab+One&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow:  #FFE500;
+      --black:   #0D0D0D;
+      --white:   #FFFFFF;
+      --ink2:    #3a3a3a;
+      --muted:   #999;
+      --magenta: #EE1888;
+      --cyan:    #00CCEE;
+      --purple:  #A020EE;
+      --border:  3px solid #0D0D0D;
+    }
+
+    body {
+      background: #e8e4dc;
+      font-family: 'Space Grotesk', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Page chrome ── */
+    .page-nav {
+      background: #0D0D0D;
+      padding: 0.85rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 200;
+    }
+    .page-nav-id {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      color: var(--yellow); letter-spacing: 0.1em;
+    }
+    .page-nav-links { display: flex; gap: 1.6rem; }
+    .page-nav-links a {
+      font-family: 'DM Mono', monospace; font-size: 0.66rem;
+      color: #555; text-decoration: none; letter-spacing: 0.05em;
+    }
+    .page-nav-links a:hover { color: #fff; }
+
+    /* ── Outer wrapper ── */
+    .outer { max-width: 1300px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+
+    .outer-label {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 0.14em; color: #888; text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .outer-title {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: #111; letter-spacing: -0.025em; margin-bottom: 0.4rem;
+    }
+    .outer-sub {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem; color: #666;
+      max-width: 620px; line-height: 1.65; margin-bottom: 3rem;
+    }
+    .outer-sub strong { color: #111; font-weight: 600; }
+
+    /* ══════════════════════════════════════
+       THE SITE MOCKUP
+    ══════════════════════════════════════ */
+    .site {
+      background: var(--white);
+      border: var(--border);
+      border-radius: 0;  /* no rounded — brick, direct */
+      overflow: hidden;
+      box-shadow: 6px 6px 0 #0D0D0D;
+    }
+
+    /* ── NAVBAR ── */
+    .s-nav {
+      background: var(--white);
+      border-bottom: var(--border);
+      padding: 0 2.5rem;
+      display: flex; align-items: stretch;
+      min-height: 60px;
+    }
+    .s-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem; letter-spacing: 0.04em;
+      color: var(--black);
+      display: flex; align-items: center;
+      border-right: var(--border);
+      padding-right: 2rem;
+      margin-right: 0;
+    }
+    .s-brand em { color: var(--yellow);
+      background: var(--black); padding: 0 0.12em;
+      font-style: normal; margin-right: 0.1em;
+    }
+    .s-navlinks {
+      display: flex; align-items: stretch;
+      margin-left: auto;
+    }
+    .s-navlink {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #999;
+      padding: 0 1.6rem;
+      display: flex; align-items: center;
+      border-left: 1px solid #e8e8e8;
+      transition: background 0.15s, color 0.15s;
+    }
+    .s-navlink:hover { background: #f5f5f5; color: var(--black); }
+    .s-navlink.active {
+      color: var(--black); background: var(--yellow);
+      border-left-color: var(--black);
+      font-weight: 500;
+    }
+
+    /* ── HERO ── */
+    .s-hero {
+      background: var(--white);
+      padding: 5rem 2.5rem 0;
+      border-bottom: var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: end;
+    }
+    .s-hero-left { padding-bottom: 3.5rem; }
+
+    .s-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--black);
+      padding: 0.3em 0.8em;
+      margin-bottom: 2rem;
+    }
+    .s-eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--black);
+    }
+
+    .s-name { margin-bottom: 1rem; }
+    .s-name-gad {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(6rem, 16vw, 12rem);
+      line-height: 0.82; letter-spacing: 0.01em;
+      color: var(--black); display: block;
+    }
+    .s-name-baruch {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 700; display: block;
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      color: var(--ink2); line-height: 0.95;
+      margin-top: 0.02em;
+    }
+    .s-name-hinkis {
+      font-family: 'Alfa Slab One', serif; display: block;
+      font-size: clamp(1.5rem, 4vw, 3.2rem);
+      color: var(--magenta); line-height: 1;
+      letter-spacing: 0.03em; margin-top: 0.15em;
+    }
+
+    .s-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+      color: #888; max-width: 440px; line-height: 1.65;
+      margin-bottom: 2.2rem; margin-top: 1.6rem;
+    }
+    .s-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .s-btn-y {
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      color: var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem; font-weight: 700;
+      padding: 0.72em 1.8em;
+      box-shadow: 3px 3px 0 var(--black);
+      transition: box-shadow 0.1s, transform 0.1s;
+    }
+    .s-btn-y:hover { box-shadow: 1px 1px 0 var(--black); transform: translate(2px,2px); }
+    .s-btn-k {
+      background: var(--black);
+      border: 2px solid var(--black);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      padding: 0.72em 1.8em;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.25);
+    }
+    .s-btn-ghost {
+      border: 2px solid #ddd; color: #888;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem; font-weight: 500;
+      padding: 0.72em 1.8em;
+    }
+
+    /* Hero right — big decorative number */
+    .s-hero-right {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(8rem, 20vw, 16rem);
+      line-height: 1; letter-spacing: 0.01em;
+      color: var(--yellow);
+      border-left: var(--border);
+      padding: 1rem 2.5rem 0;
+      align-self: stretch;
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      user-select: none;
+    }
+    .s-hero-right span {
+      display: block; line-height: 0.88;
+    }
+    .s-hero-right .yr-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; color: #ccc;
+      letter-spacing: 0.1em; margin-bottom: 0.5rem;
+      font-size: 0.65rem;
+    }
+
+    /* ── STATS — full yellow band ── */
+    .s-stats {
+      background: var(--yellow);
+      border-bottom: var(--border);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .s-stat {
+      padding: 1.8rem 2rem;
+      border-right: var(--border);
+    }
+    .s-stat:last-child { border-right: none; }
+    .s-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem; line-height: 1;
+      color: var(--black); margin-bottom: 0.2rem;
+    }
+    .s-stat-label {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      color: rgba(0,0,0,0.5); letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* ── DOMAIN CARDS ── */
+    .s-domains {
+      background: var(--white);
+      padding: 3rem 2.5rem;
+    }
+    .s-domains-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .s-domains-label {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      color: #bbb; letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .s-domains-all {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      color: #ccc; letter-spacing: 0.06em; text-decoration: none;
+    }
+
+    .s-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: var(--border);
+    }
+    .s-card {
+      padding: 2rem;
+      border-right: var(--border);
+      position: relative; overflow: hidden;
+    }
+    .s-card:last-child { border-right: none; }
+    .s-card:hover { background: #fafafa; }
+
+    .s-card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem; line-height: 1;
+      color: rgba(0,0,0,0.05);
+      position: absolute; right: 0.5rem; top: 0.5rem;
+    }
+    .s-card-color-bar {
+      width: 32px; height: 4px; border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+    .s-card-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.12em; font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .s-card-title {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 1.5rem; color: var(--black);
+      letter-spacing: -0.025em; margin-bottom: 0.6rem; line-height: 1;
+    }
+    .s-card-desc {
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem;
+      color: #888; line-height: 1.6; margin-bottom: 1.4rem;
+    }
+    .s-card-projects {
+      font-family: 'DM Mono', monospace; font-size: 0.62rem;
+      color: #ccc; letter-spacing: 0.06em; line-height: 1.8;
+    }
+    .s-card-arrow {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 1.2rem; display: block; margin-top: 1.2rem;
+    }
+
+    /* ── YELLOW BAND — featured section ── */
+    .s-yellow-band {
+      background: var(--yellow);
+      border-top: var(--border);
+      border-bottom: var(--border);
+      padding: 3rem 2.5rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: center;
+    }
+    .s-yb-left {}
+    .s-yb-kicker {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 0.12em; color: rgba(0,0,0,0.5);
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .s-yb-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 0.9; letter-spacing: 0.02em; color: var(--black);
+      margin-bottom: 1rem;
+    }
+    .s-yb-body {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.92rem; color: rgba(0,0,0,0.65); line-height: 1.65;
+    }
+    .s-yb-right {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .s-yb-item {
+      background: rgba(0,0,0,0.06);
+      border: 2px solid rgba(0,0,0,0.12);
+      padding: 1rem 1.2rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .s-yb-item-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 0.1em; color: rgba(0,0,0,0.4);
+      white-space: nowrap;
+    }
+    .s-yb-item-name {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 1rem; color: var(--black); letter-spacing: -0.01em;
+    }
+    .s-yb-item-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    .s-footer {
+      background: var(--black);
+      padding: 2rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .s-footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; letter-spacing: 0.05em; color: var(--white);
+    }
+    .s-footer-brand em { color: var(--yellow); font-style: normal; }
+    .s-footer-links { display: flex; gap: 2rem; }
+    .s-footer-link {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      color: #555; letter-spacing: 0.08em;
+    }
+    .s-footer-copy {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #333;
+    }
+
+    /* ══════════════════════════════════════
+       SECOND VARIATION — YELLOW HERO
+    ══════════════════════════════════════ */
+    .site-v2 {
+      background: var(--white);
+      border: var(--border);
+      overflow: hidden;
+      box-shadow: 6px 6px 0 #0D0D0D;
+      margin-top: 4rem;
+    }
+
+    /* v2 nav — yellow background */
+    .v2-nav {
+      background: var(--yellow);
+      border-bottom: var(--border);
+      padding: 0 2.5rem;
+      display: flex; align-items: stretch;
+      min-height: 60px;
+    }
+    .v2-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem; letter-spacing: 0.04em;
+      color: var(--black);
+      display: flex; align-items: center;
+      border-right: 2px solid rgba(0,0,0,0.2);
+      padding-right: 2rem;
+    }
+    .v2-navlinks {
+      display: flex; align-items: stretch; margin-left: auto;
+    }
+    .v2-navlink {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(0,0,0,0.45);
+      padding: 0 1.6rem;
+      display: flex; align-items: center;
+      border-left: 1px solid rgba(0,0,0,0.12);
+    }
+    .v2-navlink.active {
+      color: var(--black);
+      background: rgba(0,0,0,0.08);
+    }
+
+    /* v2 hero — yellow background */
+    .v2-hero {
+      background: var(--yellow);
+      padding: 4rem 2.5rem 3.5rem;
+      border-bottom: var(--border);
+    }
+    .v2-eyebrow {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      letter-spacing: 0.12em; color: rgba(0,0,0,0.4);
+      text-transform: uppercase; margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .v2-eyebrow::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--black);
+    }
+    .v2-name-gad {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(6rem, 16vw, 12rem);
+      line-height: 0.82; color: var(--black); display: block;
+    }
+    .v2-name-baruch {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 700; display: block;
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      color: rgba(0,0,0,0.65); line-height: 0.95;
+      margin-top: 0.02em;
+    }
+    .v2-name-hinkis {
+      font-family: 'Alfa Slab One', serif; display: block;
+      font-size: clamp(1.5rem, 4vw, 3.2rem);
+      color: var(--black); line-height: 1;
+      letter-spacing: 0.03em; margin-top: 0.15em;
+    }
+    .v2-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+      color: rgba(0,0,0,0.55); max-width: 460px;
+      line-height: 1.65; margin-top: 1.8rem; margin-bottom: 2rem;
+    }
+    .v2-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .v2-btn-k {
+      background: var(--black); color: var(--white);
+      border: 2px solid var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem; font-weight: 700;
+      padding: 0.72em 1.8em;
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+    }
+    .v2-btn-ghost {
+      border: 2px solid rgba(0,0,0,0.25); color: rgba(0,0,0,0.55);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem; font-weight: 500;
+      padding: 0.72em 1.8em;
+    }
+
+    /* v2 stats — white strip */
+    .v2-stats {
+      background: var(--white);
+      border-bottom: var(--border);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .v2-stat {
+      padding: 1.8rem 2rem;
+      border-right: var(--border);
+    }
+    .v2-stat:last-child { border-right: none; }
+    .v2-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem; line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .v2-stat-label {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      color: #bbb; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* v2 cards */
+    .v2-domains { background: var(--white); padding: 3rem 2.5rem; }
+    .v2-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: var(--border);
+    }
+    .v2-card {
+      padding: 2rem; border-right: var(--border);
+      position: relative; overflow: hidden;
+    }
+    .v2-card:last-child { border-right: none; }
+    .v2-card-num {
+      font-family: 'Bebas Neue', sans-serif; font-size: 5rem;
+      line-height: 1; color: rgba(0,0,0,0.04);
+      position: absolute; right: 0.5rem; top: 0.5rem;
+    }
+    .v2-card-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.12em; font-weight: 500; margin-bottom: 0.5rem;
+    }
+    .v2-card-title {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 1.5rem; color: var(--black);
+      letter-spacing: -0.025em; margin-bottom: 0.6rem; line-height: 1;
+    }
+    .v2-card-desc {
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem;
+      color: #888; line-height: 1.6; margin-bottom: 1.2rem;
+    }
+    .v2-card-arrow { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; }
+
+    .v2-footer {
+      background: var(--black); padding: 2rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .v2-footer-brand {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem;
+      letter-spacing: 0.05em; color: var(--yellow);
+    }
+    .v2-footer-links { display: flex; gap: 2rem; }
+    .v2-footer-link { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #555; letter-spacing: 0.08em; }
+    .v2-footer-copy { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #333; }
+
+    /* ── Version labels ── */
+    .version-label {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      color: #888; letter-spacing: 0.1em;
+      margin: 3.5rem 0 0.8rem; display: flex; align-items: center; gap: 0.7rem;
+    }
+    .version-label::after {
+      content: '';
+      flex: 1; height: 1px; background: #ccc;
+    }
+
+    /* ── Font note ── */
+    .font-note-row {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      margin-top: 1.5rem; padding: 1.2rem 1.5rem;
+      background: #fff; border: 1.5px solid #ddd;
+    }
+    .fn-item {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      color: #888; line-height: 1.6;
+    }
+    .fn-item strong { color: #111; font-weight: 500; }
+
+    @media (max-width: 760px) {
+      .s-hero { grid-template-columns: 1fr; }
+      .s-hero-right { display: none; }
+      .s-stats, .v2-stats { grid-template-columns: 1fr 1fr; }
+      .s-cards, .v2-cards { grid-template-columns: 1fr; }
+      .s-navlinks, .v2-navlinks { display: none; }
+      .s-yellow-band { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-nav">
+    <span class="page-nav-id">// GBH — White + Yellow + Black Refined</span>
+    <div class="page-nav-links">
+      <a href="#v1">V1 · White hero</a>
+      <a href="#v2">V2 · Yellow hero</a>
+      <a href="./preview-bright.html">← Bright themes</a>
+    </div>
+  </div>
+
+  <div class="outer">
+
+    <div class="outer-label">// Refined direction</div>
+    <h2 class="outer-title">White Punk — More Yellow, More Black</h2>
+    <p class="outer-sub">
+      Two versions of the same system. <strong>V1:</strong> white hero, yellow stats strip, punchy black borders everywhere.
+      <strong>V2:</strong> full yellow hero, white content below. Both use DM Mono in the nav and the 4-font name treatment.
+    </p>
+
+    <!-- ════════════ V1 ════════════ -->
+    <div class="version-label" id="v1">V1 — WHITE HERO · YELLOW STATS BAND</div>
+
+    <div class="site">
+
+      <div class="s-nav">
+        <span class="s-brand"><em>G</em> BARUCH HINKIS</span>
+        <div class="s-navlinks">
+          <span class="s-navlink">Products</span>
+          <span class="s-navlink">Live</span>
+          <span class="s-navlink">Music</span>
+          <span class="s-navlink active">About</span>
+        </div>
+      </div>
+
+      <div class="s-hero">
+        <div class="s-hero-left">
+          <div class="s-eyebrow">
+            <span class="s-eyebrow-dot"></span>
+            Music Maker · Tech Builder · 20 Years
+          </div>
+          <div class="s-name">
+            <span class="s-name-gad">GAD</span>
+            <span class="s-name-baruch">Baruch</span>
+            <span class="s-name-hinkis">Hinkis</span>
+          </div>
+          <p class="s-tagline">I build things that make music more expressive, more accessible, and stranger. Artist, producer, and music-tech builder.</p>
+          <div class="s-btns">
+            <span class="s-btn-y">Explore the work</span>
+            <span class="s-btn-k">Listen</span>
+            <span class="s-btn-ghost">Book a show</span>
+          </div>
+        </div>
+        <div class="s-hero-right">
+          <span class="yr-label">// EST.</span>
+          <span>20</span>
+          <span>00</span>
+        </div>
+      </div>
+
+      <!-- FULL YELLOW STATS STRIP -->
+      <div class="s-stats">
+        <div class="s-stat">
+          <div class="s-stat-num">20+</div>
+          <div class="s-stat-label">Years of music</div>
+        </div>
+        <div class="s-stat">
+          <div class="s-stat-num">12+</div>
+          <div class="s-stat-label">Productions released</div>
+        </div>
+        <div class="s-stat">
+          <div class="s-stat-num">2</div>
+          <div class="s-stat-label">Live music apps</div>
+        </div>
+        <div class="s-stat">
+          <div class="s-stat-num">∞</div>
+          <div class="s-stat-label">Ideas in progress</div>
+        </div>
+      </div>
+
+      <!-- DOMAIN CARDS -->
+      <div class="s-domains">
+        <div class="s-domains-row">
+          <span class="s-domains-label">// What I Do</span>
+        </div>
+        <div class="s-cards">
+          <div class="s-card">
+            <div class="s-card-num">01</div>
+            <div class="s-card-color-bar" style="background:var(--magenta);"></div>
+            <div class="s-card-tag" style="color:var(--magenta);">MUSIC</div>
+            <div class="s-card-title">Music</div>
+            <div class="s-card-desc">Two decades of production, artist projects, and live performance.</div>
+            <div class="s-card-projects">Voice of Gad · Dirty Honkers · Abagada</div>
+            <span class="s-card-arrow" style="color:var(--magenta);">→</span>
+          </div>
+          <div class="s-card">
+            <div class="s-card-num">02</div>
+            <div class="s-card-color-bar" style="background:var(--cyan);"></div>
+            <div class="s-card-tag" style="color:var(--cyan);">PRODUCTS</div>
+            <div class="s-card-title">Products</div>
+            <div class="s-card-desc">Music-creation platforms, apps, and instruments built for musicians.</div>
+            <div class="s-card-projects">PatchWorld · Jambl · WaveRider</div>
+            <span class="s-card-arrow" style="color:var(--cyan);">→</span>
+          </div>
+          <div class="s-card">
+            <div class="s-card-num">03</div>
+            <div class="s-card-color-bar" style="background:var(--purple);"></div>
+            <div class="s-card-tag" style="color:var(--purple);">LIVE</div>
+            <div class="s-card-title">Live</div>
+            <div class="s-card-desc">Shows, workshops, art installations, and on-site events worldwide.</div>
+            <div class="s-card-projects">Dirty Honkers · Voice of Gad · Workshops</div>
+            <span class="s-card-arrow" style="color:var(--purple);">→</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- YELLOW FEATURED BAND -->
+      <div class="s-yellow-band">
+        <div class="s-yb-left">
+          <div class="s-yb-kicker">// Latest release</div>
+          <div class="s-yb-title">Abagada<br>— Koko</div>
+          <p class="s-yb-body">Solo album. Personal writing, contemporary production, a distinct artist identity. 2024.</p>
+        </div>
+        <div class="s-yb-right">
+          <div class="s-yb-item">
+            <div class="s-yb-item-dot" style="background:var(--cyan);"></div>
+            <div class="s-yb-item-tag">XR · QUEST</div>
+            <div class="s-yb-item-name">PatchWorld</div>
+          </div>
+          <div class="s-yb-item">
+            <div class="s-yb-item-dot" style="background:var(--magenta);"></div>
+            <div class="s-yb-item-tag">iOS · ANDROID</div>
+            <div class="s-yb-item-name">Jambl</div>
+          </div>
+          <div class="s-yb-item">
+            <div class="s-yb-item-dot" style="background:var(--purple);"></div>
+            <div class="s-yb-item-tag">ELECTRO-SWING</div>
+            <div class="s-yb-item-name">Dirty Honkers</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s-footer">
+        <span class="s-footer-brand"><em>G</em>AD BARUCH HINKIS</span>
+        <div class="s-footer-links">
+          <span class="s-footer-link">Products</span>
+          <span class="s-footer-link">Live</span>
+          <span class="s-footer-link">Music</span>
+          <span class="s-footer-link">About</span>
+        </div>
+        <span class="s-footer-copy">© 2026</span>
+      </div>
+
+    </div><!-- /site v1 -->
+
+    <div class="font-note-row">
+      <div class="fn-item"><strong>Nav brand:</strong> Bebas Neue — condensed, owns the space</div>
+      <div class="fn-item"><strong>Nav links:</strong> DM Mono — monospace, technical, clearly different from body</div>
+      <div class="fn-item"><strong>"GAD":</strong> Bebas Neue black</div>
+      <div class="fn-item"><strong>"Baruch":</strong> Cormorant Garamond italic — spiritual/calligraphic</div>
+      <div class="fn-item"><strong>"Hinkis":</strong> Alfa Slab One magenta — street/funky</div>
+      <div class="fn-item"><strong>Body copy:</strong> Space Grotesk</div>
+    </div>
+
+
+    <!-- ════════════ V2 ════════════ -->
+    <div class="version-label" id="v2">V2 — YELLOW HERO · WHITE CONTENT</div>
+
+    <div class="site-v2">
+
+      <div class="v2-nav">
+        <span class="v2-brand">GAD BARUCH HINKIS</span>
+        <div class="v2-navlinks">
+          <span class="v2-navlink">Products</span>
+          <span class="v2-navlink">Live</span>
+          <span class="v2-navlink">Music</span>
+          <span class="v2-navlink active">About</span>
+        </div>
+      </div>
+
+      <div class="v2-hero">
+        <div class="v2-eyebrow">Music Maker · Tech Builder · 20 Years of Strange New Things</div>
+        <span class="v2-name-gad">GAD</span>
+        <span class="v2-name-baruch">Baruch</span>
+        <span class="v2-name-hinkis">Hinkis</span>
+        <p class="v2-tagline">I build things that make music more expressive, more accessible, and stranger. Artist, producer, and music-tech builder — one ecosystem.</p>
+        <div class="v2-btns">
+          <span class="v2-btn-k">Explore the work</span>
+          <span class="v2-btn-ghost">Listen</span>
+          <span class="v2-btn-ghost">Book a show</span>
+        </div>
+      </div>
+
+      <div class="v2-stats">
+        <div class="v2-stat">
+          <div class="v2-stat-num" style="color:var(--magenta);">20+</div>
+          <div class="v2-stat-label">Years of music</div>
+        </div>
+        <div class="v2-stat">
+          <div class="v2-stat-num" style="color:var(--cyan);">12+</div>
+          <div class="v2-stat-label">Productions</div>
+        </div>
+        <div class="v2-stat">
+          <div class="v2-stat-num" style="color:var(--purple);">2</div>
+          <div class="v2-stat-label">Live apps</div>
+        </div>
+        <div class="v2-stat">
+          <div class="v2-stat-num" style="color:var(--black);">∞</div>
+          <div class="v2-stat-label">In progress</div>
+        </div>
+      </div>
+
+      <div class="v2-domains">
+        <div class="v2-cards">
+          <div class="v2-card">
+            <div class="v2-card-num">01</div>
+            <div class="v2-card-tag" style="color:var(--magenta);">MUSIC</div>
+            <div class="v2-card-title">Music</div>
+            <div class="v2-card-desc">Two decades of production, artist projects, and live performance.</div>
+            <span class="v2-card-arrow" style="color:var(--magenta);">→</span>
+          </div>
+          <div class="v2-card">
+            <div class="v2-card-num">02</div>
+            <div class="v2-card-tag" style="color:var(--cyan);">PRODUCTS</div>
+            <div class="v2-card-title">Products</div>
+            <div class="v2-card-desc">PatchWorld, Jambl, WaveRider — music tools built for musicians.</div>
+            <span class="v2-card-arrow" style="color:var(--cyan);">→</span>
+          </div>
+          <div class="v2-card" style="border-right:none;">
+            <div class="v2-card-num">03</div>
+            <div class="v2-card-tag" style="color:var(--purple);">LIVE</div>
+            <div class="v2-card-title">Live</div>
+            <div class="v2-card-desc">Shows, workshops, art installations worldwide.</div>
+            <span class="v2-card-arrow" style="color:var(--purple);">→</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="v2-footer">
+        <span class="v2-footer-brand">GAD BARUCH HINKIS</span>
+        <div class="v2-footer-links">
+          <span class="v2-footer-link">Products</span>
+          <span class="v2-footer-link">Live</span>
+          <span class="v2-footer-link">Music</span>
+          <span class="v2-footer-link">About</span>
+        </div>
+        <span class="v2-footer-copy">© 2026</span>
+      </div>
+
+    </div><!-- /site v2 -->
+
+  </div><!-- /outer -->
+
+</body>
+</html>

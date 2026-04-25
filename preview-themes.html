@@ -1,0 +1,1255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theme Preview — Pick Your Vibe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    /* ── Page Shell ── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #050505;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding: 3rem 1.5rem 6rem;
+    }
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    .page-sub {
+      text-align: center;
+      color: #666;
+      font-size: 0.92rem;
+      margin-bottom: 3.5rem;
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* ── Theme Grid ── */
+    .themes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* ── Each Theme Card ── */
+    .theme-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .theme-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #555;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .theme-label strong {
+      color: #eee;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .rec-badge {
+      background: #FFE500;
+      color: #000;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 0.18em 0.55em;
+      border-radius: 3px;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Mini Site Preview ── */
+    .preview {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* ─── THEME A: ACID HOUSE ─── */
+    .theme-a { background: #0a0a0a; }
+
+    .theme-a .p-nav {
+      background: rgba(10,10,10,0.92);
+      border-bottom: 1px solid rgba(200,255,0,0.12);
+      padding: 0.9rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .theme-a .p-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #C8FF00;
+      letter-spacing: -0.01em;
+    }
+    .theme-a .p-nav-links { display: flex; gap: 1.2rem; }
+    .theme-a .p-nav-link {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #888;
+      letter-spacing: 0.02em;
+    }
+    .theme-a .p-nav-link.active { color: #C8FF00; }
+
+    .theme-a .p-hero {
+      padding: 2.8rem 1.4rem 2rem;
+      background: #0a0a0a;
+    }
+    .theme-a .p-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: #555;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .theme-a .p-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #C8FF00;
+      box-shadow: 0 0 8px #C8FF00;
+    }
+    .theme-a .p-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: #f0f0f0;
+      margin-bottom: 0.8rem;
+    }
+    .theme-a .p-name span { color: #C8FF00; }
+    .theme-a .p-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      color: #666;
+      max-width: 280px;
+      line-height: 1.55;
+      margin-bottom: 1.4rem;
+    }
+    .theme-a .p-btn {
+      display: inline-block;
+      background: #C8FF00;
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.55em 1.3em;
+      border-radius: 6px;
+      margin-right: 0.6rem;
+    }
+    .theme-a .p-btn-outline {
+      display: inline-block;
+      border: 1px solid rgba(200,255,0,0.3);
+      color: #C8FF00;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.55em 1.3em;
+      border-radius: 6px;
+    }
+
+    .theme-a .p-stats {
+      background: #101010;
+      border-top: 1px solid rgba(200,255,0,0.08);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 1.2rem 1.4rem;
+      gap: 1rem;
+    }
+    .theme-a .p-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #C8FF00;
+      line-height: 1;
+    }
+    .theme-a .p-stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #444;
+      letter-spacing: 0.06em;
+      margin-top: 0.3rem;
+    }
+
+    .theme-a .p-cards {
+      padding: 1.4rem;
+      background: #0a0a0a;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.8rem;
+    }
+    .theme-a .p-card {
+      background: #111;
+      border: 1px solid rgba(200,255,0,0.08);
+      border-radius: 10px;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .theme-a .p-card-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: rgba(200,255,0,0.06);
+      position: absolute;
+      right: 0.5rem;
+      top: 0.2rem;
+      line-height: 1;
+    }
+    .theme-a .p-card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #C8FF00;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+    .theme-a .p-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #f0f0f0;
+      margin-bottom: 0.35rem;
+    }
+    .theme-a .p-card-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .theme-a .p-swatch-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem 1.4rem;
+      background: #070707;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 5px;
+    }
+    .swatch-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.64rem;
+      color: #444;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 0.3rem;
+    }
+
+    /* ─── THEME B: SYNTHWAVE WARM ─── */
+    .theme-b { background: #09070F; }
+
+    .theme-b .p-nav {
+      background: rgba(9,7,15,0.95);
+      border-bottom: 1px solid rgba(255,60,172,0.15);
+      padding: 0.9rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .theme-b .p-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #FF3CAC;
+      letter-spacing: -0.01em;
+    }
+    .theme-b .p-nav-links { display: flex; gap: 1.2rem; }
+    .theme-b .p-nav-link {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #665577;
+    }
+    .theme-b .p-nav-link.active { color: #FF3CAC; }
+
+    .theme-b .p-hero {
+      padding: 2.8rem 1.4rem 2rem;
+      background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255,60,172,0.12) 0%, transparent 70%), #09070F;
+    }
+    .theme-b .p-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: #554466;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .theme-b .p-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #FF3CAC;
+      box-shadow: 0 0 10px #FF3CAC, 0 0 24px rgba(255,60,172,0.4);
+    }
+    .theme-b .p-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: #ede0f5;
+      margin-bottom: 0.8rem;
+    }
+    .theme-b .p-name span {
+      background: linear-gradient(135deg, #FF3CAC, #00D4FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .theme-b .p-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      color: #665577;
+      max-width: 280px;
+      line-height: 1.55;
+      margin-bottom: 1.4rem;
+    }
+    .theme-b .p-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #FF3CAC, #FF6E6E);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.55em 1.3em;
+      border-radius: 6px;
+      margin-right: 0.6rem;
+    }
+    .theme-b .p-btn-outline {
+      display: inline-block;
+      border: 1px solid rgba(255,60,172,0.35);
+      color: #FF3CAC;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.55em 1.3em;
+      border-radius: 6px;
+    }
+
+    .theme-b .p-stats {
+      background: #0d0b15;
+      border-top: 1px solid rgba(255,60,172,0.08);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 1.2rem 1.4rem;
+      gap: 1rem;
+    }
+    .theme-b .p-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FF3CAC, #00D4FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .theme-b .p-stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #443355;
+      letter-spacing: 0.06em;
+      margin-top: 0.3rem;
+    }
+
+    .theme-b .p-cards {
+      padding: 1.4rem;
+      background: #09070F;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.8rem;
+    }
+    .theme-b .p-card {
+      background: rgba(255,60,172,0.05);
+      border: 1px solid rgba(255,60,172,0.12);
+      border-radius: 10px;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .theme-b .p-card-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: rgba(255,60,172,0.06);
+      position: absolute;
+      right: 0.5rem;
+      top: 0.2rem;
+      line-height: 1;
+    }
+    .theme-b .p-card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #00D4FF;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+    .theme-b .p-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #ede0f5;
+      margin-bottom: 0.35rem;
+    }
+    .theme-b .p-card-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      color: #553366;
+      line-height: 1.5;
+    }
+
+    .theme-b .p-swatch-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem 1.4rem;
+      background: #070510;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* ─── THEME C: MONO PUNCH ─── */
+    .theme-c { background: #0D0D0D; }
+
+    .theme-c .p-nav {
+      background: rgba(13,13,13,0.95);
+      border-bottom: 1px solid rgba(255,229,0,0.1);
+      padding: 0.9rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .theme-c .p-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #FFE500;
+      letter-spacing: -0.01em;
+    }
+    .theme-c .p-nav-links { display: flex; gap: 1.2rem; }
+    .theme-c .p-nav-link {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #555;
+    }
+    .theme-c .p-nav-link.active { color: #FFE500; }
+
+    .theme-c .p-hero {
+      padding: 2.8rem 1.4rem 2rem;
+      background: #0D0D0D;
+    }
+    .theme-c .p-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: #444;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .theme-c .p-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #FFE500;
+      box-shadow: 0 0 8px #FFE500, 0 0 20px rgba(255,229,0,0.35);
+    }
+    .theme-c .p-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: #F5F0E8;
+      margin-bottom: 0.8rem;
+    }
+    .theme-c .p-name span { color: #FFE500; }
+    .theme-c .p-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      color: #555;
+      max-width: 280px;
+      line-height: 1.55;
+      margin-bottom: 1.4rem;
+    }
+    .theme-c .p-btn {
+      display: inline-block;
+      background: #FFE500;
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.55em 1.3em;
+      border-radius: 6px;
+      margin-right: 0.6rem;
+    }
+    .theme-c .p-btn-outline {
+      display: inline-block;
+      border: 1px solid rgba(255,229,0,0.25);
+      color: #FFE500;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.55em 1.3em;
+      border-radius: 6px;
+    }
+
+    .theme-c .p-stats {
+      background: #131313;
+      border-top: 1px solid rgba(255,229,0,0.07);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 1.2rem 1.4rem;
+      gap: 1rem;
+    }
+    .theme-c .p-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #FFE500;
+      line-height: 1;
+    }
+    .theme-c .p-stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #3a3a3a;
+      letter-spacing: 0.06em;
+      margin-top: 0.3rem;
+    }
+
+    .theme-c .p-cards {
+      padding: 1.4rem;
+      background: #0D0D0D;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.8rem;
+    }
+    .theme-c .p-card {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .theme-c .p-card:hover {
+      border-color: rgba(255,229,0,0.3);
+    }
+    .theme-c .p-card-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: rgba(255,229,0,0.05);
+      position: absolute;
+      right: 0.5rem;
+      top: 0.2rem;
+      line-height: 1;
+    }
+    .theme-c .p-card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #FFE500;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+    .theme-c .p-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #F5F0E8;
+      margin-bottom: 0.35rem;
+    }
+    .theme-c .p-card-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .theme-c .p-swatch-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem 1.4rem;
+      background: #0a0a0a;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* ── Font Showcase ── */
+    .font-showcase {
+      max-width: 1300px;
+      margin: 5rem auto 0;
+      border-top: 1px solid #1a1a1a;
+      padding-top: 4rem;
+    }
+    .font-showcase-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    .font-showcase-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: #444;
+      margin-bottom: 3rem;
+    }
+    .font-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    .font-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
+      align-items: start;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .font-row-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: #444;
+      padding-top: 0.3rem;
+      line-height: 1.7;
+    }
+    .font-row-meta strong {
+      display: block;
+      color: #888;
+      font-size: 0.75rem;
+      margin-bottom: 0.2rem;
+    }
+    .font-demo-syne {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: #F5F0E8;
+    }
+    .font-demo-syne em { color: #FFE500; font-style: normal; }
+    .font-demo-space {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      color: #888;
+      line-height: 1.65;
+      max-width: 520px;
+    }
+    .font-demo-space strong { font-weight: 600; color: #ccc; }
+    .font-demo-mono {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: #555;
+      line-height: 1.8;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .mono-tag {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      padding: 0.25em 0.65em;
+      border-radius: 4px;
+      font-size: 0.72rem;
+    }
+    .mono-tag.yellow { border-color: rgba(255,229,0,0.2); color: #FFE500; background: rgba(255,229,0,0.04); }
+    .mono-tag.cyan { border-color: rgba(0,212,255,0.2); color: #00D4FF; background: rgba(0,212,255,0.04); }
+    .mono-tag.magenta { border-color: rgba(255,60,172,0.2); color: #FF3CAC; background: rgba(255,60,172,0.04); }
+
+    /* ── Combination demo ── */
+    .combo-section {
+      max-width: 1300px;
+      margin: 5rem auto 0;
+      border-top: 1px solid #1a1a1a;
+      padding-top: 4rem;
+    }
+    .combo-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    .combo-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      color: #444;
+      margin-bottom: 3rem;
+    }
+    .combo-demo {
+      background: #0D0D0D;
+      border: 1px solid rgba(255,229,0,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .combo-nav {
+      background: #0D0D0D;
+      border-bottom: 1px solid rgba(255,229,0,0.07);
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .combo-brand {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #F5F0E8;
+      letter-spacing: -0.02em;
+    }
+    .combo-brand em { color: #FFE500; font-style: normal; }
+    .combo-navlinks { display: flex; gap: 1.8rem; }
+    .combo-navlink {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #444;
+    }
+    .combo-navlink.active { color: #F5F0E8; }
+    .combo-hero {
+      padding: 5rem 2rem 3rem;
+      background: #0D0D0D;
+    }
+    .combo-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.73rem;
+      color: #FFE500;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.8rem;
+    }
+    .combo-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #FFE500;
+      box-shadow: 0 0 8px #FFE500;
+    }
+    .combo-h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      color: #F5F0E8;
+      margin-bottom: 1.8rem;
+    }
+    .combo-h1 em { color: #FFE500; font-style: normal; display: block; }
+    .combo-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      color: #666;
+      max-width: 500px;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .combo-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .combo-btn-primary {
+      background: #FFE500;
+      color: #000;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.7em 1.6em;
+      border-radius: 8px;
+    }
+    .combo-btn-secondary {
+      border: 1px solid rgba(255,229,0,0.2);
+      color: #999;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.7em 1.6em;
+      border-radius: 8px;
+    }
+    .combo-stats {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 2rem;
+      gap: 1rem;
+    }
+    .combo-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #FFE500;
+      line-height: 1;
+    }
+    .combo-stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: #3a3a3a;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.35rem;
+    }
+    .combo-cards-section {
+      padding: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .combo-section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: #444;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .combo-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .combo-card {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 1.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .combo-card-bg-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 5rem;
+      font-weight: 800;
+      color: rgba(255,229,0,0.04);
+      position: absolute;
+      right: 0.5rem;
+      bottom: -0.5rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .combo-card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: #FFE500;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.6rem;
+    }
+    .combo-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #F5F0E8;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+    .combo-card-desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      color: #555;
+      line-height: 1.55;
+    }
+    .combo-footer {
+      background: #0a0a0a;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .combo-footer-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      color: #333;
+    }
+    .combo-footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: #2a2a2a;
+    }
+
+    /* ── Pick Prompt ── */
+    .pick-prompt {
+      max-width: 1300px;
+      margin: 4rem auto 0;
+      text-align: center;
+    }
+    .pick-prompt p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.85rem;
+      color: #444;
+    }
+    .pick-prompt strong {
+      color: #FFE500;
+    }
+
+    @media (max-width: 700px) {
+      .themes { grid-template-columns: 1fr; }
+      .theme-a .p-stats,
+      .theme-b .p-stats,
+      .theme-c .p-stats { grid-template-columns: repeat(2, 1fr); }
+      .theme-a .p-cards,
+      .theme-b .p-cards,
+      .theme-c .p-cards { grid-template-columns: 1fr; }
+      .font-row { grid-template-columns: 1fr; }
+      .combo-cards { grid-template-columns: 1fr; }
+      .combo-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="page-title">Pick Your Vibe</h1>
+  <p class="page-sub">Three color schemes · Three font personalities · One site</p>
+
+  <!-- ── Three Theme Previews ── -->
+  <div class="themes">
+
+    <!-- Theme A: Acid House -->
+    <div class="theme-wrap">
+      <div class="theme-label">
+        <strong>A — Acid House</strong>
+        <span>/ acid-yellow · harsh · rave</span>
+      </div>
+      <div class="preview theme-a">
+        <div class="p-nav">
+          <span class="p-brand">GBH</span>
+          <div class="p-nav-links">
+            <span class="p-nav-link active">Products</span>
+            <span class="p-nav-link">Live</span>
+            <span class="p-nav-link">Music</span>
+            <span class="p-nav-link">About</span>
+          </div>
+        </div>
+        <div class="p-hero">
+          <div class="p-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+          <div class="p-name"><span>Gad</span><br>Baruch Hinkis</div>
+          <div class="p-tagline">Building things that make music more expressive, accessible, and stranger.</div>
+          <div>
+            <span class="p-btn">Explore</span>
+            <span class="p-btn-outline">Listen</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div><div class="p-stat-num">20+</div><div class="p-stat-label">years music</div></div>
+          <div><div class="p-stat-num">12+</div><div class="p-stat-label">releases</div></div>
+          <div><div class="p-stat-num">2</div><div class="p-stat-label">live apps</div></div>
+          <div><div class="p-stat-num">∞</div><div class="p-stat-label">in progress</div></div>
+        </div>
+        <div class="p-cards">
+          <div class="p-card">
+            <div class="p-card-num">01</div>
+            <div class="p-card-tag">MUSIC</div>
+            <div class="p-card-title">Music</div>
+            <div class="p-card-desc">20+ years, multiple projects, Israeli hip-hop to electro-swing.</div>
+          </div>
+          <div class="p-card">
+            <div class="p-card-num">02</div>
+            <div class="p-card-tag">TECH</div>
+            <div class="p-card-title">Products</div>
+            <div class="p-card-desc">PatchWorld, Jambl, WaveRider — tools that didn't exist yet.</div>
+          </div>
+          <div class="p-card">
+            <div class="p-card-num">03</div>
+            <div class="p-card-tag">LIVE</div>
+            <div class="p-card-title">Live</div>
+            <div class="p-card-desc">Shows, workshops, and installations worldwide.</div>
+          </div>
+        </div>
+        <div class="p-swatch-row">
+          <div class="swatch" style="background:#0a0a0a;border:1px solid #222;"></div>
+          <div class="swatch" style="background:#C8FF00;"></div>
+          <div class="swatch" style="background:#FF4020;"></div>
+          <div class="swatch" style="background:#111;border:1px solid #222;"></div>
+          <div class="swatch-label">Acid House · #C8FF00 + #FF4020</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme B: Synthwave Warm -->
+    <div class="theme-wrap">
+      <div class="theme-label">
+        <strong>B — Synthwave Warm</strong>
+        <span>/ magenta · cyan · gradient-heavy</span>
+      </div>
+      <div class="preview theme-b">
+        <div class="p-nav">
+          <span class="p-brand">GBH</span>
+          <div class="p-nav-links">
+            <span class="p-nav-link active">Products</span>
+            <span class="p-nav-link">Live</span>
+            <span class="p-nav-link">Music</span>
+            <span class="p-nav-link">About</span>
+          </div>
+        </div>
+        <div class="p-hero">
+          <div class="p-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+          <div class="p-name"><span>Gad</span><br>Baruch Hinkis</div>
+          <div class="p-tagline">Building things that make music more expressive, accessible, and stranger.</div>
+          <div>
+            <span class="p-btn">Explore</span>
+            <span class="p-btn-outline">Listen</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div><div class="p-stat-num">20+</div><div class="p-stat-label">years music</div></div>
+          <div><div class="p-stat-num">12+</div><div class="p-stat-label">releases</div></div>
+          <div><div class="p-stat-num">2</div><div class="p-stat-label">live apps</div></div>
+          <div><div class="p-stat-num">∞</div><div class="p-stat-label">in progress</div></div>
+        </div>
+        <div class="p-cards">
+          <div class="p-card">
+            <div class="p-card-num">01</div>
+            <div class="p-card-tag">MUSIC</div>
+            <div class="p-card-title">Music</div>
+            <div class="p-card-desc">20+ years, multiple projects, Israeli hip-hop to electro-swing.</div>
+          </div>
+          <div class="p-card">
+            <div class="p-card-num">02</div>
+            <div class="p-card-tag">TECH</div>
+            <div class="p-card-title">Products</div>
+            <div class="p-card-desc">PatchWorld, Jambl, WaveRider — tools that didn't exist yet.</div>
+          </div>
+          <div class="p-card">
+            <div class="p-card-num">03</div>
+            <div class="p-card-tag">LIVE</div>
+            <div class="p-card-title">Live</div>
+            <div class="p-card-desc">Shows, workshops, and installations worldwide.</div>
+          </div>
+        </div>
+        <div class="p-swatch-row">
+          <div class="swatch" style="background:#09070F;border:1px solid #1a1020;"></div>
+          <div class="swatch" style="background:#FF3CAC;"></div>
+          <div class="swatch" style="background:#00D4FF;"></div>
+          <div class="swatch" style="background:#1a0f28;"></div>
+          <div class="swatch-label">Synthwave · #FF3CAC + #00D4FF</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme C: Mono Punch -->
+    <div class="theme-wrap">
+      <div class="theme-label">
+        <strong>C — Mono Punch</strong>
+        <span>/ electric-yellow · minimal · surgical</span>
+        <span class="rec-badge">RECOMMENDED</span>
+      </div>
+      <div class="preview theme-c">
+        <div class="p-nav">
+          <span class="p-brand">GBH</span>
+          <div class="p-nav-links">
+            <span class="p-nav-link active">Products</span>
+            <span class="p-nav-link">Live</span>
+            <span class="p-nav-link">Music</span>
+            <span class="p-nav-link">About</span>
+          </div>
+        </div>
+        <div class="p-hero">
+          <div class="p-eyebrow">Music Maker · Tech Builder · 20 Years</div>
+          <div class="p-name"><span>Gad</span><br>Baruch Hinkis</div>
+          <div class="p-tagline">Building things that make music more expressive, accessible, and stranger.</div>
+          <div>
+            <span class="p-btn">Explore</span>
+            <span class="p-btn-outline">Listen</span>
+          </div>
+        </div>
+        <div class="p-stats">
+          <div><div class="p-stat-num">20+</div><div class="p-stat-label">years music</div></div>
+          <div><div class="p-stat-num">12+</div><div class="p-stat-label">releases</div></div>
+          <div><div class="p-stat-num">2</div><div class="p-stat-label">live apps</div></div>
+          <div><div class="p-stat-num">∞</div><div class="p-stat-label">in progress</div></div>
+        </div>
+        <div class="p-cards">
+          <div class="p-card">
+            <div class="p-card-num">01</div>
+            <div class="p-card-tag">MUSIC</div>
+            <div class="p-card-title">Music</div>
+            <div class="p-card-desc">20+ years, multiple projects, Israeli hip-hop to electro-swing.</div>
+          </div>
+          <div class="p-card">
+            <div class="p-card-num">02</div>
+            <div class="p-card-tag">TECH</div>
+            <div class="p-card-title">Products</div>
+            <div class="p-card-desc">PatchWorld, Jambl, WaveRider — tools that didn't exist yet.</div>
+          </div>
+          <div class="p-card">
+            <div class="p-card-num">03</div>
+            <div class="p-card-tag">LIVE</div>
+            <div class="p-card-title">Live</div>
+            <div class="p-card-desc">Shows, workshops, and installations worldwide.</div>
+          </div>
+        </div>
+        <div class="p-swatch-row">
+          <div class="swatch" style="background:#0D0D0D;border:1px solid #1a1a1a;"></div>
+          <div class="swatch" style="background:#FFE500;"></div>
+          <div class="swatch" style="background:#F5F0E8;"></div>
+          <div class="swatch" style="background:#111;border:1px solid #1a1a1a;"></div>
+          <div class="swatch-label">Mono Punch · #FFE500 single accent</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Font Showcase ── -->
+  <div class="font-showcase">
+    <div class="font-showcase-title">The Three-Font System</div>
+    <p class="font-showcase-sub">// Each voice has its own register — display · body · data</p>
+
+    <div class="font-rows">
+      <div class="font-row">
+        <div class="font-row-meta">
+          <strong>Syne 800</strong>
+          Hero, h1, h2, nav brand<br>
+          Wide · confident · owns the room<br><br>
+          <em style="color:#666;">→ The Music / Art voice</em>
+        </div>
+        <div class="font-demo-syne">Gad<br><em>Baruch</em><br>Hinkis</div>
+      </div>
+      <div class="font-row">
+        <div class="font-row-meta">
+          <strong>Space Grotesk 400/600</strong>
+          Body text, nav links, buttons, descriptions<br>
+          Clean · geometric · modern<br><br>
+          <em style="color:#666;">→ The Tech / Product voice</em>
+        </div>
+        <div class="font-demo-space">
+          Gad Baruch Hinkis builds things that <strong>make music more expressive,</strong> more accessible, and stranger. Producer, multi-instrumentalist, XR platform builder, and live performer — the thread through all of it is making things that feel alive, rhythmic, and new.
+        </div>
+      </div>
+      <div class="font-row">
+        <div class="font-row-meta">
+          <strong>DM Mono 400/500</strong>
+          Tags, years, labels, stats, eyebrows<br>
+          Monospace · precise · dry<br><br>
+          <em style="color:#666;">→ The Data / Timeline voice</em>
+        </div>
+        <div class="font-demo-mono">
+          <span class="mono-tag yellow">Music</span>
+          <span class="mono-tag">Live</span>
+          <span class="mono-tag cyan">XR · Meta Quest</span>
+          <span class="mono-tag">Production</span>
+          <span class="mono-tag magenta">Experimental</span>
+          <span class="mono-tag yellow">2024</span>
+          <span class="mono-tag">iOS · Android</span>
+          <span class="mono-tag cyan">VST · AU · AAX</span>
+          <span class="mono-tag">20+ years</span>
+          <span class="mono-tag magenta">Beatmaking</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Full combo at full scale ── -->
+  <div class="combo-section">
+    <div class="combo-title">Full-Size Preview — C + Three-Font System</div>
+    <p class="combo-sub">// Mono Punch + Syne + Space Grotesk + DM Mono in action</p>
+    <div class="combo-demo">
+      <div class="combo-nav">
+        <span class="combo-brand">Gad <em>Baruch Hinkis</em></span>
+        <div class="combo-navlinks">
+          <span class="combo-navlink">Products</span>
+          <span class="combo-navlink">Live</span>
+          <span class="combo-navlink">Music</span>
+          <span class="combo-navlink active">About</span>
+        </div>
+      </div>
+      <div class="combo-hero">
+        <div class="combo-eyebrow">Music Maker · Tech Builder · 20 Years of Strange New Things</div>
+        <div class="combo-h1">
+          <em>Gad</em>
+          Baruch<br>Hinkis
+        </div>
+        <div class="combo-tagline">
+          I build things that make music more expressive, more accessible, and stranger.
+          Artist, producer, and music-tech builder — one ecosystem.
+        </div>
+        <div class="combo-btns">
+          <span class="combo-btn-primary">Explore the work</span>
+          <span class="combo-btn-secondary">Listen</span>
+          <span class="combo-btn-secondary">Book a show</span>
+        </div>
+      </div>
+      <div class="combo-stats">
+        <div><div class="combo-stat-num">20+</div><div class="combo-stat-label">Years of music</div></div>
+        <div><div class="combo-stat-num">12+</div><div class="combo-stat-label">Productions released</div></div>
+        <div><div class="combo-stat-num">2</div><div class="combo-stat-label">Live music apps</div></div>
+        <div><div class="combo-stat-num">∞</div><div class="combo-stat-label">Ideas in progress</div></div>
+      </div>
+      <div class="combo-cards-section">
+        <div class="combo-section-label">// What I Do</div>
+        <div class="combo-cards">
+          <div class="combo-card">
+            <div class="combo-card-bg-num">01</div>
+            <div class="combo-card-tag">MUSIC</div>
+            <div class="combo-card-title">Music</div>
+            <div class="combo-card-desc">Two decades of production, artist projects, and live performance. From Israeli hip-hop to electro-swing to experimental pop.</div>
+          </div>
+          <div class="combo-card">
+            <div class="combo-card-bg-num">02</div>
+            <div class="combo-card-tag">TECH</div>
+            <div class="combo-card-title">Products</div>
+            <div class="combo-card-desc">Music-creation platforms, apps, and instruments built for musicians. Things that didn't exist yet.</div>
+          </div>
+          <div class="combo-card">
+            <div class="combo-card-bg-num">03</div>
+            <div class="combo-card-tag">LIVE</div>
+            <div class="combo-card-title">Live</div>
+            <div class="combo-card-desc">Shows, workshops, art installations and on-site events. Book Dirty Honkers, Voice of Gad, or a music tech workshop.</div>
+          </div>
+        </div>
+      </div>
+      <div class="combo-footer">
+        <span class="combo-footer-brand">Gad Baruch Hinkis — Music · Products · Live</span>
+        <span class="combo-footer-copy">© 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pick-prompt">
+    <p>Open this in your browser → <strong>http://localhost:3030/preview-themes.html</strong></p>
+    <p style="margin-top:0.5rem;">Reply with A, B, or C and I'll implement the full site in your chosen scheme.</p>
+  </div>
+
+</body>
+</html>
