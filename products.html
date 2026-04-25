@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Products | Gad Baruch Hinkis</title>
     <meta name="description" content="Music-creation platforms, apps, and instruments. PatchWorld, Jambl, WaveRider, SuperScaler, ChordMaster, LiveQuantizer, ChopTube." />
-    <link rel="stylesheet" href="./assets/css/styles.css?v=60" />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=61" />
     <!-- Gumroad overlay checkout -->
     <script src="https://gumroad.com/js/gumroad.js"></script>
     <!-- PostHog analytics -->
@@ -27,7 +27,7 @@
 
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="./index.html"><span>GAD</span> BARUCH HINKIS</a>
+        <a class="brand brand-gbh" href="./index.html" aria-label="Gad Baruch Hinkis — Home"><span class="brand-g">G</span><span class="brand-b">B</span><span class="brand-h">H</span></a>
         <nav class="nav-links" aria-label="Primary">
           <a class="nav-link active" href="./products.html">Products</a>
           <a class="nav-link" href="./live.html">Live</a>
@@ -95,6 +95,22 @@
                   </a>
                   <a class="btn btn-secondary" href="https://jambel.app/" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Website</a>
                   <button class="btn btn-secondary" data-open-modal="jambl" onclick="event.stopPropagation()">More info</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="big-app-card" data-open-modal="choptube">
+              <div class="big-app-art">
+                <img src="https://gadbaruch.github.io/ChopTube/assets/choptube-logo.png" alt="ChopTube" onerror="this.style.display='none'">
+              </div>
+              <div class="big-app-copy">
+                <div class="big-app-platform">Web App · Free · Desktop</div>
+                <h2>ChopTube</h2>
+                <p>Live YouTube chop sequencer. Drop videos into tiles, trigger cues with your keyboard, loop chops, perform live. Remix the internet — free in the browser.</p>
+                <div class="big-app-actions">
+                  <a class="btn btn-primary" href="https://gadbaruch.github.io/ChopTube/" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Open app</a>
+                  <a class="btn btn-secondary" href="https://www.youtube.com/watch?v=dvXRfej62pc" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Watch demo</a>
+                  <button class="btn btn-secondary" data-open-modal="choptube" onclick="event.stopPropagation()">More info</button>
                 </div>
               </div>
             </div>
@@ -201,27 +217,11 @@
               </div>
             </div>
 
-            <!-- ChopTube -->
-            <div class="fumu-card" data-product="choptube" role="button" tabindex="0" aria-label="ChopTube — click to open app">
-              <div class="fumu-card-art">
-                <img src="https://gadbaruch.github.io/ChopTube/assets/choptube-logo.png" alt="ChopTube" onerror="this.style.display='none'">
-                <span class="fumu-card-art-label">Web App</span>
-              </div>
-              <div class="fumu-card-copy">
-                <div class="fumu-card-meta">
-                  <h3>ChopTube</h3>
-                  <span class="fumu-card-price free">Free</span>
-                </div>
-                <div class="fumu-card-platform">Browser · Desktop</div>
-                <p class="fumu-card-desc">Live YouTube chop sequencer. Drop videos into tiles, loop cues, remix the internet. Trigger audio/video segments with keyboard shortcuts.</p>
-                <div class="fumu-card-actions">
-                  <a class="btn btn-primary" style="font-size:.75rem;padding:.4rem .9rem;" href="https://gadbaruch.github.io/ChopTube/" target="_blank" rel="noopener noreferrer">Open App</a>
-                  <button class="btn btn-secondary" style="font-size:.75rem;padding:.4rem .9rem;" data-open-modal="choptube">More info</button>
-                </div>
-              </div>
-            </div>
-
           </div><!-- /fumu-grid -->
+
+          <div style="margin-top: 2.5rem; text-align: center;">
+            <a class="btn btn-secondary" href="./fumu.html">See full FUMU lineup →</a>
+          </div>
 
           <p style="margin-top:1.5rem; font-family:var(--font-mono); font-size:.68rem; color:var(--muted); letter-spacing:.08em;">
             MIDI Tools (SuperScaler, ChordMaster, LiveQuantizer) are part of the <strong>FUMU MIDI Tools Bundle</strong> for Ableton Live.
@@ -259,8 +259,8 @@
       </div>
     </footer>
 
-    <script src="./assets/js/site-data.js?v=60"></script>
-    <script src="./assets/js/main.js?v=60"></script>
+    <script src="./assets/js/site-data.js?v=61"></script>
+    <script src="./assets/js/main.js?v=61"></script>
     <script>
     (function() {
       const PRODUCTS = {
