@@ -26,6 +26,7 @@
             <a class="nav-link${activeKey === 'products' ? ' active' : ''}" href="${basePath}/products.html">Products</a>
             <a class="nav-link${activeKey === 'live' ? ' active' : ''}" href="${basePath}/live.html">Live</a>
             <a class="nav-link${activeKey === 'music' ? ' active' : ''}" href="${basePath}/music.html">Music</a>
+            <a class="nav-link${activeKey === 'ideas' ? ' active' : ''}" href="${basePath}/ideas.html">Ideas</a>
             <a class="nav-link${activeKey === 'about' ? ' active' : ''}" href="${basePath}/about.html">About</a>
           </nav>
         </div>
