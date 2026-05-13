@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gad Baruch Hinkis — Music, Tech & Ideas</title>
     <meta name="description" content="The full body of work: artist projects, music-tech products, software instruments, and ideas. One ecosystem." />
-    <link rel="stylesheet" href="./assets/css/styles.css?v=65" />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=66" />
     <!-- PostHog analytics -->
     <script>
         !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ai Ri init Vi Yi Rr zi Gi Zi capture calculateEventProperties en register register_once register_for_session unregister unregister_for_session sn getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync an identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty rn Ki createPersonProfile setInternalOrTestUser nn $i hn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Xi debug Mr tn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -247,32 +247,49 @@
         <div class="container home-cta-inner">
           <h2>Let's make something happen.</h2>
           <p>Bookings · commissions · workshops · collaborations.</p>
-          <form class="contact-form" action="https://formspree.io/f/mjkojdjk" method="POST">
+          <form class="contact-form" id="contact-form" onsubmit="return sendContactMail(event)">
             <div class="contact-row">
               <label class="contact-field">
                 <span>Name</span>
-                <input type="text" name="name" required autocomplete="name" />
+                <input type="text" name="name" id="cf-name" required autocomplete="name" />
               </label>
               <label class="contact-field">
                 <span>Your email</span>
-                <input type="email" name="email" required autocomplete="email" />
+                <input type="email" name="email" id="cf-email" required autocomplete="email" />
               </label>
             </div>
             <label class="contact-field">
               <span>Subject</span>
-              <input type="text" name="subject" placeholder="Booking, commission, workshop…" />
+              <input type="text" name="subject" id="cf-subject" placeholder="Booking, commission, workshop…" />
             </label>
             <label class="contact-field">
               <span>Message</span>
-              <textarea name="message" rows="5" required></textarea>
+              <textarea name="message" id="cf-message" rows="5" required></textarea>
             </label>
-            <input type="hidden" name="_subject" value="New message from gadbaruch.com" />
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
             <div class="contact-actions">
               <button class="btn btn-primary" type="submit">Send message</button>
-              <span class="contact-fallback">or email <a href="mailto:gbhinkis@gmail.com">gbhinkis@gmail.com</a></span>
+              <span class="contact-fallback">opens your email app · or write to <a href="mailto:gbhinkis@gmail.com">gbhinkis@gmail.com</a></span>
             </div>
+            <p class="contact-status" id="contact-status" hidden></p>
           </form>
+          <script>
+            function sendContactMail(e) {
+              e.preventDefault();
+              var name = document.getElementById('cf-name').value.trim();
+              var email = document.getElementById('cf-email').value.trim();
+              var subject = document.getElementById('cf-subject').value.trim() || 'Message from gadbaruch.com';
+              var message = document.getElementById('cf-message').value.trim();
+              var body = 'From: ' + name + ' <' + email + '>\n\n' + message + '\n\n— sent via gadbaruch.com';
+              var mailto = 'mailto:gbhinkis@gmail.com'
+                + '?subject=' + encodeURIComponent('[gadbaruch.com] ' + subject)
+                + '&body=' + encodeURIComponent(body);
+              window.location.href = mailto;
+              var s = document.getElementById('contact-status');
+              s.textContent = "Your email app should be opening. If nothing happened, copy the message above and send it to gbhinkis@gmail.com directly.";
+              s.hidden = false;
+              return false;
+            }
+          </script>
         </div>
       </section>
 
@@ -285,8 +302,8 @@
       </div>
     </footer>
 
-    <script src="./assets/js/site-data.js?v=65"></script>
-    <script src="./assets/js/main.js?v=65"></script>
+    <script src="./assets/js/site-data.js?v=66"></script>
+    <script src="./assets/js/main.js?v=66"></script>
     <script async src="https://www.tiktok.com/embed.js"></script>
   </body>
 </html>
