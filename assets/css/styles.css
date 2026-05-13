@@ -2314,6 +2314,187 @@ iframe[src*="gumroad.com"][src*="overlay"],
   .ideas-grid { grid-template-columns: 1fr; }
   .idea-card { border-right: none; }
 }
+.ideas-series-intro {
+  max-width: 68ch;
+  margin: 0 0 2rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* ── Article page ─────────────────────────────────────────── */
+.article-hero { padding-top: 2.2rem; padding-bottom: 2rem; }
+.article-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .7rem;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+.article-back {
+  color: var(--ink);
+  text-decoration: none;
+  opacity: .7;
+  border-bottom: 1px solid transparent;
+}
+.article-back:hover { opacity: 1; border-bottom-color: var(--ink); }
+.article-series { opacity: .65; }
+.article-date { opacity: .55; margin-left: auto; }
+.article-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  letter-spacing: .02em;
+  line-height: 1.02;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+  color: var(--ink);
+}
+.article-subtitle {
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 68ch;
+  margin: 0 0 1.6rem;
+}
+.article-lead {
+  max-width: 68ch;
+  margin: 0 0 1.6rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--yellow);
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.55;
+}
+.article-source-note {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+.article-source-note a { color: var(--ink); }
+.article-body-section { padding: 3rem 0 4rem; }
+.article-container { max-width: 760px; }
+.article-body {
+  font-size: 1.04rem;
+  line-height: 1.72;
+  color: var(--ink);
+}
+.article-body h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.6vw, 2.1rem);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 3rem 0 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--line);
+}
+.article-body h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  letter-spacing: .02em;
+  line-height: 1.2;
+  margin: 2.4rem 0 .8rem;
+}
+.article-body h4 {
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin: 2rem 0 .6rem;
+  color: var(--muted);
+}
+.article-body h5 { font-size: .95rem; margin: 1.5rem 0 .5rem; }
+.article-body p { margin: 0 0 1.1rem; }
+.article-body ul, .article-body ol {
+  margin: 0 0 1.3rem;
+  padding-left: 1.3rem;
+}
+.article-body li { margin-bottom: .45rem; line-height: 1.6; }
+.article-body strong { font-weight: 700; }
+.article-body em { font-style: italic; }
+.article-body blockquote {
+  margin: 1.8rem 0;
+  padding: .8rem 1.2rem;
+  border-left: 3px solid var(--aqua);
+  background: var(--bg-raised);
+  color: var(--ink);
+}
+.article-body blockquote p { margin: 0 0 .6rem; }
+.article-body blockquote p:last-child { margin-bottom: 0; }
+.article-body hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.6rem 0;
+}
+.article-body code {
+  font-family: var(--font-mono);
+  font-size: .9em;
+  padding: .1em .35em;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+}
+.article-body a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--aqua);
+  text-underline-offset: 3px;
+}
+.article-body a:hover { text-decoration-color: var(--magenta); }
+.article-table-wrap {
+  overflow-x: auto;
+  margin: 1.5rem 0 2rem;
+  border: var(--border);
+}
+.article-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .95rem;
+}
+.article-table th,
+.article-table td {
+  padding: .65rem .9rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.article-table th {
+  background: var(--bg-raised);
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.article-table tr:last-child td { border-bottom: none; }
+.article-nav-section { padding: 2rem 0 4rem; border-top: 1px solid var(--line); }
+.article-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.4rem;
+}
+.article-nav-prev, .article-nav-next {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  letter-spacing: .06em;
+  color: var(--ink);
+  text-decoration: none;
+  max-width: 45%;
+  line-height: 1.4;
+}
+.article-nav-next { text-align: right; margin-left: auto; }
+.article-nav-prev:hover, .article-nav-next:hover { color: var(--magenta); }
+.article-back-row { margin: 0; }
+@media (max-width: 640px) {
+  .article-body { font-size: .98rem; }
+  .article-meta-row { font-size: .62rem; gap: .5rem; }
+  .article-date { margin-left: 0; }
+}
 
 /* ═══════════════════════════════════════════════════════════
    MUSIC VIDEOS SECTION (music hub)
