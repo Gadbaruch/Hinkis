@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gad Baruch Hinkis — Music, Tech & Ideas</title>
     <meta name="description" content="The full body of work: artist projects, music-tech products, software instruments, and ideas. One ecosystem." />
-    <link rel="stylesheet" href="./assets/css/styles.css?v=66" />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=67" />
     <!-- PostHog analytics -->
     <script>
         !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ai Ri init Vi Yi Rr zi Gi Zi capture calculateEventProperties en register register_once register_for_session unregister unregister_for_session sn getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync an identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty rn Ki createPersonProfile setInternalOrTestUser nn $i hn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Xi debug Mr tn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -93,24 +93,6 @@
         <div class="hero-scroll" id="hero-scroll" aria-hidden="true">
           <span>Scroll</span>
           <div class="hero-scroll-line"></div>
-        </div>
-      </section>
-
-      <!-- ── Thin intro bar (stats + jump links) ──────────────────── -->
-      <section class="home-intro-bar" aria-label="Quick navigation">
-        <div class="container home-intro-bar-inner">
-          <div class="home-intro-stats">
-            <span>25+ yrs music</span><span class="dot">·</span>
-            <span>8+ projects</span><span class="dot">·</span>
-            <span>7 apps built</span><span class="dot">·</span>
-            <span>∞ ideas</span>
-          </div>
-          <div class="home-intro-jumps">
-            <a href="./music.html">Music</a>
-            <a href="./products.html">Products</a>
-            <a href="./live.html">Live</a>
-            <a href="./ideas.html">Ideas</a>
-          </div>
         </div>
       </section>
 
@@ -236,9 +218,16 @@
               <a class="btn btn-secondary" href="./live.html">Live page</a>
             </div>
           </div>
-          <a class="home-feature-media" href="./live.html" aria-label="Watch DJ Patchy">
-            <img src="./assets/images/djpatchy-hero.jpg" alt="DJ Patchy live">
-          </a>
+          <div class="home-feature-media home-video-panel" id="djpatchy-home-panel" role="button" tabindex="0" aria-label="Play DJ Patchy video">
+            <img class="home-video-thumb" src="./assets/images/djpatchy-hero.jpg" alt="DJ Patchy live"
+                 onerror="this.src='https://img.youtube.com/vi/8Qjd0Ogv3xQ/maxresdefault.jpg'">
+            <div class="home-video-overlay">
+              <div class="home-video-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <iframe class="home-video-iframe" id="djpatchy-home-iframe" src="about:blank" title="DJ Patchy" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          </div>
         </div>
       </section>
 
@@ -302,8 +291,24 @@
       </div>
     </footer>
 
-    <script src="./assets/js/site-data.js?v=66"></script>
-    <script src="./assets/js/main.js?v=66"></script>
+    <script src="./assets/js/site-data.js?v=67"></script>
+    <script src="./assets/js/main.js?v=67"></script>
     <script async src="https://www.tiktok.com/embed.js"></script>
+    <script>
+      (function() {
+        var panel = document.getElementById('djpatchy-home-panel');
+        if (!panel) return;
+        function play() {
+          if (panel.classList.contains('playing')) return;
+          panel.classList.add('playing');
+          document.getElementById('djpatchy-home-iframe').src =
+            'https://www.youtube.com/embed/8Qjd0Ogv3xQ?autoplay=1&rel=0';
+        }
+        panel.addEventListener('click', play);
+        panel.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+        });
+      })();
+    </script>
   </body>
 </html>
