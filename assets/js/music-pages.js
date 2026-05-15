@@ -21,13 +21,13 @@
     return `
       <header class="site-header">
         <div class="container nav">
-          <a class="brand" href="${basePath}/index.html"><span>GAD</span> BARUCH HINKIS</a>
+          <a class="brand" href="${basePath}/"><span>GAD</span> BARUCH HINKIS</a>
           <nav class="nav-links" aria-label="Primary">
-            <a class="nav-link${activeKey === 'products' ? ' active' : ''}" href="${basePath}/products.html">Products</a>
-            <a class="nav-link${activeKey === 'live' ? ' active' : ''}" href="${basePath}/live.html">Live</a>
-            <a class="nav-link${activeKey === 'music' ? ' active' : ''}" href="${basePath}/music.html">Music</a>
-            <a class="nav-link${activeKey === 'ideas' ? ' active' : ''}" href="${basePath}/ideas.html">Ideas</a>
-            <a class="nav-link${activeKey === 'about' ? ' active' : ''}" href="${basePath}/about.html">About</a>
+            <a class="nav-link${activeKey === 'products' ? ' active' : ''}" href="${basePath}/products/">Products</a>
+            <a class="nav-link${activeKey === 'live' ? ' active' : ''}" href="${basePath}/live/">Live</a>
+            <a class="nav-link${activeKey === 'music' ? ' active' : ''}" href="${basePath}/music/">Music</a>
+            <a class="nav-link${activeKey === 'ideas' ? ' active' : ''}" href="${basePath}/ideas/">Ideas</a>
+            <a class="nav-link${activeKey === 'about' ? ' active' : ''}" href="${basePath}/about/">About</a>
           </nav>
         </div>
       </header>

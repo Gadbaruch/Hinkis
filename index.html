@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gad Baruch Hinkis — Music, Tech & Ideas</title>
     <meta name="description" content="The full body of work: artist projects, music-tech products, software instruments, and ideas. One ecosystem." />
-    <link rel="stylesheet" href="./assets/css/styles.css?v=68" />
+    <link rel="stylesheet" href="./assets/css/styles.css?v=69" />
     <!-- PostHog analytics -->
     <script>
         !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Ai Ri init Vi Yi Rr zi Gi Zi capture calculateEventProperties en register register_once register_for_session unregister unregister_for_session sn getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync an identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty rn Ki createPersonProfile setInternalOrTestUser nn $i hn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Xi debug Mr tn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -28,13 +28,14 @@
 
     <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="./index.html"><span>GAD</span> BARUCH HINKIS</a>
-        <nav class="nav-links" aria-label="Primary">
-          <a class="nav-link" href="./products.html">Products</a>
-          <a class="nav-link" href="./live.html">Live</a>
-          <a class="nav-link" href="./music.html">Music</a>
-          <a class="nav-link" href="./ideas.html">Ideas</a>
-          <a class="nav-link" href="./about.html">About</a>
+        <a class="brand" href="./"><span>GAD</span> BARUCH HINKIS</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+        <nav class="nav-links" id="nav-links" aria-label="Primary">
+          <a class="nav-link" href="./products/">Products</a>
+          <a class="nav-link" href="./live/">Live</a>
+          <a class="nav-link" href="./music/">Music</a>
+          <a class="nav-link" href="./ideas/">Ideas</a>
+          <a class="nav-link" href="./about/">About</a>
         </nav>
       </div>
     </header>
@@ -61,9 +62,9 @@
             </p>
 
             <div class="hero-actions reveal reveal-delay-3">
-              <a class="btn btn-primary" href="./music.html">Hear the music</a>
-              <a class="btn btn-secondary" href="./products.html">See the products</a>
-              <a class="btn btn-secondary" href="./live.html">Book for events</a>
+              <a class="btn btn-primary" href="./music/">Hear the music</a>
+              <a class="btn btn-secondary" href="./products/">See the products</a>
+              <a class="btn btn-secondary" href="./live/">Book for events</a>
             </div>
 
             <div class="social-row reveal reveal-delay-3" aria-label="Social links">
@@ -106,7 +107,7 @@
           <p class="section-label">Apps &amp; Platforms</p>
           <div class="big-app-grid">
 
-            <a class="big-app-card" href="./products.html#patchworld">
+            <a class="big-app-card" href="./products/#patchworld">
               <div class="big-app-art">
                 <img src="./assets/images/patchworld-hero.png" alt="PatchWorld" onerror="this.style.display='none'">
               </div>
@@ -120,7 +121,7 @@
               </div>
             </a>
 
-            <a class="big-app-card" href="./products.html#jambl">
+            <a class="big-app-card" href="./products/#jambl">
               <div class="big-app-art">
                 <img src="./assets/images/jambl-hero.png" alt="Jambl" onerror="this.style.display='none'">
               </div>
@@ -147,22 +148,22 @@
           <p class="home-feature-desc" style="max-width: 60ch; margin-bottom: 2rem;">Studio instruments and MIDI tools that work the way you actually compose. WaveRider, SuperScaler, ChordMaster, LiveQuantizer — each one solves something real.</p>
 
           <div class="home-fumu-grid">
-            <a class="home-fumu-chip" href="./products.html#waverider">
+            <a class="home-fumu-chip" href="./products/#waverider">
               <div class="home-fumu-thumb"><img src="https://public-files.gumroad.com/79h3crp112cssyshn5fyinspxqky" alt="WaveRider" onerror="this.style.display='none'"></div>
               <span class="home-fumu-name">WaveRider</span>
               <span class="home-fumu-tag">Synth · Free</span>
             </a>
-            <a class="home-fumu-chip" href="./products.html#superscaler">
+            <a class="home-fumu-chip" href="./products/#superscaler">
               <div class="home-fumu-thumb"><img src="https://public-files.gumroad.com/250hfdmn5b6gymnyg6ugp7h76bj9" alt="SuperScaler" onerror="this.style.display='none'"></div>
               <span class="home-fumu-name">SuperScaler</span>
               <span class="home-fumu-tag">M4L · Free</span>
             </a>
-            <a class="home-fumu-chip" href="./products.html#chordmaster">
+            <a class="home-fumu-chip" href="./products/#chordmaster">
               <div class="home-fumu-thumb"><img src="https://public-files.gumroad.com/idrzf01t78fk2k2mn5ordqfuq4qf" alt="ChordMaster" onerror="this.style.display='none'"></div>
               <span class="home-fumu-name">ChordMaster</span>
               <span class="home-fumu-tag">M4L · Free</span>
             </a>
-            <a class="home-fumu-chip" href="./products.html#livequantizer">
+            <a class="home-fumu-chip" href="./products/#livequantizer">
               <div class="home-fumu-thumb"><img src="https://public-files.gumroad.com/u0kj4ei411jr3vge78uu90yyg965" alt="LiveQuantizer" onerror="this.style.display='none'"></div>
               <span class="home-fumu-name">LiveQuantizer</span>
               <span class="home-fumu-tag">M4L · Free</span>
@@ -170,7 +171,7 @@
           </div>
 
           <div class="home-feature-actions" style="margin-top: 2.2rem;">
-            <a class="btn btn-primary" href="./fumu.html">See all FUMU plugins</a>
+            <a class="btn btn-primary" href="./fumu/">See all FUMU plugins</a>
           </div>
         </div>
       </section>
@@ -198,7 +199,7 @@
             <p class="home-feature-desc">Voice-driven live performance built around character, rhythm, and real-time composition. Intimate, strange, and rhythmically dense. Growing on TikTok, moving into live venues.</p>
             <div class="home-feature-actions">
               <a class="btn btn-primary" href="mailto:gbhinkis@gmail.com">Book a show</a>
-              <a class="btn btn-secondary" href="./live.html">Live page</a>
+              <a class="btn btn-secondary" href="./live/">Live page</a>
               <a class="btn btn-secondary" href="https://www.tiktok.com/@voiceofgad" target="_blank" rel="noopener noreferrer">TikTok</a>
             </div>
           </div>
@@ -215,7 +216,7 @@
             <p class="home-feature-desc">High-energy DJ sets blending electronic, club, and eclectic sounds. From intimate club nights to festival stages — crowd-tailored journeys with a distinctive ear for musical narrative.</p>
             <div class="home-feature-actions">
               <a class="btn btn-primary" href="mailto:gbhinkis@gmail.com">Book a set</a>
-              <a class="btn btn-secondary" href="./live.html">Live page</a>
+              <a class="btn btn-secondary" href="./live/">Live page</a>
             </div>
           </div>
           <div class="home-feature-media home-video-panel" id="djpatchy-home-panel" role="button" tabindex="0" aria-label="Play DJ Patchy video">
@@ -291,8 +292,8 @@
       </div>
     </footer>
 
-    <script src="./assets/js/site-data.js?v=68"></script>
-    <script src="./assets/js/main.js?v=68"></script>
+    <script src="./assets/js/site-data.js?v=69"></script>
+    <script src="./assets/js/main.js?v=69"></script>
     <script async src="https://www.tiktok.com/embed.js"></script>
     <script>
       (function() {
@@ -307,6 +308,25 @@
         panel.addEventListener('click', play);
         panel.addEventListener('keydown', function(e) {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+        });
+      })();
+    </script>
+      <script>
+      (function() {
+        var btn = document.getElementById('nav-toggle');
+        var nav = document.getElementById('nav-links');
+        if (!btn || !nav) return;
+        btn.addEventListener('click', function() {
+          var open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+        document.addEventListener('click', function(e) {
+          if (!nav.classList.contains('open')) return;
+          if (nav.contains(e.target) || btn.contains(e.target)) return;
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Open menu');
         });
       })();
     </script>
