@@ -303,7 +303,7 @@
     document.title = `${displayTitle} | Gad Baruch Hinkis`;
 
     root.innerHTML = `
-      ${renderTopNav('..', 'music')}
+      ${renderTopNav('', 'music')}
 
       <main>
         <section class="product-hero fade-in">
@@ -388,7 +388,7 @@
     document.title = `Music | Gad Baruch Hinkis`;
 
     root.innerHTML = `
-      ${renderTopNav('.', 'music')}
+      ${renderTopNav('', 'music')}
 
       <main>
         <section class="page-hero fade-in">

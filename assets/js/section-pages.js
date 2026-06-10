@@ -41,7 +41,7 @@
       .join('');
 
     root.innerHTML = `
-      ${renderTopNav('..', '')}
+      ${renderTopNav('', '')}
 
       <main>
         <section class="product-hero fade-in">

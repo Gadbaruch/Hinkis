@@ -52,7 +52,7 @@
     document.title = `${project.title} | Gad Baruch Hinkis`;
 
     root.innerHTML = `
-      ${renderTopNav('..', 'tools')}
+      ${renderTopNav('', 'tools')}
 
       <main>
         <section class="product-hero fade-in">
