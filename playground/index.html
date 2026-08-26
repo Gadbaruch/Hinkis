@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playground | Gad Baruch Hinkis</title>
+    <meta name="description" content="Games and AI experiments built at home — playable in the browser, nothing to install." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="../assets/css/styles.css?v=69" />
+    <style>
+      /* ── Playground ─────────────────────────────────────────────
+         Uses the site tokens; everything here is scoped to .pg-* */
+
+      .pg-skip {
+        position: absolute; left: -9999px; top: 0;
+        background: var(--ink); color: #fff; padding: .75rem 1.25rem;
+        font-family: var(--font-mono); font-size: .8rem; z-index: 100;
+      }
+      .pg-skip:focus { left: 0; }
+
+      .pg-hero-note {
+        font-family: var(--font-mono); font-size: .78rem; letter-spacing: .04em;
+        color: var(--muted); margin-top: 1.25rem;
+      }
+
+      .pg-grid {
+        display: grid; gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        align-items: start;
+      }
+
+      .pg-card {
+        display: flex; flex-direction: column;
+        border: var(--border); background: var(--bg);
+        box-shadow: var(--shadow-punch-lg);
+        text-decoration: none; color: inherit;
+        transition: transform .18s ease, box-shadow .18s ease;
+      }
+      a.pg-card:hover, a.pg-card:focus-visible {
+        transform: translate(-3px, -3px);
+        box-shadow: 8px 8px 0 var(--ink);
+      }
+      a.pg-card:focus-visible { outline: 3px solid var(--aqua); outline-offset: 4px; }
+
+      .pg-card-art { border-bottom: var(--border); line-height: 0; background: #0d1030; }
+      .pg-card-art svg { width: 100%; height: auto; display: block; }
+
+      .pg-card-body { padding: 1.5rem 1.5rem 1.75rem; display: flex; flex-direction: column; gap: .85rem; flex: 1; }
+
+      .pg-card-title {
+        font-family: var(--font-title); font-size: 1.5rem; line-height: 1.1;
+        margin: 0; letter-spacing: -.01em;
+      }
+      .pg-card-desc { margin: 0; color: var(--ink-2); font-size: .95rem; line-height: 1.6; }
+
+      .pg-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+      .pg-tag {
+        font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase;
+        letter-spacing: .08em; padding: .28rem .6rem; border: var(--border-thin);
+        background: var(--bg-raised); color: var(--ink-2);
+      }
+      .pg-tag-live { background: var(--aqua-dim); border-color: var(--aqua); color: #06788c; }
+
+      .pg-cta {
+        margin-top: auto; align-self: flex-start;
+        font-family: var(--font-display); font-size: 1.35rem; letter-spacing: .06em;
+        background: var(--yellow); color: var(--ink);
+        border: var(--border-med); box-shadow: var(--shadow-punch);
+        padding: .45rem 1.4rem;
+      }
+      a.pg-card:hover .pg-cta { background: var(--magenta); color: #fff; }
+
+      /* placeholder card for what's coming next */
+      .pg-card-soon {
+        border: 3px dashed var(--line-strong); box-shadow: none; background: var(--bg-raised);
+      }
+      .pg-card-soon .pg-card-title { color: var(--ink-2); }
+      .pg-soon-list { margin: 0; padding-left: 1.1rem; color: var(--ink-2); font-size: .95rem; line-height: 1.9; }
+
+      .pg-parent-note {
+        border-left: 4px solid var(--aqua); background: var(--aqua-dim);
+        padding: 1.25rem 1.5rem; font-size: .95rem; line-height: 1.7; color: var(--ink-2);
+      }
+      .pg-parent-note h2 {
+        font-family: var(--font-mono); font-size: .75rem; text-transform: uppercase;
+        letter-spacing: .1em; margin: 0 0 .6rem; color: var(--ink);
+      }
+      .pg-parent-note ul { margin: .5rem 0 0; padding-left: 1.1rem; }
+      .pg-parent-note li { margin-bottom: .3rem; }
+
+      @media (prefers-reduced-motion: reduce) {
+        a.pg-card, a.pg-card:hover, a.pg-card:focus-visible { transition: none; transform: none; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <a class="pg-skip" href="#pg-main">Skip to content</a>
+
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="../"><span>GAD</span> BARUCH HINKIS</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+        <nav class="nav-links" id="nav-links" aria-label="Primary">
+          <a class="nav-link" href="../products/">Products</a>
+          <a class="nav-link" href="../live/">Live</a>
+          <a class="nav-link" href="../music/">Music</a>
+          <a class="nav-link" href="../ideas/">Ideas</a>
+          <a class="nav-link" href="../about/">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="pg-main">
+
+      <!-- ── Hero ─────────────────────────────────────────────────── -->
+      <section class="page-hero">
+        <div class="container">
+          <div class="page-eyebrow">
+            <span class="page-eyebrow-dot" aria-hidden="true"></span>
+            Playground
+          </div>
+          <h1 class="page-hero-title">Things we build at home.</h1>
+          <p class="page-hero-sub">Games my kids ask for, and experiments in what AI can make when the person writing the spec is a kid. Everything here runs in the browser — no installing, no accounts, no ads, nothing to buy.</p>
+          <p class="pg-hero-note">Made with my daughter · More on the way</p>
+        </div>
+      </section>
+
+      <!-- ── The shelf ────────────────────────────────────────────── -->
+      <section class="section" style="border-top: 1px solid var(--line); padding-top: 2.5rem;">
+        <div class="container">
+          <h2 class="section-label" style="margin-bottom: 1.5rem;">Playable now</h2>
+
+          <div class="pg-grid">
+
+            <!-- Sparkle Trolls -->
+            <a class="pg-card" href="./sparkle-trolls/">
+              <div class="pg-card-art">
+                <svg viewBox="0 0 320 180" role="img" aria-label="A blue troll with fluffy hair standing among glowing crystals under a night sky full of jewels and hearts.">
+                  <defs>
+                    <linearGradient id="pgSky" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#151041"/>
+                      <stop offset="55%" stop-color="#26307e"/>
+                      <stop offset="100%" stop-color="#3f6bc4"/>
+                    </linearGradient>
+                    <radialGradient id="pgBody" cx="35%" cy="30%" r="80%">
+                      <stop offset="0%" stop-color="#c9f2ff"/>
+                      <stop offset="45%" stop-color="#5cc4f5"/>
+                      <stop offset="100%" stop-color="#1a63c8"/>
+                    </radialGradient>
+                    <linearGradient id="pgHair" x1="0" y1="1" x2="0" y2="0">
+                      <stop offset="0%" stop-color="#2f8fe8"/>
+                      <stop offset="100%" stop-color="#d8f6ff"/>
+                    </linearGradient>
+                    <linearGradient id="pgCry" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#eafcff"/>
+                      <stop offset="60%" stop-color="#7fd8ff"/>
+                      <stop offset="100%" stop-color="#2277dd"/>
+                    </linearGradient>
+                  </defs>
+
+                  <rect width="320" height="180" fill="url(#pgSky)"/>
+
+                  <!-- stars -->
+                  <g fill="#ffffff" opacity=".85">
+                    <circle cx="24" cy="26" r="1.5"/><circle cx="72" cy="14" r="1"/><circle cx="128" cy="32" r="1.2"/>
+                    <circle cx="196" cy="18" r="1"/><circle cx="248" cy="40" r="1.4"/><circle cx="292" cy="22" r="1"/>
+                    <circle cx="52" cy="58" r="1"/><circle cx="168" cy="60" r="1.1"/><circle cx="276" cy="70" r="1"/>
+                  </g>
+
+                  <!-- jewels in the sky -->
+                  <g stroke="#ffffff" stroke-opacity=".75" stroke-width="1">
+                    <g transform="translate(44,44) scale(1.1)">
+                      <path d="M-9-5 L9-5 L14 1 L0 15 L-14 1 Z" fill="#7ee0b0"/>
+                      <path d="M-9-5 L9-5 L5 1 L-5 1 Z" fill="#ffffff" fill-opacity=".55" stroke="none"/>
+                    </g>
+                    <g transform="translate(112,30) scale(.85)">
+                      <path d="M-9-5 L9-5 L14 1 L0 15 L-14 1 Z" fill="#e58ad0"/>
+                      <path d="M-9-5 L9-5 L5 1 L-5 1 Z" fill="#ffffff" fill-opacity=".55" stroke="none"/>
+                    </g>
+                    <g transform="translate(226,52) scale(1)">
+                      <path d="M-9-5 L9-5 L14 1 L0 15 L-14 1 Z" fill="#8fb6ff"/>
+                      <path d="M-9-5 L9-5 L5 1 L-5 1 Z" fill="#ffffff" fill-opacity=".55" stroke="none"/>
+                    </g>
+                    <g transform="translate(288,96) scale(.8)">
+                      <path d="M-9-5 L9-5 L14 1 L0 15 L-14 1 Z" fill="#ffd782"/>
+                      <path d="M-9-5 L9-5 L5 1 L-5 1 Z" fill="#ffffff" fill-opacity=".55" stroke="none"/>
+                    </g>
+                  </g>
+
+                  <!-- hearts -->
+                  <g fill="#ff6fb4" stroke="#ffffff" stroke-opacity=".7" stroke-width="1">
+                    <path d="M78 84 c-10-9 -3-19 0-13 c3-6 10 4 0 13 Z"/>
+                    <path d="M258 88 c-8-7 -2-15 0-10 c2-5 8 3 0 10 Z"/>
+                  </g>
+
+                  <!-- magic note -->
+                  <g transform="translate(206,104)" fill="#ffe27a" stroke="#ffffff" stroke-opacity=".8" stroke-width=".8">
+                    <ellipse cx="-4" cy="8" rx="5" ry="3.6" transform="rotate(-20 -4 8)"/>
+                    <rect x="0" y="-8" width="2" height="16"/>
+                    <path d="M2-8 c7 3 4 8 1 10 c2-4 1-6 -1-7 Z"/>
+                  </g>
+
+                  <!-- ground -->
+                  <path d="M0 148 H320 V180 H0 Z" fill="#1b2a6b"/>
+                  <path d="M0 148 H320 V154 H0 Z" fill="#96e8ff" opacity=".9"/>
+
+                  <!-- crystals -->
+                  <g stroke="#eafcff" stroke-opacity=".9" stroke-width="1">
+                    <path d="M46 148 L52 128 L58 137 L56 148 Z" fill="url(#pgCry)"/>
+                    <path d="M242 148 L248 124 L255 135 L253 148 Z" fill="url(#pgCry)"/>
+                    <path d="M270 148 L275 133 L280 140 L279 148 Z" fill="url(#pgCry)"/>
+                  </g>
+
+                  <!-- troll -->
+                  <g transform="translate(150,148)">
+                    <ellipse cx="0" cy="2" rx="26" ry="5" fill="#0a1038" opacity=".45"/>
+                    <g fill="url(#pgHair)">
+                      <path d="M-18-46 q-4-22 2-30 q6 10 8 29 Z"/>
+                      <path d="M-8-50 q-3-26 2-34 q6 12 7 33 Z"/>
+                      <path d="M2-51 q1-27 7-33 q4 13 1 33 Z"/>
+                      <path d="M11-47 q5-23 11-27 q1 12 -4 28 Z"/>
+                    </g>
+                    <ellipse cx="-11" cy="-3" rx="7" ry="4" fill="#1a63c8"/>
+                    <ellipse cx="11" cy="-3" rx="7" ry="4" fill="#1a63c8"/>
+                    <path d="M0-52 c26 1 26 50 0 51 c-26 1 -26-50 0-51 Z" fill="url(#pgBody)"/>
+                    <g stroke="#3fa6ea" stroke-width="4.5" stroke-linecap="round">
+                      <path d="M-20-18 L-29-11"/><path d="M20-18 L29-11"/>
+                    </g>
+                    <path d="M0-9 L5-16 L0-23 L-5-16 Z" fill="#eafcff" stroke="#ffffff" stroke-width="1"/>
+                    <ellipse cx="-9" cy="-30" rx="4.6" ry="5.4" fill="#fff"/>
+                    <ellipse cx="9" cy="-30" rx="4.6" ry="5.4" fill="#fff"/>
+                    <circle cx="-7.7" cy="-29" r="2.4" fill="#17224e"/>
+                    <circle cx="10.3" cy="-29" r="2.4" fill="#17224e"/>
+                    <ellipse cx="-16" cy="-24" rx="3.4" ry="2" fill="#ff8cbe" opacity=".55"/>
+                    <ellipse cx="16" cy="-24" rx="3.4" ry="2" fill="#ff8cbe" opacity=".55"/>
+                    <path d="M-5-24 q5 5 10 0" fill="none" stroke="#17224e" stroke-width="1.6" stroke-linecap="round"/>
+                  </g>
+
+                  <!-- sparkles -->
+                  <g fill="#ffffff">
+                    <path d="M186 66 q1.5 4.5 6 6 q-4.5 1.5 -6 6 q-1.5-4.5 -6-6 q4.5-1.5 6-6 Z"/>
+                    <path d="M96 112 q1 3 4 4 q-3 1 -4 4 q-1-3 -4-4 q3-1 4-4 Z"/>
+                    <path d="M262 20 q1.2 3.6 4.8 4.8 q-3.6 1.2 -4.8 4.8 q-1.2-3.6 -4.8-4.8 q3.6-1.2 4.8-4.8 Z"/>
+                  </g>
+                </svg>
+              </div>
+
+              <div class="pg-card-body">
+                <h3 class="pg-card-title">Sparkle Trolls</h3>
+                <ul class="pg-tags">
+                  <li class="pg-tag pg-tag-live">Playable</li>
+                  <li class="pg-tag">Platformer</li>
+                  <li class="pg-tag">Ages 4+</li>
+                  <li class="pg-tag">Keyboard &amp; touch</li>
+                </ul>
+                <p class="pg-card-desc">A gentle 2D platformer designed by my daughter, to her spec: blue shiny trolls, little crystals, magic notes that play a tune, a lot of hearts, and a sky full of jewels and diamonds. Rescue 18 trolls and they follow you in a parade. Nobody can lose — fall in a hole and you float gently back.</p>
+                <span class="pg-cta">Play</span>
+              </div>
+            </a>
+
+            <!-- Next up -->
+            <div class="pg-card pg-card-soon">
+              <div class="pg-card-body">
+                <h3 class="pg-card-title">Next up</h3>
+                <ul class="pg-tags"><li class="pg-tag">In progress</li></ul>
+                <p class="pg-card-desc">This shelf is where the rest will land:</p>
+                <ul class="pg-soon-list">
+                  <li>More games, designed by the kids</li>
+                  <li>AI experiments — things built <em>with</em> models, not just about them</li>
+                  <li>Small tools worth sharing</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── For grown-ups ────────────────────────────────────────── -->
+      <section class="section" style="padding-top: 0;">
+        <div class="container">
+          <div class="pg-parent-note">
+            <h2>For grown-ups</h2>
+            <p>Everything on this page is safe to hand a child unsupervised:</p>
+            <ul>
+              <li>No ads, no tracking inside the games, no accounts, no in-app purchases.</li>
+              <li>No links out. Nothing to download or install.</li>
+              <li>Works offline once loaded, and on a tablet or phone as well as a computer.</li>
+              <li>No losing, no dying, no timers — nothing to be upset about.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer site-footer-min">
+      <div class="container footer-inner">
+        <span class="brand-name">Gad Baruch Hinkis</span>
+        <div class="footer-copy">© 2026</div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js?v=69"></script>
+    <script>
+      (function() {
+        var btn = document.getElementById('nav-toggle');
+        var nav = document.getElementById('nav-links');
+        if (!btn || !nav) return;
+        btn.addEventListener('click', function() {
+          var open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+        document.addEventListener('click', function(e) {
+          if (!nav.classList.contains('open')) return;
+          if (nav.contains(e.target) || btn.contains(e.target)) return;
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Open menu');
+        });
+      })();
+    </script>
+  </body>
+</html>

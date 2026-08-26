@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Sparkle Trolls — Crystal Sky Adventure</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+    background: #0a0a24;
+    font-family: "Trebuchet MS", "Comic Sans MS", system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  #wrap {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background:
+      radial-gradient(1200px 700px at 50% 0%, #2a2170 0%, #140f3d 55%, #08061f 100%);
+  }
+  canvas {
+    width: min(100vw, calc(100vh * 16 / 9));
+    height: min(100vh, calc(100vw * 9 / 16));
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 0 60px rgba(90, 160, 255, 0.35), 0 0 140px rgba(180, 110, 255, 0.2);
+    image-rendering: auto;
+  }
+
+  /* ---- touch controls (tablets / phones) ---- */
+  #pad { position: fixed; inset: auto 0 0 0; display: none; padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
+         justify-content: space-between; align-items: flex-end; pointer-events: none; }
+  #pad.on { display: flex; }
+  #pad .side { display: flex; gap: 14px; pointer-events: auto; }
+  #pad button {
+    pointer-events: auto;
+    width: 86px; height: 86px; border-radius: 50%;
+    border: 3px solid rgba(190, 235, 255, .7);
+    background: rgba(60, 110, 220, .38);
+    color: #eaf6ff; font-size: 26px; font-weight: bold;
+    font-family: inherit;
+    backdrop-filter: blur(4px);
+    user-select: none; -webkit-user-select: none;
+  }
+  #pad button:active { background: rgba(150, 220, 255, .6); transform: scale(.94); }
+  #pad #btnJ { width: 108px; height: 108px; font-size: 20px; background: rgba(230, 90, 170, .42); border-color: rgba(255, 200, 235, .8); }
+</style>
+</head>
+<body>
+  <div id="wrap">
+    <canvas id="game"></canvas>
+  </div>
+
+  <div id="pad">
+    <div class="side">
+      <button id="btnL" aria-label="left">◀</button>
+      <button id="btnR" aria-label="right">▶</button>
+    </div>
+    <button id="btnJ" aria-label="jump">JUMP</button>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
